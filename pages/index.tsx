@@ -12,6 +12,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        GaGym
       </main>
 
       <footer className={styles.footer}>
