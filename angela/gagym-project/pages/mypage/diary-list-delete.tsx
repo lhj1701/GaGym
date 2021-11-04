@@ -19,7 +19,7 @@ interface Home {
   completed: boolean;
 }
 
-const diaryDetail = ({ home }: HomeProp) => {
+const diaryList = ({ home }: HomeProp) => {
   const router = useRouter();
 
   return (
@@ -39,6 +39,38 @@ const diaryDetail = ({ home }: HomeProp) => {
           {/*>PT일지 목록*/}
           <div className="d-flex mt-5">
             <p className={styles.p}>PT일지 목록</p>
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm mx-3"
+              style={{ width: "80px;", height: "30px" }}
+              onClick={() => {
+                router.push("/mypage/diary-create");
+              }}
+            >
+              일지작성
+            </button>
+            {/*임시-일지상세*/}
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm mx-3"
+              style={{ width: "100px;", height: "30px" }}
+              onClick={() => {
+                router.push("/mypage/diary-detail");
+              }}
+            >
+              임시-일지상세
+            </button>
+            {/*임시-일지수정*/}
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm mx-3"
+              style={{ width: "100px;", height: "30px" }}
+              onClick={() => {
+                router.push("/mypage/diary-edit");
+              }}
+            >
+              임시-일지수정
+            </button>
           </div>
           <table className="table">
             <thead>
@@ -142,4 +174,4 @@ export async function getServerSideProps() {
   return { props: { home } };
 }
 
-export default diaryDetail;
+export default diaryList;

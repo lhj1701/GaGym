@@ -9,6 +9,11 @@ import progressReducer from "./modules/progress";
 import rootSaga from "../middleware";
 import createSagaMiddleware from "@redux-saga/core";
 
+//-----------------------
+import diaryReduer from "./modules/diary";
+import contactReducer from "./modules/contact";
+
+
 // saga middleware 생성
 // middleware: 중간에 먼가를 처리하는 소프트웨어
 // redux saga는 redux 상태처리 전/후에 먼가를 해주는 라이브러리
@@ -20,6 +25,7 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
   // 각 state별로 처리할 reducer 목록
   reducer: {
+    diary: diaryReduer,
     // state이름: reducer이름
     // profile state 처리하는 reducer를 등록
     // profile: profileReducer,
@@ -28,6 +34,7 @@ export const store = configureStore({
     // contact: contactReducer,
     progress: progressReducer,
     //alert: alertReducer,
+    contact: contactReducer,
   },
   // redux store(dispatcher)에 미들웨어 적용
   // middleware는 여러개 사용할 수 있음, [defaultMiddlware, sagaMiddleware, thunkMiddlware]

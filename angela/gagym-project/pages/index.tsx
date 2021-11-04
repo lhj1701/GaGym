@@ -46,6 +46,17 @@ const Home = ({ home }: HomeProp) => {
           <button type="button" className="btn btn-outline-dark me-1 mx-1">
             강사
           </button>
+          {/*임시*/}
+          <button
+            type="button"
+            className="btn btn-outline-dark"
+            // style={{ width: "130px" }}
+            onClick={() => {
+              router.push(`/contact/contact-list`);
+            }}
+          >
+            연락처
+          </button>
         </div>
       </main>
       <footer className={styles.footer}></footer>

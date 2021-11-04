@@ -93,20 +93,21 @@ const mypage = ({ home }: HomeProp) => {
               className="btn btn-secondary btn-sm mx-4"
               style={{ width: "80px;", height: "30px" }}
               onClick={() => {
-                router.push("/mypage/diary-detail");
+                router.push("./diary/diary-list");
               }}
             >
               상세보기
             </button>
+            {/*임시----*/}
             <button
               type="button"
-              className="btn btn-secondary btn-sm"
+              className="btn btn-secondary btn-sm mx-4"
               style={{ width: "80px;", height: "30px" }}
               onClick={() => {
-                router.push("/mypage/diary-create");
+                router.push("./diary-list-delete");
               }}
             >
-              일지작성
+              상세보기
             </button>
           </div>
           <table className="table">
