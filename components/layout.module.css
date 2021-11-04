@@ -1,0 +1,12 @@
+.main {
+  height: calc(100vh - 64px);
+}
+
+.main > section {
+  padding: 32px;
+}
+
+.logoBorder {
+  border-bottom: solid 0.15rem black;
+  width: 100%;
+}
