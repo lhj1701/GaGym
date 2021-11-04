@@ -1,3 +1,4 @@
+import { MutableRefObject } from "react";
 import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -34,12 +35,15 @@ interface Home {
 }
 
 const diaryCreate = ({ home }: HomeProp) => {
-  const selectRef = useRef<HTMLSelectElement>(null);
-  //    const inputRef = useRef<HTMLInputElement>(null);
-  const inputRef1 = useRef<HTMLInputElement>(null);
-  const inputRef2 = useRef<HTMLInputElement>(null);
-  const inputRef3 = useRef<HTMLInputElement>(null);
-  const memo = useRef<HTMLTextAreaElement>(null);
+  const memberName = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryMorning = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryLunch = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryDinner = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryRoutine = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryRequest = useRef() as MutableRefObject<HTMLInputElement>;
+  const trainerFeedback = useRef() as MutableRefObject<HTMLInputElement>;
+  //const diaryCreateTime = useRef() as MutableRefObject<HTMLInputElement>;
+  // const userIdRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   const diaryData = useSelector((state: RootState) => state.diary.data);
 

@@ -23,13 +23,13 @@ export interface DiaryItemResponse {
 }
 export interface DiaryItemRequest {
   memberName: string;
-  diaryMoring: string;
+  diaryMorning: string;
   diaryLunch: string;
   diaryDinner: string;
   diaryRoutine: string;
   diaryRequest: string;
   trainerFeedback: string;
-  diaryCreateTime: number;
+  //diaryCreateTime: number;
 }
 
 const diaryApi = {

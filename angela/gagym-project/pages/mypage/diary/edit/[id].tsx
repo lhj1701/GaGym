@@ -1,3 +1,5 @@
+import { MutableRefObject } from "react";
+
 import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -49,8 +51,7 @@ const diaryEdit = ({ home }: HomeProp) => {
   const inputRef2 = useRef<HTMLInputElement>(null);
   const inputRef3 = useRef<HTMLInputElement>(null);
   const memo = useRef<HTMLTextAreaElement>(null);
-*/
-  const memberName = useRef<HTMLInputElement>(null);
+    const memberName = useRef<HTMLInputElement>(null);
   const diaryMorning = useRef<HTMLInputElement>(null);
   const diaryLunch = useRef<HTMLInputElement>(null);
   const diaryDinner = useRef<HTMLInputElement>(null);
@@ -58,6 +59,16 @@ const diaryEdit = ({ home }: HomeProp) => {
   const diaryRequest = useRef<HTMLInputElement>(null);
   const trainerFeedback = useRef<HTMLInputElement>(null);
   const diaryCreateTime = useRef<HTMLInputElement>(null);
+*/
+
+  const memberName = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryMorning = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryLunch = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryDinner = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryRoutine = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryRequest = useRef() as MutableRefObject<HTMLInputElement>;
+  const trainerFeedback = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryCreateTime = useRef() as MutableRefObject<HTMLInputElement>;
 
   useEffect(() => {
     console.log("--isEditcompleted 변경: ");
@@ -84,7 +95,7 @@ const diaryEdit = ({ home }: HomeProp) => {
       item.diaryRoutine = diaryRoutine.current?.value;
       item.diaryRequest = diaryRequest.current?.value;
       item.trainerFeedback = trainerFeedback.current?.value;
-      item.diaryCreateTime = diaryCreateTime.current?.value;
+      //item.diaryCreateTime = diaryCreateTime.current?.value;
 
       dispatch(requestModifyDiary(item));
       //dispatch(modifyDiary(item));

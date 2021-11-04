@@ -10,6 +10,7 @@ export interface DiaryItem {
   diaryRequest: string;
   trainerFeedback: string;
   diaryCreateTime: number;
+  isEdit?: boolean;
 }
 
 export interface DiaryPage {

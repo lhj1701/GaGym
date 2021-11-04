@@ -64,7 +64,7 @@ const mypage = ({ home }: HomeProp) => {
               className="btn btn-secondary btn-sm mx-4"
               style={{ width: "80px;", height: "30px" }}
             >
-              상세보기
+              임시
             </button>
           </div>
           <table className="table">
@@ -94,17 +94,6 @@ const mypage = ({ home }: HomeProp) => {
               style={{ width: "80px;", height: "30px" }}
               onClick={() => {
                 router.push("./diary/diary-list");
-              }}
-            >
-              상세보기
-            </button>
-            {/*임시----*/}
-            <button
-              type="button"
-              className="btn btn-secondary btn-sm mx-4"
-              style={{ width: "80px;", height: "30px" }}
-              onClick={() => {
-                router.push("./diary-list-delete");
               }}
             >
               상세보기
