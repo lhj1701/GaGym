@@ -4,8 +4,8 @@ import React from "react";
 import styles from "./layout.module.css";
 import AppBar from "./appbar";
 
-// import Progress from "./progress";
-// import AlertStack from "./alert/alertStack";
+import Progress from "./progress";
+import AlertStack from "./alert/alertStack";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -22,8 +22,8 @@ export default function Layout({ children }: LayoutProps) {
       </header>
       <main className={styles.main}>
         {children}
-        {/* <Progress />
-        <AlertStack /> */}
+        <Progress />
+        <AlertStack />
       </main>
     </>
   );
