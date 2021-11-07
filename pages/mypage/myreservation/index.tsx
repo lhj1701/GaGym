@@ -13,7 +13,8 @@ import {
   requestRemoveReservationNext,
   // requestRemoveReservationPaging,
 } from "../../../middleware/modules/reservation";
-// import { removePhoto } from "./photoSlice";
+import Index from "../..";
+import { iteratorSymbol } from "immer/dist/internal";
 
 
 interface HomeProp {
@@ -41,10 +42,10 @@ const mypage = ({ home }: HomeProp) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className={styles.main} style={{ width: "60vw" }}>
         <div className={styles.div}>
           {/*진행중인 예약내역*/}
-          <div className="d-flex">
+          <div className="d-flex mx-auto">
             <p className={styles.p}>진행중인 예약내역</p>
           </div>
           <table className="table ">
@@ -53,46 +54,48 @@ const mypage = ({ home }: HomeProp) => {
               <th>헬스장 명</th>
               <th>예약번호</th>
               <th>구매한 이용권</th>
-              <th>현재 남은 이용횟수 이용권</th>
+              <th>남은 횟수</th>
             </thead>
             <tbody>
               <tr>
-                <td>서울</td>
-                <td>대치휘트니스G</td>
-                <td>21-04186</td>
-                <td>10회</td>
-                <td>9회</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
             </tbody>
           </table>
           {/*예약내역*/}
           <div className="d-flex mt-5">
             <p className={styles.p}>예약내역</p>
-            <button
-              type="button"
-              className="btn btn-secondary btn-sm mx-4"
-              style={{ width: "80px;", height: "30px" }}
-              onClick={() => {
-                router.push("../mypage/myreservation/detail/[reservationNumber]");
-              }}>
-              상세보기
-            </button>
           </div>
           <table className="table">
             <thead>
               <th>예약번호</th>
               <th>헬스장 명</th>
+              <th>강사 명</th>
               <th>이용권</th>
               <th>이용가격</th>
               <th>비고</th>
+              <th>상세보기</th>
             </thead>
             <tbody>
-              <tr>
+              <tr style={{ cursor:"pointer" }}>
+                <td>{}</td>
                 <td></td>
-                <td>대치휘트니스G</td>
-                <td>10회</td>
-                <td>400,000원</td>
-                <td>미완료</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={() => {
+                router.push("../mypage/myreservation/detail/${item.reservationNumber}");
+              }}>
+              상세보기
+            </button></td>
               </tr>
             </tbody>
           </table>

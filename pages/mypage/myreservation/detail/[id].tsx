@@ -58,10 +58,10 @@ const ReservationDetail = () => {
     <table>
     <tbody>
     <tr><th>예약번호</th><td>{reservationItem?.reservationNumber}</td></tr>
-    <tr><th>헬스장명</th><td>대치 휘트니스G</td></tr>
-    <tr><th>강사</th><td >ㅇㅇㅇ</td></tr>
-    <tr><th>이용권</th><td >10회</td></tr>
-    <tr><th>이용가격</th><td>400000원</td></tr>
+    <tr><th>헬스장명</th><td></td></tr>
+    <tr><th>강사</th><td ></td></tr>
+    <tr><th>이용권</th><td ></td></tr>
+    <tr><th>이용가격</th><td></td></tr>
     <tr><th>예약자 명</th><td>{reservationItem?.memberName}</td></tr>
     <tr><th>예약자 연락처</th><td>{reservationItem?.memberPhone}</td></tr>
     <tr><th>문의사항</th><td>{reservationItem?.memberRequest}</td></tr>
@@ -71,7 +71,7 @@ const ReservationDetail = () => {
     <div className="d-flex justify-content-center">
       <button className="btn btn-primary float-end mx-1"
       onClick={() => {
-        router.push("../mypage/myreservation/edit/[reservationNumber]");
+        router.push("/mypage/myreservation/edit/[reservationNumber]");
       }}>수정</button>
       <button className="btn btn-primary float-end" >예약취소</button></div>
     </div>

@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// - 목록조회: 4열 그리드화면으로 목록조회(프로필, 타이틀, 이미지)
-// - 사진추가: 추가버튼으로 제목, 설명, 이미지파일 선택 후 추가, 목록버튼
-
 // 데이터구조를 interface로 만듦
 export interface ReservationItem {
   reservationNumber : number
@@ -10,6 +7,17 @@ export interface ReservationItem {
   // memberPhoneNumStart : number
   // memberPhoneNumMiddle : number
   // memberPhoneNumEnd : number
+  memberPhone : string;
+  memberRequest : string
+}
+
+export interface ReservationList {
+  reservationNumber : number,
+  gymName:string,
+  trainerName:string,
+  boughtService:string,
+  price:string,
+  memberName : string
   memberPhone : string;
   memberRequest : string
 }
@@ -57,8 +65,6 @@ const reservationSlice = createSlice({
     // payload로 item객체를 받음
     addReservation: (state, action: PayloadAction<ReservationItem>) => {
       const reserve = action.payload;
-      console.log("--in reducer function--");
-      console.log(reserve);
       state.data.unshift(reserve);
       state.isAddCompleted = true; // 추가가 되었음으로 표시
     },

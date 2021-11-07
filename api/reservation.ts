@@ -33,13 +33,13 @@ export interface ReservationPagingReponse {
 const reservationApi = {
   get: (reservationNumber: number) =>
     axios.get<ReservationItemResponse>(
-      `${process.env.NEXT_PUBLIC_API_BASE}/reservation/${reservationNumber}`
+      `${process.env.NEXT_PUBLIC_API_BASE}/mypage/myreservation/detail${reservationNumber}`
     ),
   // axios.get<응답데이터의타입>(요청URL);
   // GET 요청URL HTTP/1.1
   fetch: () =>
     axios.get<ReservationItemResponse[]>(
-      `${process.env.NEXT_PUBLIC_API_BASE}/reservtaion`
+      `${process.env.NEXT_PUBLIC_API_BASE}/mypage/myreservation`
     ),
 
   fetchPaging: (page: number, size: number) =>
@@ -51,19 +51,19 @@ const reservationApi = {
   // POST 요청URL HTTP/1.1  {...}
   add: (reservationItem: ReservationItemRequest) =>
     axios.post<ReservationItemResponse>(
-      `${process.env.NEXT_PUBLIC_API_BASE}/reservation`,
+      `${process.env.NEXT_PUBLIC_API_BASE}/addreservation`,
       reservationItem
     ),
   // axios.delete<응답타입>(요청URL);
   // DELETE 요청URL HTTP/1.1
   remove: (reservationNumber: number) =>
-    axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/reservation/${reservationNumber}`),
+    axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/mypage/myreservation/detail/${reservationNumber}`),
 
   // axios.PUT<응답타입>(요청URL, 요청객체(JSON바디));
   // PUT 요청URL HTTP/1.1  {...}
   modify: (reservationNumber: number, reservationItem: ReservationItemRequest) =>
     axios.put<ReservationItemResponse>(
-      `${process.env.NEXT_PUBLIC_API_BASE}/reservation/${reservationNumber}`,
+      `${process.env.NEXT_PUBLIC_API_BASE}/mypage/myreservation/edit/${reservationNumber}`,
       reservationItem
     ),
 };

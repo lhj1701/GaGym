@@ -1,9 +1,10 @@
-import { LegacyRef, MutableRefObject, useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { AppDispatch, RootState } from "../../../../provider";
 import { requestModifyReservation } from "../../../../middleware/modules/reservation";
 import { ReservationItem } from "../../../../provider/modules/reservation";
+import reservationApi, {ReservationItemResponse} from "../../../../api/reservation";
 
 import Layout from "../../../../components/layout";
 
@@ -28,7 +29,7 @@ const ReservationEdit = () => {
 
 
   useEffect(() => {
-    isModifyCompleted && router.push("/reservation");
+    isModifyCompleted && router.push(`/mypage/myreservation/detail/[reservationNumber]`);
   }, [isModifyCompleted, router]);
 
   // ------ 이벤트에 대해서 처리하는 부분 --------
@@ -43,16 +44,12 @@ const ReservationEdit = () => {
       item.memberRequest = requestEdit.current? requestEdit.current.value : "";
 
       // reducer로 state 수정 및 목록으로 이동
-      dispatch(requestModifyReservation(item)); // saga 대체
-      // dispatch(modifyContact(item));
-      router.push("/mypage/myreservation/detail/[reservationNumber]");
+      saveItem(item);
     }
   };
 
   const saveItem = (item: ReservationItem) => {
-    // dispatch(modifyPhoto(item));
     dispatch(requestModifyReservation(item)); // saga action으로 대체
-    // history.push("/photos");
   };
   return(
     <Layout>
@@ -61,11 +58,11 @@ const ReservationEdit = () => {
     <h2>예약자 정보 수정</h2></div>
     <div className="my-2 d-flex justify-content-center">
     <form><table>
-    <tr><th>예약번호</th><td>21-041654</td></tr>
-    <tr><th>헬스장명</th><td>대치 휘트니스G</td></tr>
-    <tr><th>강사</th><td >ㅇㅇㅇ</td></tr>
-    <tr><th>이용권</th><td >10회</td></tr>
-    <tr><th>이용가격</th><td>400000원</td></tr>
+    <tr><th>예약번호</th><td></td></tr>
+    <tr><th>헬스장명</th><td></td></tr>
+    <tr><th>강사</th><td ></td></tr>
+    <tr><th>이용권</th><td ></td></tr>
+    <tr><th>이용가격</th><td></td></tr>
     <tr><th>예약자 명</th><td><input className="form-control" type="text" defaultValue={reservationItem?.memberName} ref={nameEdit}/></td></tr>
     {/* <tr><th>예약자 연락처</th><td><input className="form-control" type="text" defaultValue={reservationItem.memberPhoneNumStart + "-" + reservationItem.memberPhoneNumMiddle + "-" + reservationItem.memberPhoneNumEnd} ref={telEdit} /></td></tr> */}
     <tr><th>예약자 연락처</th><td><input className="form-control" type="text" defaultValue={reservationItem?.memberPhone} ref={telEdit} /></td></tr>
@@ -74,8 +71,15 @@ const ReservationEdit = () => {
     </div>
     <div className="d-flex justify-content-center">
       <button className="btn btn-primary float-end" onClick={() => {
-                  router.push(`/reservation`);
-                }} >저장</button></div>
+                  router.push(`/mypage/myreservation/detail/[reservationNumber]`);
+                }} >목록</button>
+                <button
+            className="btn btn-primary float-end"
+            onClick={() => {handleSave();}}>
+            <i className="bi bi-check" />
+            저장
+          </button>
+                </div>
     </div>
     </Layout>
   )
