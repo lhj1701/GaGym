@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import profileReducer from "../features/profile/profileSlice";
-// import photoReduer from "./modules/photo";
-// import contactReducer from "../features/contact/contactSlice";
+import reservationReduer from "./modules/reservation"
+import progressReducer from "./modules/progress";
+import alertReducer from "./modules/alert";
+
 // 최상위 사가
-// import rootSaga from "../middleware/modules";
+import rootSaga from "../middleware";
 import createSagaMiddleware from "@redux-saga/core";
 
 // saga middleware 생성
@@ -18,8 +19,9 @@ export const store = configureStore({
   // 각 state별로 처리할 reducer 목록
   reducer: {
     // state이름: reducer이름
-    // photo state를 처리하는 reducer를 등록
-    // photo: photoReduer,
+    progress: progressReducer,
+    alert: alertReducer,
+    reservation: reservationReduer
   },
   // redux store(dispatcher)에 미들웨어 적용
   // middleware는 여러개 사용할 수 있음, [defaultMiddlware, sagaMiddleware, thunkMiddlware]
@@ -42,7 +44,7 @@ export const store = configureStore({
 
 // saga middleware를 실행
 // rootSaga와 하위에 정의한 감지(take)할 Saga Action들에 대해서 감지 시작
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 // typesciprt에서는 몇가지 타입 선언을 해야함
 
