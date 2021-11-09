@@ -33,6 +33,7 @@ const diaryEdit = () => {
   const diaryDinner = useRef() as MutableRefObject<HTMLInputElement>;
   const diaryRoutine = useRef() as MutableRefObject<HTMLInputElement>;
   const diaryRequest = useRef() as MutableRefObject<HTMLInputElement>;
+  const trainerName = useRef() as MutableRefObject<HTMLInputElement>;
   const trainerFeedback = useRef() as MutableRefObject<HTMLInputElement>;
   const diaryCreateTime = useRef() as MutableRefObject<HTMLInputElement>;
 
@@ -46,14 +47,15 @@ const diaryEdit = () => {
     if (DiaryItem) {
       const item = { ...DiaryItem };
 
-      item.memberName = memberName.current?.value;
+      // item.memberName = memberName.current?.value;
       item.diaryMorning = diaryMorning.current?.value;
       item.diaryLunch = diaryLunch.current?.value;
       item.diaryDinner = diaryDinner.current?.value;
       item.diaryRoutine = diaryRoutine.current?.value;
       item.diaryRequest = diaryRequest.current?.value;
+      item.trainerName = trainerName.current?.value;
       item.trainerFeedback = trainerFeedback.current?.value;
-      //item.diaryCreateTime = diaryCreateTime.current?.value;
+      // item.diaryCreateTime = diaryCreateTime.current?.value;
 
       dispatch(requestModifyDiary(item));
       //dispatch(modifyDiary(item));
@@ -71,17 +73,8 @@ const diaryEdit = () => {
           <table className="table table-borderless">
             <tbody>
               <tr>
-                <th>이름</th>
-                <td>
-                  {" "}
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="이름 수정"
-                    defaultValue={DiaryItem?.memberName}
-                    ref={memberName}
-                  />
-                </td>
+                <th>날짜</th>
+                <td>(DiaryItem?.diaryCreateTime)땡겨오기</td>
               </tr>
 
               <tr>
@@ -150,17 +143,12 @@ const diaryEdit = () => {
                 </td>
               </tr>
               <tr>
+                <th>담당 강사</th>
+                <td>(DiaryItem?.trainerName) 땡겨오기</td>
+              </tr>
+              <tr>
                 <th>강사 피드백</th>
-                <td>
-                  {" "}
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="강사 피드백 수정"
-                    defaultValue={DiaryItem?.trainerFeedback}
-                    ref={trainerFeedback}
-                  />
-                </td>
+                <td>(DiaryItem?.trainerFeedback) 땡겨오기</td>
               </tr>
             </tbody>
           </table>

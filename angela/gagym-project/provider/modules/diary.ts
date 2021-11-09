@@ -8,6 +8,7 @@ export interface DiaryItem {
   diaryDinner: string;
   diaryRoutine: string;
   diaryRequest: string;
+  trainerName: string;
   trainerFeedback: string;
   diaryCreateTime: number;
   isEdit?: boolean;

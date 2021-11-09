@@ -60,6 +60,7 @@ function* addData(action: PayloadAction<DiaryItem>) {
   diaryDinner: diaryItemPayload.diaryDinner,
   diaryRoutine: diaryItemPayload.diaryRoutine,
   diaryRequest: diaryItemPayload.diaryRequest,
+  trainerName: diaryItemPayload.trainerName,
   trainerFeedback: diaryItemPayload.trainerFeedback,
 
     };
@@ -79,6 +80,7 @@ function* addData(action: PayloadAction<DiaryItem>) {
       diaryDinner: result.data.diaryDinner,
       diaryRoutine: result.data.diaryRoutine,
       diaryRequest: result.data.diaryRequest,
+      trainerName: result.data.trainerName,
       trainerFeedback: result.data.trainerFeedback,
       diaryCreateTime: result.data.diaryCreateTime,
 
@@ -116,6 +118,7 @@ function* fetchData() {
       diaryDinner: item.diaryDinner,
       diaryRoutine: item.diaryRoutine,
       diaryRequest: item.diaryRequest,
+      trainerName: item.trainerName,
       trainerFeedback: item.trainerFeedback,
       diaryCreateTime: item.diaryCreateTime,
 
@@ -151,6 +154,7 @@ function* fetchPagingData(action: PayloadAction<PageRequest>) {
       diaryDinner: item.diaryDinner,
       diaryRoutine: item.diaryRoutine,
       diaryRequest: item.diaryRequest,
+      trainerName: item.trainerName,
       trainerFeedback: item.trainerFeedback,
       diaryCreateTime: item.diaryCreateTime,
         } as DiaryItem)
@@ -191,6 +195,7 @@ function* modifyData(action: PayloadAction<DiaryItem>) {
   diaryDinner: diaryItemPayload.diaryDinner,
   diaryRoutine: diaryItemPayload.diaryRoutine,
   diaryRequest: diaryItemPayload.diaryRequest,
+  trainerName: diaryItemPayload.trainerName,
   trainerFeedback: diaryItemPayload.trainerFeedback,
 
   };
@@ -211,6 +216,7 @@ function* modifyData(action: PayloadAction<DiaryItem>) {
       diaryDinner: result.data.diaryDinner,
       diaryRoutine: result.data.diaryRoutine,
       diaryRequest: result.data.diaryRequest,
+      trainerName: result.data.trainerName,
       trainerFeedback: result.data.trainerFeedback,
       diaryCreateTime: result.data.diaryCreateTime,
   };

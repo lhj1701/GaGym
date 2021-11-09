@@ -20,8 +20,9 @@ const diaryCreate = () => {
   const diaryDinner = useRef() as MutableRefObject<HTMLInputElement>;
   const diaryRoutine = useRef() as MutableRefObject<HTMLInputElement>;
   const diaryRequest = useRef() as MutableRefObject<HTMLInputElement>;
+  const trainerName = useRef() as MutableRefObject<HTMLInputElement>;
   const trainerFeedback = useRef() as MutableRefObject<HTMLInputElement>;
-  //const diaryCreateTime = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryCreateTime = useRef() as MutableRefObject<HTMLInputElement>;
 
   const diaryData = useSelector((state: RootState) => state.diary.data);
 
@@ -47,6 +48,7 @@ const diaryCreate = () => {
       diaryDinner: diaryDinner.current?.value,
       diaryRoutine: diaryRoutine.current?.value,
       diaryRequest: diaryRequest.current?.value,
+      trainerName: trainerName.current?.value,
       trainerFeedback: trainerFeedback.current?.value,
       diaryCreateTime: new Date().getTime(),
     };
@@ -64,16 +66,8 @@ const diaryCreate = () => {
           <table className="table table-borderless">
             <tbody>
               <tr>
-                <th>이름</th>
-                <td>
-                  {" "}
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="이름"
-                    ref={memberName}
-                  />
-                </td>
+                <th>날짜</th>
+                <td>(diaryCreateTime)땡겨오기</td>
               </tr>
 
               <tr>
@@ -133,18 +127,6 @@ const diaryCreate = () => {
                     className="form-control"
                     placeholder="문의사항"
                     ref={diaryRequest}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>강사 피드백</th>
-                <td>
-                  {" "}
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="강사 피드백"
-                    ref={trainerFeedback}
                   />
                 </td>
               </tr>

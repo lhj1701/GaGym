@@ -88,7 +88,7 @@ const mypage = () => {
           </div>
           <table className="table">
             <thead>
-              <th>일자</th>
+              <th>날짜</th>
               <th>식단내용</th>
               <th>운동내용</th>
               <th>문의사항</th>

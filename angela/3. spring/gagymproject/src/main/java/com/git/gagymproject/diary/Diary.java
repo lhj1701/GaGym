@@ -22,13 +22,14 @@ public class Diary {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(columnDefinition = "VARCHAR(1000)")
-	private String memberName;
+	
+	private long diaryCreateTime;
 	@Column(columnDefinition = "TEXT")
 	private String diaryMorning;
 	private String diaryLunch;
 	private String diaryDinner;
 	private String diaryRoutine;
 	private String diaryRequest;
-	private String trainerFeedback;
-	private long diaryCreateTime;
+	private String trainerName;
+	private String trainerFeedback;	
 }

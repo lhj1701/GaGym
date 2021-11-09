@@ -39,6 +39,8 @@
   font-size: 15px;
   margin-top: 75px;
   margin-bottom: 20px;
+  white-space: pre-line;
+  line-height: 1.6;
 }
 
 .src {

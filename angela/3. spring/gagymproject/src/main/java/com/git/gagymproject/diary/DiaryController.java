@@ -50,10 +50,10 @@ public class DiaryController {
 	@PostMapping(value = "/diarys")
 	public Diary addDiary(@RequestBody Diary diary, HttpServletResponse res) throws InterruptedException {
 		
-		if (TextProcesser.isEmpyText(diary.getMemberName())) {
-			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return null;
-		}
+//		if (TextProcesser.isEmpyText(diary.getMemberName())) {
+//			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//			return null;
+//		}
 
 //		if (TextProcesser.isEmpyText(diary.getDiaryMorning())) {
 //			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -61,14 +61,14 @@ public class DiaryController {
 //		}
 
 		Diary diaryItem = Diary.builder()
-				.memberName(diary.getMemberName())
+				.diaryCreateTime(new Date().getTime())
 				.diaryMorning(diary.getDiaryMorning())
 				.diaryLunch(diary.getDiaryLunch())
 				.diaryDinner(diary.getDiaryDinner())
 				.diaryRoutine(diary.getDiaryRoutine())
 				.diaryRequest(diary.getDiaryRequest())
+				.trainerName(diary.getTrainerName())
 				.trainerFeedback(diary.getTrainerFeedback())
-				.diaryCreateTime(new Date().getTime())
 				.build();
 
 
@@ -104,10 +104,10 @@ public class DiaryController {
 			return null;
 		}
 
-		if (TextProcesser.isEmpyText(diary.getMemberName())) {
-			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return null;
-		}
+//		if (TextProcesser.isEmpyText(diary.getMemberName())) {
+//			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//			return null;
+//		}
 
 //		if (TextProcesser.isEmpyText(diary.getDiaryMorning())) {
 //			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -116,13 +116,13 @@ public class DiaryController {
 
 		Diary diaryToSave = diaryItem.get();
 
-		diaryToSave.setMemberName(diary.getMemberName());
+		diaryToSave.setTrainerFeedback(diary.getTrainerFeedback());
 		diaryToSave.setDiaryMorning(diary.getDiaryMorning());
 		diaryToSave.setDiaryLunch(diary.getDiaryLunch());
 		diaryToSave.setDiaryDinner(diary.getDiaryDinner());
 		diaryToSave.setDiaryRoutine(diary.getDiaryRoutine());
 		diaryToSave.setDiaryRequest(diary.getDiaryRequest());
-		diaryToSave.setTrainerFeedback(diary.getTrainerFeedback());
+		diaryToSave.setTrainerName(diary.getTrainerName());
 		
 
 		Diary diarySaved = repo.save(diaryToSave);

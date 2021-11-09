@@ -17,6 +17,7 @@ export interface DiaryItemResponse {
   diaryDinner: string;
   diaryRoutine: string;
   diaryRequest: string;
+  trainerName: string;
   trainerFeedback: string;
   diaryCreateTime: number;
 
@@ -28,6 +29,7 @@ export interface DiaryItemRequest {
   diaryDinner: string;
   diaryRoutine: string;
   diaryRequest: string;
+  trainerName: string;
   trainerFeedback: string;
   //diaryCreateTime: number;
 }
@@ -51,6 +53,7 @@ const diaryApi = {
 
   remove: (id: number) =>
     axios.delete<boolean>(`http://localhost:8080/diarys/${id}`),
+
 
   modify: (id: number, diaryItem: DiaryItemRequest) =>
     axios.put<DiaryItemResponse>(

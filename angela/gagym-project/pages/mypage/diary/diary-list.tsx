@@ -12,14 +12,9 @@ import { requestFetchPagingDiarys } from "../../../middleware/modules/diary";
 
 const getTimeString = (unixtime: number) => {
   const dateTime = new Date(unixtime);
-  return `${dateTime.toLocaleDateString([], {
-    month: "2-digit",
-    day: "2-digit",
-  })} ⏱${dateTime.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  })}`;
+  var month = ("0" + (1 + dateTime.getMonth())).slice(-2);
+  var day = ("0" + dateTime.getDate()).slice(-2);
+  return month + "/" + day;
 };
 
 const diaryList = () => {
@@ -112,14 +107,14 @@ const diaryList = () => {
           <table className="table table-hover">
             <thead className="display-flex;">
               <tr>
-                <th>이름</th>
+                <th>날짜</th>
                 <th>아침식단</th>
                 <th>점심식단</th>
                 <th>저녁식단</th>
                 <th>운동내역</th>
                 <th>문의사항</th>
-                <th>강사 피드백</th>
-                <th>업데이트 시간</th>
+                <th style={{ color: "red" }}>담당 강사</th>
+                <th style={{ color: "red" }}>강사 피드백</th>
               </tr>
             </thead>
 
@@ -128,20 +123,23 @@ const diaryList = () => {
                 <tr className="display-flex">
                   <td
                     style={{ cursor: "pointer" }}
+                    className={styles.text}
                     onClick={() => {
                       router.push(`/mypage/diary/detail/${item.id}`);
                     }}
                   >
-                    ({item.id}) {item.memberName}
+                    {getTimeString(item.diaryCreateTime)}
                   </td>
                   <td className={styles.text}>{item.diaryMorning}</td>
                   <td className={styles.text}>{item.diaryLunch}</td>
                   <td className={styles.text}>{item.diaryDinner}</td>
                   <td className={styles.text}>{item.diaryRoutine}</td>
                   <td className={styles.text}>{item.diaryRequest}</td>
-                  <td className={styles.text}>{item.trainerFeedback}</td>
-                  <td className={styles.text}>
-                    {getTimeString(item.diaryCreateTime)}
+                  <td className={styles.text} style={{ color: "red" }}>
+                    {item.trainerName}
+                  </td>
+                  <td className={styles.text} style={{ color: "red" }}>
+                    {item.trainerFeedback}
                   </td>
                 </tr>
               ))}

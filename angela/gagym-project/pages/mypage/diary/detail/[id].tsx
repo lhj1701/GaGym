@@ -45,8 +45,8 @@ const diaryDetail = () => {
             <table className="table table-borderless">
               <tbody>
                 <tr>
-                  <th>이름</th>
-                  <td>{diaryItem.memberName}</td>
+                  <th>날짜</th>
+                  <td>{diaryItem.diaryCreateTime}</td>
                 </tr>
 
                 <tr>
@@ -70,8 +70,16 @@ const diaryDetail = () => {
                   <td>{diaryItem.diaryRequest}</td>
                 </tr>
                 <tr>
+                  <th>담당 강사</th>
+                  <td style={{ color: "red" }}>
+                    (diaryItem.trainerName) 땡겨오기
+                  </td>
+                </tr>
+                <tr>
                   <th>강사 피드백</th>
-                  <td>{diaryItem.trainerFeedback}</td>
+                  <td style={{ color: "red" }}>
+                    (diaryItem.trainerFeedback) 땡겨오기
+                  </td>
                 </tr>
               </tbody>
             </table>

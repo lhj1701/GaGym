@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
 import { useRouter } from "next/router";
 
+import axios from "axios";
+
 interface GymPhoto {
   albumId: number;
   id: number;
