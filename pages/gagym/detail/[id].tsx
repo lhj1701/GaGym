@@ -114,9 +114,20 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
             <p className="d-flex justify-content-center mt-3">
               <u>P.T</u>
             </p>
+            {/*----------------
+            <div className={styles.imgBoxDiv}>
+              <div className={styles.imgDiv}>
+                <button type="button">1회</button>
+              </div>
+              <div className={styles.imgDescDiv}>
+                <button type="button">1원</button>
+              </div>
+            </div>
+           ----------------*/}
             <button type="button" className={styles.btn}>
               1회
             </button>
+
             <button type="button" className={styles.btn}>
               10회
             </button>

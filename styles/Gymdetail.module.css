@@ -78,4 +78,59 @@
 .btn:hover {
   background: #0100a4;
   color: white;
+  text-align: center;
 }
+
+/*
+.btn hover:nth-child(2) {
+  background: #0100a4;
+  color: white;
+}
+
+.btn div:hover:nth-child(2) {
+  background: #0100a4;
+  color: white;
+}
+
+*/
+
+/*
+.imgBoxDiv {
+  width: 30px;
+  height: 30px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.imgDiv {
+  width: 90px;
+  height: 90px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  position: absolute;
+  background: beige;
+  z-index: 1;
+  bottom: 0px;
+  overflow: hidden;
+}
+
+.imgBoxDiv:hover.imgDiv {
+  width: 80px;
+  height: 80px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-bottom-color: black;
+}
+
+.imgDescDiv {
+  width: 80px;
+  height: 80px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  color: blanchedalmond;
+  position: absolute;
+  bottom: 0px;
+}
+*/
