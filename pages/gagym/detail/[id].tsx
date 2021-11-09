@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 
 import axios from "axios";
+import { Tooltip } from "react-bootstrap";
 
 interface GymPhoto {
   albumId: number;
@@ -26,6 +27,22 @@ interface GymPhoto {
   gymService: string;
   // gymService: gymserviceList[];
   gymNotice: string;
+  //-임시
+  pt1TimePrice: string;
+  pt10TimePrice: string;
+  pt30TimePrice: string;
+  gymMonthPrice: string;
+  gym3MonthPrice: string;
+  gym6MonthPrice: string;
+  gymYearPrice: string;
+  pilatesMonthPrice: string;
+  pilates3MonthPrice: string;
+  pilates6MonthPrice: string;
+  pilatesYearPrice: string;
+  yogaMonthPrice: string;
+  yoga3MonthPrice: string;
+  yoga6MonthPrice: string;
+  yogaYearPrice: string;
 }
 
 interface gymDetailProp {
@@ -114,25 +131,21 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
             <p className="d-flex justify-content-center mt-3">
               <u>P.T</u>
             </p>
-            {/*----------------
-            <div className={styles.imgBoxDiv}>
-              <div className={styles.imgDiv}>
-                <button type="button">1회</button>
-              </div>
-              <div className={styles.imgDescDiv}>
-                <button type="button">1원</button>
-              </div>
-            </div>
-           ----------------*/}
-            <button type="button" className={styles.btn}>
-              1회
-            </button>
 
             <button type="button" className={styles.btn}>
-              10회
+              <span className={styles.tooltip} title={gymDetail.pt1TimePrice}>
+                1회
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              30회
+              <span className={styles.tooltip} title={gymDetail.pt10TimePrice}>
+                10회
+              </span>
+            </button>
+            <button type="button" className={styles.btn}>
+              <span className={styles.tooltip} title={gymDetail.pt30TimePrice}>
+                30회
+              </span>
             </button>
           </div>
           {/*--헬스--*/}
@@ -141,16 +154,24 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
               <u>헬스</u>
             </p>
             <button type="button" className={styles.btn}>
-              1개월
+              <span className={styles.tooltip} title={gymDetail.gymMonthPrice}>
+                1개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              3개월
+              <span className={styles.tooltip} title={gymDetail.gym3MonthPrice}>
+                3개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              6개월
+              <span className={styles.tooltip} title={gymDetail.gym6MonthPrice}>
+                6개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              12개월
+              <span className={styles.tooltip} title={gymDetail.gymYearPrice}>
+                12개월
+              </span>
             </button>
           </div>
           {/*--필라테스--*/}
@@ -159,16 +180,36 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
               <u>필라테스</u>
             </p>
             <button type="button" className={styles.btn}>
-              1개월
+              <span
+                className={styles.tooltip}
+                title={gymDetail.pilatesMonthPrice}
+              >
+                1개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              3개월
+              <span
+                className={styles.tooltip}
+                title={gymDetail.pilates3MonthPrice}
+              >
+                3개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              6개월
+              <span
+                className={styles.tooltip}
+                title={gymDetail.pilates6MonthPrice}
+              >
+                6개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              12개월
+              <span
+                className={styles.tooltip}
+                title={gymDetail.pilatesYearPrice}
+              >
+                12개월
+              </span>
             </button>
           </div>
           {/*--요가--*/}
@@ -177,16 +218,30 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
               <u>요가</u>
             </p>
             <button type="button" className={styles.btn}>
-              1개월
+              <span className={styles.tooltip} title={gymDetail.yogaMonthPrice}>
+                1개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              3개월
+              <span
+                className={styles.tooltip}
+                title={gymDetail.yoga3MonthPrice}
+              >
+                3개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              6개월
+              <span
+                className={styles.tooltip}
+                title={gymDetail.yoga6MonthPrice}
+              >
+                6개월
+              </span>
             </button>
             <button type="button" className={styles.btn}>
-              12개월
+              <span className={styles.tooltip} title={gymDetail.yogaYearPrice}>
+                12개월
+              </span>
             </button>
           </div>
           {/* 헬스장 사진 */}
@@ -263,6 +318,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
       gymNotice: "공지사항 입니다.",
+      //--임시
+      pt1TimePrice: "20,000원",
+      pt10TimePrice: "50,000원",
+      pt30TimePrice: "100,000원",
+      gymMonthPrice: "300,000원",
+      gym3MonthPrice: "800,000원",
+      gym6MonthPrice: "1,500,000원",
+      gymYearPrice: "2,500,000원",
+      pilatesMonthPrice: "20,000원",
+      pilates3MonthPrice: "50,000원",
+      pilates6MonthPrice: "100,000원",
+      pilatesYearPrice: "2,500,000원",
+      yogaMonthPrice: "20,000원",
+      yoga3MonthPrice: "50,000원",
+      yoga6MonthPrice: "100,000원",
+      yogaYearPrice: "2,500,000원",
     },
     {
       albumId: 1,
