@@ -19,7 +19,6 @@ interface Home {
   completed: boolean;
 }
 
-
 const mypage = () => {
   const router = useRouter();
   const reservation = useSelector((state: RootState) => state.reservation);
@@ -72,24 +71,29 @@ const mypage = () => {
               <th>상세보기</th>
             </thead>
             <tbody>
-              {reservation.data.map((item,index)=>(
-              <tr onClick={() => {
-                router.push(`/mypage/myreservation/detail/${item.id}`);
-              }} style={{ cursor:"pointer" }}>
-                <td>{item.id}</td>
-                <td>{item.gymName}</td>
-                <td>{item.trainerName}</td>
-                <td>{item.boughtService}</td>
-                <td>{item.price}</td>
-                <td><button
-              type="button"
-              className="btn btn-secondary btn-sm mx-4"
-              style={{ width: "80px;", height: "30px" }}
-            >
-              상세보기
-            </button></td>
-              </tr>
-               ))}
+              {reservation.data.map((item, index) => (
+                <tr
+                  onClick={() => {
+                    router.push(`/mypage/myreservation/detail/${item.id}`);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  <td>{item.id}</td>
+                  <td>{item.gymName}</td>
+                  <td>{item.trainerName}</td>
+                  <td>{item.boughtService}</td>
+                  <td>{item.price}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-sm mx-4"
+                      style={{ width: "80px", height: "30px" }}
+                    >
+                      상세보기
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
           {/*>PT일지 목록*/}
@@ -98,7 +102,7 @@ const mypage = () => {
             <button
               type="button"
               className="btn btn-secondary btn-sm mx-4"
-              style={{ width: "80px;", height: "30px" }}
+              style={{ width: "80px", height: "30px" }}
               onClick={() => {
                 router.push("./diary/diary-list");
               }}
