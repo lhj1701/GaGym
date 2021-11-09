@@ -38,7 +38,7 @@ const ReservationDetail = () => {
   );
 
   useEffect(() => {
-    isRemoveCompleted && router.push("/mypage/myreservation");
+    isRemoveCompleted && router.push("/mypage/mypage");
   }, [isRemoveCompleted, router]);
 
   const handDeleteClick = () => {

@@ -43,7 +43,7 @@ const ReservationCreate = ({reservation}:IndexProp) => {
   // isAddCompleted값이 변경되면 처리(처음 렌더링되는 시점에도 처리됨)
   // 2. state가 변경되면 처리되는 함수
   useEffect(() => {
-    isAddCompleted && router.push("/mypage/myreservation");
+    isAddCompleted && router.push("/mypage/mypage");
   }, [isAddCompleted, router, dispatch]);
 
 
@@ -64,7 +64,7 @@ const ReservationCreate = ({reservation}:IndexProp) => {
         
         dispatch(requestAddReservation(reservation)); // 전체조회
         // dispatch(requestAddReservationNext(item)); // 더보기페이징
-        router.push("/mypage/myreservation");
+        router.push("/mypage/mypage");
       };
 
 return (
