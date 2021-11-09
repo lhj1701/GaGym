@@ -13,6 +13,8 @@ import { DiaryItem } from "../../../provider/modules/diary";
 
 import { requestAddDiary } from "../../../middleware/modules/diary";
 
+import getTimeString from "../../../provider/modules/getTimeString";
+
 const diaryCreate = () => {
   const memberName = useRef() as MutableRefObject<HTMLInputElement>;
   const diaryMorning = useRef() as MutableRefObject<HTMLInputElement>;
@@ -67,7 +69,7 @@ const diaryCreate = () => {
             <tbody>
               <tr>
                 <th>날짜</th>
-                <td>(diaryCreateTime)땡겨오기</td>
+                <td></td>
               </tr>
 
               <tr>

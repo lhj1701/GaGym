@@ -11,6 +11,8 @@ import { requestRemoveDiary } from "../../../../middleware/modules/diary";
 
 import AppBar from "../../../../components/appbar";
 
+import getTimeString from "../../../../provider/modules/getTimeString";
+
 const diaryDetail = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
@@ -46,7 +48,7 @@ const diaryDetail = () => {
               <tbody>
                 <tr>
                   <th>날짜</th>
-                  <td>{diaryItem.diaryCreateTime}</td>
+                  <td>{getTimeString(diaryItem.diaryCreateTime)}</td>
                 </tr>
 
                 <tr>

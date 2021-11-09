@@ -24,6 +24,13 @@
   border-collapse: collapse;
 }
 
+.text {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /*
 .footer {
   display: flex;

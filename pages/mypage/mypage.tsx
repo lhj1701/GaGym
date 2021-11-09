@@ -8,18 +8,11 @@ import AppBar from "../../components/appbar";
 import { useSelector } from "react-redux";
 import { RootState } from "../../provider";
 
-interface HomeProp {
-  home: Home;
-}
-
-interface Home {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import getTimeString from "../../provider/modules/getTimeString";
 
 const mypage = () => {
+  const diary = useSelector((state: RootState) => state.diary);
+
   const router = useRouter();
   const reservation = useSelector((state: RootState) => state.reservation);
 
@@ -116,26 +109,26 @@ const mypage = () => {
               <th>식단내용</th>
               <th>운동내용</th>
               <th>문의사항</th>
-              <th>담당강사</th>
-              <th>강사피드백</th>
+              <th style={{ color: "red" }}>담당강사</th>
+              <th style={{ color: "red" }}>강사피드백</th>
             </thead>
             <tbody>
-              <tr>
-                <td>10/25</td>
-                <td>(아침) 고구마/우유</td>
-                <td>PT + 런닝2시간</td>
-                <td>-</td>
-                <td>-</td>
-                <td>미완료</td>
-              </tr>
-              <tr>
-                <td>10/25</td>
-                <td>(아침) 고구마/우유</td>
-                <td>PT + 런닝2시간</td>
-                <td>-</td>
-                <td>-</td>
-                <td>미완료</td>
-              </tr>
+              {diary.data.map((item, index) => (
+                <tr>
+                  <td className={styles.text}>
+                    {getTimeString(item.diaryCreateTime)}
+                  </td>
+                  <td className={styles.text}>{item.diaryMorning}</td>
+                  <td className={styles.text}>{item.diaryRoutine}</td>
+                  <td className={styles.text}>{item.diaryRequest}</td>
+                  <td className={styles.text} style={{ color: "red" }}>
+                    {item.trainerName}
+                  </td>
+                  <td className={styles.text} style={{ color: "red" }}>
+                    {item.trainerFeedback}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
