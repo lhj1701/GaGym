@@ -4,10 +4,11 @@ import { useRouter } from "next/router";
 import { AppDispatch, RootState } from "../../../../provider";
 import {
   requestFetchReservationItem,
+  requestRemoveReservation,
   requestRemoveReservationNext,
   // requestRemoveReservationPaging,
 } from "../../../../middleware/modules/reservation";
-import { ReservationItem } from "../../../../provider/modules/reservation";
+import { ReservationList } from "../../../../provider/modules/reservation";
 import Layout from "../../../../components/layout";
 
 import styles from "./mypagereservationdetail.module.css"
@@ -20,7 +21,7 @@ const ReservationDetail = () => {
   console.log(id);
 
   let reservationItem = useSelector((state: RootState) =>
-    state.reservation.data.find((item) => item.reservationNumber === +id)
+    state.reservation.data.find((item) => item.id === +id)
   );
 
   if (id) {
@@ -37,17 +38,14 @@ const ReservationDetail = () => {
   );
 
   useEffect(() => {
-    isRemoveCompleted && router.push("/mypage/mypage/reservation");
+    isRemoveCompleted && router.push("/mypage/myreservation");
   }, [isRemoveCompleted, router]);
 
   const handDeleteClick = () => {
     // saga action으로 대체
-    // dispatch(requestRemovePhoto(+id)); // 전체 조회일 때
+    dispatch(requestRemoveReservation(+id)); // 전체 조회일 때
     // dispatch(requestRemovePhotoPaging(+id)); // 숫자 페이징일 때
-    dispatch(requestRemoveReservationNext(+id)); // 더보기 페이징일 때
-
-    // dispatch(removePhoto(+id)); // id값만 넣어서 삭제
-    // history.push("/photos"); // 목록화면으로 이동
+    // dispatch(requestRemoveReservationNext(+id)); // 더보기 페이징일 때
   };
   return(
     <Layout>
@@ -57,11 +55,11 @@ const ReservationDetail = () => {
     <div className="my-5 d-flex justify-content-center">
     <table>
     <tbody>
-    <tr><th>예약번호</th><td>{reservationItem?.reservationNumber}</td></tr>
-    <tr><th>헬스장명</th><td></td></tr>
-    <tr><th>강사</th><td ></td></tr>
-    <tr><th>이용권</th><td ></td></tr>
-    <tr><th>이용가격</th><td></td></tr>
+    <tr><th>예약번호</th><td>{reservationItem?.id}</td></tr>
+    <tr><th>헬스장명</th><td>{reservationItem?.gymName}</td></tr>
+    <tr><th>강사</th><td >{reservationItem?.trainerName}</td></tr>
+    <tr><th>이용권</th><td >{reservationItem?.boughtService}</td></tr>
+    <tr><th>이용가격</th><td>{reservationItem?.price}</td></tr>
     <tr><th>예약자 명</th><td>{reservationItem?.memberName}</td></tr>
     <tr><th>예약자 연락처</th><td>{reservationItem?.memberPhone}</td></tr>
     <tr><th>문의사항</th><td>{reservationItem?.memberRequest}</td></tr>
@@ -71,9 +69,11 @@ const ReservationDetail = () => {
     <div className="d-flex justify-content-center">
       <button className="btn btn-primary float-end mx-1"
       onClick={() => {
-        router.push("/mypage/myreservation/edit/[reservationNumber]");
+        router.push(`/mypage/myreservation/edit/${id}`);
       }}>수정</button>
-      <button className="btn btn-primary float-end" >예약취소</button></div>
+      <button className="btn btn-primary float-end" onClick={() => {
+                handDeleteClick();
+              }} >예약취소</button></div>
     </div>
     </Layout>
   )

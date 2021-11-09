@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { AppDispatch, RootState } from "../../../../provider";
 import { requestModifyReservation } from "../../../../middleware/modules/reservation";
-import { ReservationItem } from "../../../../provider/modules/reservation";
+import { ReservationList } from "../../../../provider/modules/reservation";
 import reservationApi, {ReservationItemResponse} from "../../../../api/reservation";
 
 import Layout from "../../../../components/layout";
@@ -14,7 +14,7 @@ const ReservationEdit = () => {
   const id = router.query.id as string;
 
   const reservationItem = useSelector((state: RootState) =>
-    state.reservation.data.find((item) => item.reservationNumber === +id)
+    state.reservation.data.find((item) => item.id === +id)
   );
 
   const isModifyCompleted = useSelector(
@@ -29,7 +29,7 @@ const ReservationEdit = () => {
 
 
   useEffect(() => {
-    isModifyCompleted && router.push(`/mypage/myreservation/detail/[reservationNumber]`);
+    isModifyCompleted && router.push(`/mypage/myreservation`);
   }, [isModifyCompleted, router]);
 
   // ------ 이벤트에 대해서 처리하는 부분 --------
@@ -48,7 +48,7 @@ const ReservationEdit = () => {
     }
   };
 
-  const saveItem = (item: ReservationItem) => {
+  const saveItem = (item: ReservationList) => {
     dispatch(requestModifyReservation(item)); // saga action으로 대체
   };
   return(
@@ -71,7 +71,7 @@ const ReservationEdit = () => {
     </div>
     <div className="d-flex justify-content-center">
       <button className="btn btn-primary float-end" onClick={() => {
-                  router.push(`/mypage/myreservation/detail/[reservationNumber]`);
+                  router.push(`/mypage/myreservation`);
                 }} >목록</button>
                 <button
             className="btn btn-primary float-end"

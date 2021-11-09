@@ -16,7 +16,7 @@ const AppBar = () => {
             <Link href="/" passHref>HOM</Link>
           </Nav.Link> */}
           <Nav.Link className="mx-3">
-            <Link href="/addreservation" passHref>
+            <Link href="/mypage/myreservation/create" passHref>
               <a >Reservation</a>
             </Link>
           </Nav.Link>

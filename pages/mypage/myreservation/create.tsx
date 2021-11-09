@@ -1,25 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { MutableRefObject, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
-import { AppDispatch, RootState } from "../../provider";
-import Layout from "../../components/layout";
-import styles from "./addreservation.module.css"
-import { ReservationItem } from "../../provider/modules/reservation";
-import { requestAddReservation, requestAddReservationNext } from "../../middleware/modules/reservation";
+import { AppDispatch, RootState } from "../../../provider";
+import Layout from "../../../components/layout";
+import { ReservationList } from "../../../provider/modules/reservation";
+import { requestAddReservation } from "../../../middleware/modules/reservation";
 import axios from "axios";
 import Image from "next/image";
-import reservationApi from "../../api/reservation"
-
-// interface UserInfo {
-//   id: number;
-//   name: string;
-//   username:string
-//   email:string;
-//   address:string,
-//   phone: string;
-//   website: string;
-//   company: string;
-// }
 
 interface GymInfo {
   albumId: number;
@@ -33,9 +20,9 @@ interface IndexProp {
   reservation: GymInfo[];
 }
 
-const Index = ({reservation}:IndexProp) => {
+const ReservationCreate = ({reservation}:IndexProp) => {
   const reservationData = useSelector((state: RootState) => state.reservation.data);
-  const router = useRouter(); // 컴포넌트 이동을 코드로 제어할 수 있음
+  const router = useRouter();
 
   // 추가 완료 여부
   // 1. state 변경감지 및 값 가져오기
@@ -44,7 +31,11 @@ const Index = ({reservation}:IndexProp) => {
   );
 
   const dispatch = useDispatch<AppDispatch>();
-
+  
+  const gymName = useRef() as MutableRefObject<HTMLHeadingElement>;
+  const ptName = useRef() as MutableRefObject<HTMLHeadingElement>;
+  const service = useRef() as MutableRefObject<HTMLButtonElement>;
+  const price = useRef() as MutableRefObject<HTMLButtonElement>;
   const name = useRef() as MutableRefObject<HTMLInputElement>;
   const tel = useRef() as MutableRefObject<HTMLInputElement>;
   const request = useRef() as MutableRefObject<HTMLTextAreaElement>;
@@ -56,22 +47,28 @@ const Index = ({reservation}:IndexProp) => {
   }, [isAddCompleted, router, dispatch]);
 
 
-  const add = () => {
+  const handleSaveClick  = () => {
         // 추가할 객체 생성
-        const reservation: ReservationItem = {
+        const reservation: ReservationList = {
           // 기존데이터의 id 중에서 가장 큰 것 + 1
-          reservationNumber: reservationData.length ? reservationData[0].reservationNumber + 1 : 1,
+          id: reservationData.length ? reservationData[0].id + 1 : 1,
+          gymName:gymName.current?.innerText,
+          trainerName:ptName.current?.innerText,
+          boughtService:service.current?.innerText,
+          price:price.current?.value,
           // 입력 정보
-          memberName: name.current ? name.current.value : "",
+          memberName: name.current?.value,
           memberPhone: tel.current?.value,
-          memberRequest: request.current.value
+          memberRequest: request.current?.value
         };
         
         dispatch(requestAddReservation(reservation)); // 전체조회
         // dispatch(requestAddReservationNext(item)); // 더보기페이징
+        router.push("/mypage/myreservation");
       };
 
 return (
+  <div>
   <Layout>
     <div style={{ width: "80vw" }} className="mx-auto">
       <div>{reservation.map((item, index) => (
@@ -82,8 +79,8 @@ return (
             width={300}
             height={300} />
           <div className="mx-5">
-            <h2 className='m-3'>헬스장명</h2>
-            <h6 className="mx-5">{item.id}</h6>
+            <h2 className='m-3' >헬스장명</h2>
+            <h6 ref={gymName} className="mx-5" >{item.id}</h6>
             <h2 className='m-3'>주소</h2>
             <h6 className="mx-5">{item.url}</h6>
             <h2 className='m-3'>운영시간</h2>
@@ -91,19 +88,18 @@ return (
           </div>
         </div>
         <div style={{ width: "40vw" }} className="mx-auto ">
-            <h3 className={styles.h3}>강사소개</h3>
+            <h3>강사소개</h3>
             <div className="d-flex align-items-center mt-3">
               <Image
                 src={item.thumbnailUrl}
                 alt={item.title}
                 width={150}
-                height={150}
-                className={styles.img} />
+                height={150} />
               <div>
                 <p className="d-flex mb-1">
                   <u>강사이름</u>
                 </p>
-                <p>{item.id}</p>
+                <p ref={ptName}>{item.id}</p>
                 <p className="d-flex mb-1">
                   <u>강사 한줄 소개</u>
                 </p>
@@ -114,20 +110,20 @@ return (
                 <p>{item.url}</p>
               </div>
             </div>
-            <h3 className={styles.h3}>이용권</h3>
+            <h3 className="d-flex justify-content-center mt-5">이용권</h3>
             {/*P.T*/}
             <div>
               <p className="d-flex justify-content-center mt-3">
                 <u>P.T</u>
               </p>
               <div className="d-flex justify-content-center mt-3">
-                <button type="button" className={styles.btn}>
-                1회
+                <button value={item.title} ref={price} type="button">
+                  1회
               </button>
-              <button type="button" className={styles.btn}>
+              <button value={item.id} ref={price} type="button" >
                 10회
               </button>
-              <button type="button" className={styles.btn}>
+              <button value={item.url} ref={price} type="button" >
                 30회
               </button>
               </div>
@@ -138,16 +134,16 @@ return (
                 <u>헬스</u>
               </p>
               <div className="d-flex justify-content-center mt-3">
-              <button type="button" className={styles.btn}>
+              <button type="button" >
                 1개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button" >
                 3개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button" >
                 6개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 12개월
               </button></div>
             </div>
@@ -157,16 +153,16 @@ return (
                 <u>필라테스</u>
               </p>
               <div className="d-flex justify-content-center mt-5">
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 1개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 3개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 6개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 12개월
               </button></div>
             </div>
@@ -176,16 +172,16 @@ return (
                 <u>요가</u>
               </p>
               <div className="d-flex justify-content-center mt-5">
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 1개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 3개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 6개월
               </button>
-              <button type="button" className={styles.btn}>
+              <button type="button">
                 12개월
               </button></div></div>
             <div>
@@ -203,13 +199,14 @@ return (
               <button type="button"
                 className="my-5 btn btn-primary float-end"
                 onClick={() => {
-                  add();
+                  handleSaveClick ();
                 } }>예약등록</button></div>
           </div></>
           ))}
         </div>
       </div>
   </Layout>
+  </div>
   );
 };
 
@@ -226,8 +223,21 @@ export async function getServerSideProps() {
 
   // 속성객체를 컴포넌트의 속성을 넣어줌
 
+  // const reservation =[
+  //   {
+  //     id : 1,
+  //     gymName:"테스트헬스장",
+  //     trainerName:"테스트강사",
+  //     boughtService:"테스트서비스",
+  //     price:"테스트가격",
+  //     memberName : "테스트이름",
+  //     memberPhone : "테스트연락처",
+  //     memberRequest : "테스트문의사항",
+  //   }
+  // ]
+
   return { props: { reservation } };
 }
 
 
-export default Index;
+export default ReservationCreate;

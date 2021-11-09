@@ -1,29 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// 데이터구조를 interface로 만듦
-export interface ReservationItem {
-  reservationNumber : number
-  memberName : string
-  // memberPhoneNumStart : number
-  // memberPhoneNumMiddle : number
-  // memberPhoneNumEnd : number
-  memberPhone : string;
-  memberRequest : string
-}
-
 export interface ReservationList {
-  reservationNumber : number,
+  id : number
   gymName:string,
   trainerName:string,
   boughtService:string,
   price:string,
   memberName : string
   memberPhone : string;
-  memberRequest : string
+  memberRequest : string,
+  isEdit?: boolean;
 }
 
 export interface ReservationPage {
-  data: ReservationItem[];
+  data: ReservationList[];
   totalElements: number;
   totalPages: number;
   page: number;
@@ -33,7 +23,7 @@ export interface ReservationPage {
 
 // 백엔드 연동 고려해서 state 구조를 설계
 interface ReservationState {
-  data: ReservationItem[]; // 회원정보 아이템 배열
+  data: ReservationList[]; // 회원정보 아이템 배열
   isFetched: boolean; // 서버에서 데이터를 받아왔는지에 대한 여부
   isAddCompleted?: boolean; // 데이터 추가가 완료되었는지 여부
   isRemoveCompleted?: boolean; // 데이터 삭제가 완료되었는지 여부
@@ -44,8 +34,6 @@ interface ReservationState {
   pageSize: number;
   isLast?: boolean;
 }
-
-// const reservationPageSize = localStorage.getItem("reservation_page_size");
 
 // reservation state를 목록 -> array
 const initialState: ReservationState = {
@@ -63,8 +51,10 @@ const reservationSlice = createSlice({
   reducers: {
     // PayloadAction<payload타입>
     // payload로 item객체를 받음
-    addReservation: (state, action: PayloadAction<ReservationItem>) => {
+    addReservation: (state, action: PayloadAction<ReservationList>) => {
       const reserve = action.payload;
+      console.log("--in reducer function--");
+      console.log(reserve);
       state.data.unshift(reserve);
       state.isAddCompleted = true; // 추가가 되었음으로 표시
     },
@@ -83,34 +73,32 @@ const reservationSlice = createSlice({
       const id = action.payload;
       // id에 해당하는 아이템의 index를 찾고 그 index로 splice를 한다.
       state.data.splice(
-        state.data.findIndex((item) => item.reservationNumber === id),
+        state.data.findIndex((item) => item.id === id),
         1
       );
       state.isRemoveCompleted = true; // 삭제 되었음을 표시
     },
-    modifyReservation: (state, action: PayloadAction<ReservationItem>) => {
+    modifyReservation: (state, action: PayloadAction<ReservationList>) => {
       // 생성해서 넘긴 객체
       const modifyItem = action.payload;
       // state에 있는 객체
-      const reservationItem = state.data.find((item) => item.reservationNumber === modifyItem.reservationNumber);
+      const reservationItem = state.data.find((item) => item.id === modifyItem.id);
       // state에 있는 객체의 속성을 넘김 객체의 속성으로 변경
       if (reservationItem) {
+        // reservationItem.gymName= modifyItem.gymName;
         reservationItem.memberName = modifyItem.memberName;
         reservationItem.memberRequest = modifyItem.memberRequest;
         reservationItem.memberPhone = modifyItem.memberPhone;
-        // reservationItem.memberPhoneNumStart = modifyItem.memberPhoneNumStart;
-        // reservationItem.memberPhoneNumMiddle = modifyItem.memberPhoneNumMiddle;
-        // reservationItem.memberPhoneNumEnd = modifyItem.memberPhoneNumEnd;
       }
       state.isModifyCompleted = true; // 변경 되었음을 표시
     },
-    initialReservationItem: (state, action: PayloadAction<ReservationItem>) => {
+    initialReservationItem: (state, action: PayloadAction<ReservationList>) => {
       const reserve = action.payload;
       // 백엔드에서 받아온 데이터
       state.data = [{ ...reserve }];
     },
     // payload값으로 state를 초기화하는 reducer 필요함
-    initialReservation: (state, action: PayloadAction<ReservationItem[]>) => {
+    initialReservation: (state, action: PayloadAction<ReservationList[]>) => {
       const reserve = action.payload;
       // 백엔드에서 받아온 데이터
       state.data = reserve;

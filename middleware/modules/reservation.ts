@@ -8,7 +8,7 @@ import reservationReducer, {
   addTotalpages,
   initialPagedReservation,
   initialNextReservation,
-  ReservationItem,
+  ReservationList,
   ReservationPage
 } from "../../provider/modules/reservation";
 
@@ -45,11 +45,11 @@ export interface PageRequest {
 // photo를 추가하도록 요청하는 action creator를 생성
 // const actionCreator = createAction<Payload타입>(Action.type문자열)
 // 전체 데이터 조횡에서 추가할 때
-export const requestAddReservation = createAction<ReservationItem>(
+export const requestAddReservation = createAction<ReservationList>(
   `${reservationReducer.name}/requestAddReservation`
 );
 // 더보기 페이징에서 추가할 때
-export const requestAddReservationNext = createAction<ReservationItem>(
+export const requestAddReservationNext = createAction<ReservationList>(
   `${reservationReducer.name}/requestAddReservationNext`
 );
 
@@ -84,14 +84,14 @@ export const requestRemoveReservationNext = createAction<number>(
 );
 
 // reservation을 수정하는 action
-export const requestModifyReservation = createAction<ReservationItem>(
+export const requestModifyReservation = createAction<ReservationList>(
   `${reservationReducer.name}/requestModifyReservation`
 );
 
 /* ========= saga action을 처리하는 부분 =============== */
 
 // 서버에 POST로 데이터를 보내 추가하고, redux state를 변경
-function* addDataNext(action: PayloadAction<ReservationItem>) {
+function* addDataNext(action: PayloadAction<ReservationList>) {
   yield console.log("--addDataNext--");
   yield console.log(action);
 
@@ -102,33 +102,14 @@ function* addDataNext(action: PayloadAction<ReservationItem>) {
     // spinner 보여주기
     yield put(startProgress());
 
-    /* --- (추가로직) 2021-11-01 s3 업로드 처리 --- */
-    // 1. dataUrl -> file 변환
-    // const file: File = yield call(
-    //   dataUrlToFile,
-    //   photoItemPayload.photoUrl,
-    //   photoItemPayload.fileName,
-    //   photoItemPayload.fileType
-    // );
-
-    // 2. form data 객체 생성
-    // const formFile = new FormData();
-    // formFile.set("file", file);
-
-    // 3. multipart/form-data로 업로드
-    // const fileUrl: AxiosResponse<string> = yield call(fileApi.upload, formFile);
-    /*-------------------------------------------------------- */
-
     // rest api로 보낼 요청객체
     const reservationItemRequest: ReservationItemRequest = {
+      gymName: reservationItemPayload.gymName,
+      trainerName:reservationItemPayload.trainerName,
+      boughtService:reservationItemPayload.boughtService,
+      price:reservationItemPayload.price,
       memberName: reservationItemPayload.memberName,
-      // title: "", // 임시로 에러 유발(400)
       memberPhone: reservationItemPayload.memberPhone,
-      // memberPhoneNumStart: reservationItemPayload.memberPhoneNumStart,
-      // memberPhoneNumMiddle: reservationItemPayload.memberPhoneNumMiddle,
-      // memberPhoneNumEnd: reservationItemPayload.memberPhoneNumEnd,
-      // photoUrl: photoItemPayload.photoUrl,
-      // photoUrl: fileUrl.data,
       memberRequest: reservationItemPayload.memberRequest,
     };
 
@@ -152,13 +133,14 @@ function* addDataNext(action: PayloadAction<ReservationItem>) {
 
     // ------ 2. redux state를 변경함
     // 백엔드에서 처리한 데이터 객체로 state를 변경할 payload 객체를 생성
-    const reservationItem: ReservationItem = {
-      reservationNumber: result.data.reservationNumber,
+    const reservationItem: ReservationList = {
+      id: result.data.id,
+      gymName: result.data.gymName,
+      trainerName: result.data.trainerName,
+      boughtService: result.data.boughtService,
+      price:result.data.price,
       memberName: result.data.memberName,
       memberPhone: result.data.memberPhone,
-      // memberPhoneNumStart: result.data.memberPhoneNumStart,
-      // memberPhoneNumMiddle: result.data.memberPhoneNumMiddle,
-      // memberPhoneNumEnd: result.data.memberPhoneNumEnd,
       memberRequest: result.data.memberRequest,
     };
 
@@ -208,14 +190,15 @@ function* fetchData() {
   const reservation = result.data.map(
     (item) =>
       ({
-        reservationNumber: item.reservationNumber,
+        id: item.id,
+        gymName: item.gymName,
+        trainerName: item.trainerName,
+        boughtService: item.boughtService,
+        price:item.price,
         memberName: item.memberName,
         memberPhone: item.memberPhone,
-        // memberPhoneNumStart: item.memberPhoneNumStart,
-        // memberPhoneNumMiddle: item.memberPhoneNumMiddle,
-        // memberPhoneNumEnd: item.memberPhoneNumEnd,
         memberRequest: item.memberRequest
-      } as ReservationItem)
+      } as ReservationList)
   );
 
   // state 초기화 reducer 실행
@@ -250,14 +233,15 @@ function* fetchNextData(action: PayloadAction<PageRequest>) {
       data: result.data.content.map(
         (item) =>
           ({
-            reservationNumber: item.reservationNumber,
+            id: item.id,
+            gymName: item.gymName,
+            trainerName: item.trainerName,
+            boughtService: item.boughtService,
+            price:item.price,
             memberName: item.memberName,
             memberPhone: item.memberPhone,
-            // memberPhoneNumStart: item.memberPhoneNumStart,
-            // memberPhoneNumMiddle: item.memberPhoneNumMiddle,
-            // memberPhoneNumEnd: item.memberPhoneNumEnd,
             memberRequest: item.memberRequest
-           } as ReservationItem)
+           } as ReservationList)
       ),
       totalElements: result.data.totalElements,
       totalPages: result.data.totalPages,
@@ -278,21 +262,21 @@ function* fetchNextData(action: PayloadAction<PageRequest>) {
     );
   }
 }
-// 1건의 데이터만 조회
-function* fetchDataItem(action: PayloadAction<number>) {
-  yield console.log("--fetchDataItem--");
+// // 1건의 데이터만 조회
+// function* fetchDataItem(action: PayloadAction<number>) {
+//   yield console.log("--fetchDataItem--");
 
-  const id = action.payload;
+//   const id = action.payload;
 
-  // 백엔드에서 데이터 받아오기
-  const result: AxiosResponse<ReservationItemResponse> = yield call(api.get, id);
+//   // 백엔드에서 데이터 받아오기
+//   const result: AxiosResponse<ReservationItemResponse> = yield call(api.get, id);
 
-  const reservation = result.data;
-  if (reservation) {
-    // state 초기화 reducer 실행
-    yield put(initialReservationItem(reservation));
-  }
-}
+//   const reservation = result.data;
+//   if (reservation) {
+//     // state 초기화 reducer 실행
+//     yield put(initialReservationItem(reservation));
+//   }
+// }
 
 // 삭제처리
 function* removeDataNext(action: PayloadAction<number>) {
@@ -303,19 +287,6 @@ function* removeDataNext(action: PayloadAction<number>) {
 
   // spinner 보여주기
   yield put(startProgress());
-
-  /* --- (추가로직) 2021-11-01 S3 파일 삭제 로직 추가 --- */
-  // redux state에서 id로
-  // object key 가져오기 예) https://배포Id.cloudfront.net/objectKey
-  // const photoItem: PhotoItem = yield select((state: RootState) =>
-  //   state.photo.data.find((item) => item.id === id)
-  // );
-  // const urlArr = photoItem.photoUrl.split("/");
-  // const objectKey = urlArr[urlArr.length - 1];
-
-  // // file api 호출해서 s3에 파일 삭제
-  // yield call(fileApi.remove, objectKey);
-  /* ------------------------------------------------- */
 
   // rest api 연동
   const result: AxiosResponse<boolean> = yield call(api.remove, id);
@@ -343,7 +314,7 @@ function* removeDataNext(action: PayloadAction<number>) {
 }
 
 // 수정처리
-function* modifyData(action: PayloadAction<ReservationItem>) {
+function* modifyData(action: PayloadAction<ReservationList>) {
   yield console.log("--modifyData--");
 
   // action의 payload로 넘어온 객체
@@ -352,54 +323,20 @@ function* modifyData(action: PayloadAction<ReservationItem>) {
   // // spinner 보여주기
   yield put(startProgress());
 
-  // // 파일이 바뀌었으면 base64파일
-  // let fileUrl = action.payload.photoUrl;
-  // if (action.payload.photoUrl.startsWith("data")) {
-  //   /*--- (추가로직) 2021-11-01 S3 파일 삭제 로직 추가 --- */
-  //   // redux state에서 id로
-  //   // object key 가져오기 예) https://배포Id.cloudfront.net/objectKey
-  //   const photoItemFile: PhotoItem = yield select((state: RootState) =>
-  //     state.photo.data.find((item) => item.id === photoItemPayload.id)
-  //   );
-  //   const urlArr = photoItemFile.photoUrl.split("/");
-  //   const objectKey = urlArr[urlArr.length - 1];
-
-  //   // file api 호출해서 s3에 파일 삭제
-  //   yield call(fileApi.remove, objectKey);
-  //   /* --- ------------------------------------------------ */
-
-  //   /* --- (추가로직) 2021-11-01 s3 업로드 처리 --- */
-  //   // 1. dataUrl -> file 변환
-  //   const file: File = yield call(
-  //     dataUrlToFile,
-  //     photoItemPayload.photoUrl,
-  //     photoItemPayload.fileName,
-  //     photoItemPayload.fileType
-  //   );
-
-  //   // 2. form data 객체 생성
-  //   const formFile = new FormData();
-  //   formFile.set("file", file);
-
-  //   // 3. multipart/form-data로 업로드
-  //   const fileRes: AxiosResponse<string> = yield call(fileApi.upload, formFile);
-  //   fileUrl = fileRes.data;
-  //   /*-------------------------------------------------------- */
-  // }
-
   // rest api로 보낼 요청객체
   const reservationItemRequest: ReservationItemRequest = {
+    gymName: reservationItemPayload.gymName,
+    trainerName:reservationItemPayload.trainerName,
+    boughtService:reservationItemPayload.boughtService,
+    price:reservationItemPayload.price,
     memberName: reservationItemPayload.memberName,
     memberPhone: reservationItemPayload.memberPhone,
-    // memberPhoneNumStart:reservationItemPayload.memberPhoneNumStart,
-    // memberPhoneNumMiddle:reservationItemPayload.memberPhoneNumMiddle,
-    // memberPhoneNumEnd:reservationItemPayload.memberPhoneNumEnd,
-    memberRequest:reservationItemPayload.memberRequest,
+    memberRequest: reservationItemPayload.memberRequest,
   };
 
   const result: AxiosResponse<ReservationItemResponse> = yield call(
     api.modify,
-    reservationItemPayload.reservationNumber,
+    reservationItemPayload.id,
     reservationItemRequest
   );
 
@@ -407,13 +344,14 @@ function* modifyData(action: PayloadAction<ReservationItem>) {
   yield put(endProgress());
 
   // 백엔드에서 처리한 데이터 객체로 state를 변경할 payload 객체를 생성
-  const reservationItem: ReservationItem = {
-    reservationNumber: result.data.reservationNumber,
+  const reservationItem: ReservationList = {
+    id: result.data.id,
+    gymName:result.data.gymName,
+    trainerName:result.data.trainerName,
+    boughtService:result.data.boughtService,
+    price:result.data.price,
     memberName: result.data.memberName,
     memberPhone: result.data.memberPhone,
-    // memberPhoneNumStart: result.data.memberPhoneNumStart,
-    // memberPhoneNumMiddle: result.data.memberPhoneNumMiddle,
-    // memberPhoneNumEnd: result.data.memberPhoneNumEnd,
     memberRequest: result.data.memberRequest,
   };
 
@@ -437,7 +375,7 @@ export default function* reservationSaga() {
   // 동일한 타입의 액션중에서 가장 마지막 액션만 처리, 이전 액션은 취소
 
   // 1건의 데이터만 조회
-  yield takeEvery(requestFetchReservationItem, fetchDataItem);
+  // yield takeEvery(requestFetchReservationItem, fetchDataItem);
   yield takeLatest(requestFetchReservation, fetchData);
   yield takeLatest(requestFetchNextReservation, fetchNextData);
 
