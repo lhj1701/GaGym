@@ -12,7 +12,7 @@ const AppBar = () => {
   return (
     <div>
       <Navbar className={styles.appbar} expand="lg">
-        <Container className="w-100">
+        <Container>
           <Navbar.Brand>
             <Link href="/">
               <img style={{ width: "100px" }} src="/logo.png" alt="logo" />
@@ -20,7 +20,7 @@ const AppBar = () => {
           </Navbar.Brand>
           <div
             className="d-flex justify-content-end"
-            style={{ fontSize: "16px" }}
+            style={{ fontSize: "19px" }}
           >
             {/*appbar안에 메뉴*/}
             <Nav>
@@ -30,7 +30,7 @@ const AppBar = () => {
                 </Link>
               </Nav.Item>
               <Nav.Item className="me-3">
-                <Link href="/gagym/gagym-list">
+                <Link href="/home/select">
                   <a className="text-dark">헬스장찾기</a>
                 </Link>
               </Nav.Item>
@@ -40,7 +40,7 @@ const AppBar = () => {
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link href="/mypage/diary-detail">
+                <Link href="/mypage/diary/diary-list">
                   <a className="text-dark">PT일지</a>
                 </Link>
               </Nav.Item>

@@ -15,6 +15,13 @@ className="btn btn-secondary btn-sm mx-3"
   align-items: center;
 }
 
+.text {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .main {
   flex: 1;
   display: flex;

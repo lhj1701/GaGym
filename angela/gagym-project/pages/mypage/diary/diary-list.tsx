@@ -1,8 +1,5 @@
 import React from "react";
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
+
 import styles from "../../../styles/Diarylist.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,42 +7,17 @@ import AppBar from "../../../components/appbar";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Pagination from "../../../components/pagination";
 import { AppDispatch, RootState } from "../../../provider";
-import {
-  requestFetchDiarys,
-  requestFetchPagingDiarys,
-} from "../../../middleware/modules/diary";
-
-import diaryApi from "../../../api/diary";
-import { DiaryItemResponse } from "../../../api/diary";
+import { requestFetchPagingDiarys } from "../../../middleware/modules/diary";
 
 const getTimeString = (unixtime: number) => {
   const dateTime = new Date(unixtime);
-  return `${dateTime.toLocaleDateString([], {
-    month: "2-digit",
-    day: "2-digit",
-  })} ⏱${dateTime.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  })}`;
+  var month = ("0" + (1 + dateTime.getMonth())).slice(-2);
+  var day = ("0" + dateTime.getDate()).slice(-2);
+  return month + "/" + day;
 };
 
-interface HomeProp {
-  home: Home;
-
-  //diarys: DiaryItemResponse[];
-}
-
-interface Home {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
-const diaryList = ({ home }: HomeProp) => {
+const diaryList = () => {
   const diary = useSelector((state: RootState) => state.diary);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
@@ -79,10 +51,6 @@ const diaryList = ({ home }: HomeProp) => {
         size: +e.currentTarget.value,
       })
     );
-  };
-
-  const onEvent = (e: any) => {
-    console.log(e.type, "", e);
   };
 
   return (
@@ -134,54 +102,45 @@ const diaryList = ({ home }: HomeProp) => {
                   </option>
                 ))}
               </select>
-              {/*-----------------*/}
-              {/*
-         <select
-          className="form-select form-select-sm"
-          style={{ width: "60px" }}
-          >
-            <option>3</option>
-            <option>5</option>
-            <option>10</option>
-        </select>
-*/}
             </div>
           </div>
-          <table className="table table-striped table table-hover">
+          <table className="table table-hover">
             <thead className="display-flex;">
               <tr>
-                <th>이름</th>
+                <th>날짜</th>
                 <th>아침식단</th>
                 <th>점심식단</th>
                 <th>저녁식단</th>
                 <th>운동내역</th>
                 <th>문의사항</th>
-                <th>강사 피드백</th>
-                <th>업데이트 시간</th>
+                <th style={{ color: "red" }}>담당 강사</th>
+                <th style={{ color: "red" }}>강사 피드백</th>
               </tr>
             </thead>
 
             <tbody className="tbody">
               {diary.data.map((item, index) => (
                 <tr className="display-flex">
-                  {/*
-          <td className="text-center">❤{item.select}</td> 
-*/}
                   <td
                     style={{ cursor: "pointer" }}
+                    className={styles.text}
                     onClick={() => {
                       router.push(`/mypage/diary/detail/${item.id}`);
                     }}
                   >
-                    ({item.id}) {item.memberName}
+                    {getTimeString(item.diaryCreateTime)}
                   </td>
-                  <td>{item.diaryMorning}</td>
-                  <td>{item.diaryLunch}</td>
-                  <td>{item.diaryDinner}</td>
-                  <td>{item.diaryRoutine}</td>
-                  <td>{item.diaryRequest}</td>
-                  <td>{item.trainerFeedback}</td>
-                  <td>{getTimeString(item.diaryCreateTime)}</td>
+                  <td className={styles.text}>{item.diaryMorning}</td>
+                  <td className={styles.text}>{item.diaryLunch}</td>
+                  <td className={styles.text}>{item.diaryDinner}</td>
+                  <td className={styles.text}>{item.diaryRoutine}</td>
+                  <td className={styles.text}>{item.diaryRequest}</td>
+                  <td className={styles.text} style={{ color: "red" }}>
+                    {item.trainerName}
+                  </td>
+                  <td className={styles.text} style={{ color: "red" }}>
+                    {item.trainerFeedback}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -193,77 +152,5 @@ const diaryList = ({ home }: HomeProp) => {
     </div>
   );
 };
-
-export async function getServerSideProps() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/homes/1");
-  const home: Home = await res.json();
-
-  //  const res = await diaryApi.fetchPaging(0, 4);
-  //const diarys: res.data.content;
-
-  //배열로 임시로 넣어보려고 했는데, 잘 안되넹..
-  /*
-  const diarys = [
-    {
-      id: 5,
-      memberName: "박5",
-      diaryMorning: "닭가슴살5",
-      diaryLunch: "호박죽",
-      diaryDinner: "현미밥",
-      diaryRoutine: "필라테스 2시간",
-      diaryRequest: "-",
-      trainerFeedback: "-",
-      diaryCreateTime: 1636012151456,
-    },
-    {
-      id: 4,
-      memberName: "박4",
-      diaryMorning: "닭가슴살4",
-      diaryLunch: "호박죽",
-      diaryDinner: "현미밥",
-      diaryRoutine: "필라테스 2시간",
-      diaryRequest: "-",
-      trainerFeedback: "-",
-      diaryCreateTime: 1636012151456,
-    },
-    {
-      id: 3,
-      memberName: "박3",
-      diaryMorning: "닭가슴살3",
-      diaryLunch: "호박죽",
-      diaryDinner: "현미밥",
-      diaryRoutine: "필라테스 2시간",
-      diaryRequest: "-",
-      trainerFeedback: "-",
-      diaryCreateTime: 1636012151456,
-    },
-    {
-      id: 2,
-      memberName: "박2",
-      diaryMorning: "닭가슴살2",
-      diaryLunch: "호박죽",
-      diaryDinner: "현미밥",
-      diaryRoutine: "필라테스 2시간",
-      diaryRequest: "-",
-      trainerFeedback: "-",
-      diaryCreateTime: 1636012151456,
-    },
-    {
-      id: 1,
-      memberName: "박",
-      diaryMorning: "닭가슴살",
-      diaryLunch: "호박죽",
-      diaryDinner: "현미밥",
-      diaryRoutine: "필라테스 2시간",
-      diaryRequest: "-",
-      trainerFeedback: "-",
-      diaryCreateTime: 1636012151456,
-    },
-  ];
-*/
-  return { props: { home } };
-
-  //return { props: { diarys: res.data.content } };
-}
 
 export default diaryList;

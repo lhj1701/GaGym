@@ -1,6 +1,8 @@
 .appbar {
-  margin-left: 10rem;
-  width: 80%;
+  /* width: calc((100% - 2rem) / 3); */
+  margin-left: 100px;
+  width: calc((100% - 200px));
+  /* width: 100%; */
   border-bottom: solid black;
   font-size: 20px;
   border-width: 0.3vh;

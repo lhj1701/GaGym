@@ -1,25 +1,12 @@
 import React from "react";
-import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
+
 import styles from "../../styles/Mypage.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
 
-interface HomeProp {
-  home: Home;
-}
-
-interface Home {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
-const mypage = ({ home }: HomeProp) => {
+const mypage = () => {
   const router = useRouter();
 
   return (
@@ -64,7 +51,7 @@ const mypage = ({ home }: HomeProp) => {
               className="btn btn-secondary btn-sm mx-4"
               style={{ width: "80px;", height: "30px" }}
             >
-              임시
+              상세보기
             </button>
           </div>
           <table className="table">
@@ -101,7 +88,7 @@ const mypage = ({ home }: HomeProp) => {
           </div>
           <table className="table">
             <thead>
-              <th>일자</th>
+              <th>날짜</th>
               <th>식단내용</th>
               <th>운동내용</th>
               <th>문의사항</th>
@@ -134,19 +121,5 @@ const mypage = ({ home }: HomeProp) => {
     </div>
   );
 };
-
-// 여기 함수부분의 코드를 실행하여 반환 값을 컴포넌트 속성을 넣어줌
-
-export async function getServerSideProps() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/homes/1");
-
-  const home: Home = await res.json();
-
-  // 여기에 prop: {속성객체}
-
-  // 속성객체를 컴포넌트의 속성을 넣어줌
-
-  return { props: { home } };
-}
 
 export default mypage;

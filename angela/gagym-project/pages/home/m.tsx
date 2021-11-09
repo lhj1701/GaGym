@@ -19,7 +19,7 @@ interface Home {
   completed: boolean;
 }
 
-const m = ({ home }: HomeProp) => {
+const m = () => {
   const router = useRouter();
 
   return (
@@ -33,7 +33,6 @@ const m = ({ home }: HomeProp) => {
           <button
             type="button"
             className="btn btn-outline-dark"
-            // style={{ width: "130px" }}
             onClick={() => {
               router.push(`/home/select`);
             }}
@@ -56,19 +55,5 @@ const m = ({ home }: HomeProp) => {
     </div>
   );
 };
-
-// 여기 함수부분의 코드를 실행하여 반환 값을 컴포넌트 속성을 넣어줌
-
-export async function getServerSideProps() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/homes/1");
-
-  const home: Home = await res.json();
-
-  // 여기에 prop: {속성객체}
-
-  // 속성객체를 컴포넌트의 속성을 넣어줌
-
-  return { props: { home } };
-}
 
 export default m;

@@ -1,5 +1,6 @@
 .container {
   padding: 0 0;
+  width: 100%;
 }
 .appbar {
   height: 60;
@@ -45,7 +46,7 @@
   /*
   border-color: #0000ff;
   */
-  margin: 0 5px 5px 0;
+  margin: 0 30px 30px 30px;
   justify-content: center;
   flex-direction: "";
   width: calc((100% - 2rem) / 4);
@@ -53,12 +54,14 @@
 
 .main {
   min-height: 100vh;
+  min-width: 100vw;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc((100% - 2rem) / 3);
+  /* width: calc((100% - 2rem) / 3); */
+
   /*
   height: calc((100% - 3rem) / 4);
   */
@@ -66,8 +69,9 @@
 
 /*mypage*/
 .div {
-  margin: 100px 0 0 100px;
-  flex: 3;
+  /* margin: 100px 0 0 100px; */
+  margin: 70px 0 0 0;
+  /* flex: 3; */
   display: flex;
   flex-direction: column;
   align-items: center;

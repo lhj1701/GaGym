@@ -7,8 +7,7 @@ interface AlertItem {
 }
 
 const initialState: AlertItem[] = [
-  // { id: nanoid(), variant: "success", message: "수정되었습니다." },
-  // { id: nanoid(), variant: "danger", message: "오류입니다." },
+
 ];
 
 const alertSlice = createSlice({
@@ -17,7 +16,7 @@ const alertSlice = createSlice({
   reducers: {
     addAlert: (state, action: PayloadAction<AlertItem>) => {
       const alertItem = action.payload;
-      state.unshift(alertItem); // 추가할 얼럿을 앞쪽에
+      state.unshift(alertItem); 
     },
     removeAlert: (state, action: PayloadAction<string>) => {
       const id = action.payload;
