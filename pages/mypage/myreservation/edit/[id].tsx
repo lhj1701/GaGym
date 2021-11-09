@@ -29,7 +29,7 @@ const ReservationEdit = () => {
 
 
   useEffect(() => {
-    isModifyCompleted && router.push(`/mypage/myreservation`);
+    isModifyCompleted && router.push(`/mypage/mypage`);
   }, [isModifyCompleted, router]);
 
   // ------ 이벤트에 대해서 처리하는 부분 --------
@@ -38,9 +38,6 @@ const ReservationEdit = () => {
       const item = {...reservationItem};
       item.memberName = nameEdit.current ? nameEdit.current.value : "";
       item.memberPhone = telEdit.current? telEdit.current.value : "";
-      // item.memberPhoneNumStart + item.memberPhoneNumMiddle + item.memberPhoneNumEnd = telEdit.current? telEdit.current.value : "";
-      // item.memberPhoneNumMiddle = telEdit.current? telEdit.current.value : "";
-      // item.memberPhoneNumEnd = telEdit.current? telEdit.current.value : "";
       item.memberRequest = requestEdit.current? requestEdit.current.value : "";
 
       // reducer로 state 수정 및 목록으로 이동
@@ -64,14 +61,13 @@ const ReservationEdit = () => {
     <tr><th>이용권</th><td ></td></tr>
     <tr><th>이용가격</th><td></td></tr>
     <tr><th>예약자 명</th><td><input className="form-control" type="text" defaultValue={reservationItem?.memberName} ref={nameEdit}/></td></tr>
-    {/* <tr><th>예약자 연락처</th><td><input className="form-control" type="text" defaultValue={reservationItem.memberPhoneNumStart + "-" + reservationItem.memberPhoneNumMiddle + "-" + reservationItem.memberPhoneNumEnd} ref={telEdit} /></td></tr> */}
     <tr><th>예약자 연락처</th><td><input className="form-control" type="text" defaultValue={reservationItem?.memberPhone} ref={telEdit} /></td></tr>
     <tr><th>문의사항</th><td><textarea style={{height:"20vh"}}className="form-control" defaultValue={reservationItem?.memberRequest} ref={requestEdit}/></td></tr>
     </table></form>
     </div>
     <div className="d-flex justify-content-center">
       <button className="btn btn-primary float-end" onClick={() => {
-                  router.push(`/mypage/myreservation`);
+                  router.push(`/mypage/mypage`);
                 }} >목록</button>
                 <button
             className="btn btn-primary float-end"
