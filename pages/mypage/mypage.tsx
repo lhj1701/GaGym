@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import styles from "../../styles/Mypage.module.css";
+import styles from "../../styles/mypage.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
