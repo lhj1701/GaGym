@@ -58,6 +58,7 @@ const diaryCreate = () => {
     // dispatch(addDiary(item));
     router.push("/mypage/diary/diary-list");
   };
+  const dateTime = new Date();
 
   return (
     <div>
@@ -69,7 +70,7 @@ const diaryCreate = () => {
             <tbody>
               <tr>
                 <th>날짜</th>
-                <td></td>
+                <td>????</td>
               </tr>
 
               <tr>

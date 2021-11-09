@@ -12,6 +12,8 @@ import { requestModifyDiary } from "../../../../middleware/modules/diary";
 
 import AppBar from "../../../../components/appbar";
 
+import getTimeString from "../../../../provider/modules/getTimeString";
+
 const diaryEdit = () => {
   const router = useRouter();
 
@@ -74,7 +76,7 @@ const diaryEdit = () => {
             <tbody>
               <tr>
                 <th>날짜</th>
-                <td>(DiaryItem?.diaryCreateTime)땡겨오기</td>
+                <td>{getTimeString(DiaryItem?.diaryCreateTime)}</td>
               </tr>
 
               <tr>
