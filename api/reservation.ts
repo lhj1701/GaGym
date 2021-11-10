@@ -33,11 +33,11 @@ export interface ReservationPagingReponse {
 // 서버하고 데이터 연동하는 api처리 목록을 별도의 객체로 작성
 // process.env.변수명
 const reservationApi = {
-  // get: (id: number) =>
-  //   axios.get<ReservationItemResponse>(
-  //     // `${process.env.NEXT_PUBLIC_API_BASE}/mypage/myreservation/detail${id}`
-  //     `http://localhost:8080/reservation/{id}`
-  //   ),
+  get: (id: number) =>
+    axios.get<ReservationItemResponse>(
+      // `${process.env.NEXT_PUBLIC_API_BASE}/mypage/myreservation/detail${id}`
+      `http://localhost:8080/reservation/{id}`
+    ),
   // axios.get<응답데이터의타입>(요청URL);
   fetch: () =>
     axios.get<ReservationItemResponse[]>(

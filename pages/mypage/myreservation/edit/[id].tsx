@@ -54,7 +54,7 @@ const ReservationEdit = () => {
     <div className="d-flex justify-content-center">
     <h2>예약자 정보 수정</h2></div>
     <div className="my-2 d-flex justify-content-center">
-    <form><table>
+    <table>
     <tr><th>예약번호</th><td></td></tr>
     <tr><th>헬스장명</th><td></td></tr>
     <tr><th>강사</th><td ></td></tr>
@@ -63,7 +63,7 @@ const ReservationEdit = () => {
     <tr><th>예약자 명</th><td><input className="form-control" type="text" defaultValue={reservationItem?.memberName} ref={nameEdit}/></td></tr>
     <tr><th>예약자 연락처</th><td><input className="form-control" type="text" defaultValue={reservationItem?.memberPhone} ref={telEdit} /></td></tr>
     <tr><th>문의사항</th><td><textarea style={{height:"20vh"}}className="form-control" defaultValue={reservationItem?.memberRequest} ref={requestEdit}/></td></tr>
-    </table></form>
+    </table>
     </div>
     <div className="d-flex justify-content-center">
       <button className="btn btn-primary float-end" onClick={() => {
