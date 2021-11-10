@@ -24,7 +24,7 @@ const login = () => {
         <button type="button" className="btn btn-dark mt-3">
           회원
         </button>
-        <form className="mt-5 row-vh d-flex flex-column align-items-end">
+        <form className="mt-5 row-vh d-flex flex-column align-items-end justify-content-space-evenly">
           <div className="row mb-3">
             <label className="col-sm-3 col-form-label">회원명</label>
             <div className="col-sm-6">
