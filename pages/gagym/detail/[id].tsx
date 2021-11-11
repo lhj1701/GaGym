@@ -93,7 +93,7 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
               {/* 예약버튼 */}
               <button
                 type="button"
-                className="btn btn-outline-dark btn-lg mt-4"
+                className="btn btn-outline-dark btn-lg mt-2"
                 style={{ width: "400px" }}
                 onClick={() => {
                   router.push(`../../mypage/myreservation/create`);
@@ -104,7 +104,7 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
             </div>
           </div>
 
-          {/*--------------2. 강사소개/이용권/헬스장사진/부가서비스/공지사항 시작 --------------*/}
+          {/*--------------2. 강사소개/이용권/헬스장사진/부가서비스 시작 --------------*/}
           {/* 강사소개 */}
           <h3 className={styles.h3}>강사 소개 및 이용권</h3>
           {/*임시시작*/}
@@ -141,30 +141,30 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
             </div>
             {/*(오른쪽)이용권*/}
             <div>
-              <table className={styles.table}>
+              <table className={styles.table1}>
                 <tr>
-                  <th className={styles.th}></th>
-                  <th className={styles.th}>1회</th>
-                  <th className={styles.th}>10회</th>
-                  <th className={styles.th}>30회</th>
+                  <th className={styles.th1}></th>
+                  <th className={styles.th1}>1회</th>
+                  <th className={styles.th1}>10회</th>
+                  <th className={styles.th1}>30회</th>
                 </tr>
                 <tr>
-                  <td className={styles.td}>P.T</td>
-                  <td className={styles.td}>(더미)</td>
-                  <td className={styles.td}>(더미)</td>
-                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td1c}>P.T</td>
+                  <td className={styles.td1}>(더미)</td>
+                  <td className={styles.td1}>(더미)</td>
+                  <td className={styles.td1}>(더미)</td>
                 </tr>
                 <tr>
-                  <td className={styles.td}>필라테스</td>
-                  <td className={styles.td}>(더미)</td>
-                  <td className={styles.td}>(더미)</td>
-                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td1c}>필라테스</td>
+                  <td className={styles.td1}>(더미)</td>
+                  <td className={styles.td1}>(더미)</td>
+                  <td className={styles.td1}>(더미)</td>
                 </tr>
                 <tr>
-                  <td className={styles.td}>요가</td>
-                  <td className={styles.td}>(더미)</td>
-                  <td className={styles.td}>(더미)</td>
-                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td1c}>요가</td>
+                  <td className={styles.td1}>(더미)</td>
+                  <td className={styles.td1}>(더미)</td>
+                  <td className={styles.td1}>(더미)</td>
                 </tr>
               </table>
             </div>
@@ -173,17 +173,31 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
           {/* 헬스장 이용권 */}
           <h3 className={styles.h3}>헬스장 이용권</h3>
           {/*--P.T--table*/}
-          <div>
-            <table className={styles.table}>
+          <div className={styles.div}>
+            <table className={styles.table2}>
               <tr>
-                <th className={styles.th2}>1회</th>
-                <th className={styles.th2}>10회</th>
-                <th className={styles.th2}>30회</th>
+                <th className={styles.th2}>1일권</th>
+                <th className={styles.th2}>3일권</th>
+                <th className={styles.th2}>7일권</th>
               </tr>
               <tr>
                 <td className={styles.td2}>(더미)60,000원</td>
                 <td className={styles.td2}>(더미)</td>
                 <td className={styles.td2}>(더미)</td>
+              </tr>
+            </table>
+            <table className={styles.table3}>
+              <tr>
+                <th className={styles.th3}>1개월</th>
+                <th className={styles.th3}>3개월</th>
+                <th className={styles.th3}>6개월</th>
+                <th className={styles.th3}>12개월</th>
+              </tr>
+              <tr>
+                <td className={styles.td3}>(더미)60,000원</td>
+                <td className={styles.td3}>(더미)</td>
+                <td className={styles.td3}>(더미)</td>
+                <td className={styles.td3}>(더미)</td>
               </tr>
             </table>
           </div>
@@ -222,10 +236,7 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
           </div>
           {/* 부가서비스 */}
           <h3 className={styles.h3}>부가서비스</h3>
-          <div>{gymDetail.gymService}</div>
-          {/* 공지사항 */}
-          <h3 className={styles.h3}>공지사항</h3>
-          <div className="mb-5">{gymDetail.gymNotice}</div>
+          <div className="mb-5">{gymDetail.gymService}</div>
 
           {/*강사소개/이용권/헬스장사진/부가서비스/공지사항 끝*/}
 
@@ -261,7 +272,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       trainerSpecial: "근력운동",
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
+
       pt1TimePrice: "10,000원",
       pt10TimePrice: "20,000원",
       pt30TimePrice: "30,000원",
@@ -328,7 +339,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
     {
       albumId: 1,
@@ -345,7 +355,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
     {
       albumId: 1,
@@ -362,7 +371,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
     {
       albumId: 1,
@@ -379,7 +387,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
     {
       albumId: 1,
@@ -396,7 +403,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
     {
       albumId: 1,
@@ -413,7 +419,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
     {
       albumId: 1,
@@ -430,7 +435,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
     {
       albumId: 1,
@@ -447,7 +451,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
     {
       albumId: 1,
@@ -464,7 +467,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-      gymNotice: "공지사항 입니다.",
     },
   ];
 
