@@ -10,7 +10,7 @@ import { GetServerSideProps } from "next";
 import axios from "axios";
 import { Tooltip } from "react-bootstrap";
 
-interface GymPhoto {
+interface GymDetail {
   albumId: number;
   id: number;
   thumbnailUrl: string;
@@ -22,12 +22,13 @@ interface GymPhoto {
   trainerPhotoUrl: string;
   trainerIntro: string;
   trainerSpecial: string;
-  // gymPrice: gymPrice[];
+  gymPrice: GymPrice[];
   gymPhotoUrl: string;
   gymService: string;
-  // gymService: gymserviceList[];
   gymNotice: string;
-  //gymPrice
+}
+
+export interface GymPrice {
   gym1DayPrice: string;
   gym3DayPrice: string;
   gym7DayPrice: string;
@@ -35,7 +36,7 @@ interface GymPhoto {
   gym3MonthPrice: string;
   gym6MonthPrice: string;
   gymYearPrice: string;
-  //personalPrice
+
   pt1TimePrice: string;
   pt10TimePrice: string;
   pt30TimePrice: string;
@@ -48,7 +49,7 @@ interface GymPhoto {
 }
 
 interface gymDetailProp {
-  gymDetail: GymPhoto;
+  gymDetail: GymDetail;
 }
 
 const gymDetail = ({ gymDetail }: gymDetailProp) => {
@@ -85,7 +86,7 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
               <h6>{gymDetail.gymCoNum}</h6>
               {/* 헬스장 운영시간 */}
               <p className={styles.p}>
-                [운영시간]
+                <b>[운영시간]</b>
                 <br />
                 {gymDetail.gymTime}
               </p>
@@ -102,183 +103,89 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
               </button>
             </div>
           </div>
-          {/* 2. 강사소개/이용권/헬스장사진/부가서비스/공지사항 시작 */}
+
+          {/*--------------2. 강사소개/이용권/헬스장사진/부가서비스/공지사항 시작 --------------*/}
           {/* 강사소개 */}
-          <h3 className={styles.h3}>강사소개</h3>
-          <div className="d-flex align-items-center mt-3">
-            <img src="/people.jpg" className={styles.img} />
-            {gymDetail.trainerPhotoUrl}
-            <div>
-              <p className="d-flex mb-1">
-                {/* 강사이름 */}
-                <u>강사이름</u>
-              </p>
-              <p>{gymDetail.trainerName}</p>
-              <p className="d-flex mb-1">
-                {/* 강사 한줄 소개 */}
-                <u>강사 한줄 소개</u>
-              </p>
-              <p>{gymDetail.trainerIntro}</p>
-              <p className="d-flex mb-1">
-                {/* 전문분야 */}
-                <u>전문분야</u>
-              </p>
-              <p>{gymDetail.trainerSpecial}</p>
-            </div>
-          </div>
-
-          {/* 강사별 이용권 */}
-          <h3 className={styles.h3}>(강사별)이용권</h3>
-          {/*--P.T--*/}
+          <h3 className={styles.h3}>강사 소개 및 이용권</h3>
+          {/*임시시작*/}
           <div>
-            <p className="d-flex justify-content-center mt-3">
-              <u>P.T</u>
-            </p>
-
-            <button type="button" className={styles.btn}>
-              <span className={styles.tooltip} title={gymDetail.pt1TimePrice}>
-                1회
-              </span>
-            </button>
-            <button type="button" className={styles.btn}>
-              <span className={styles.tooltip} title={gymDetail.pt10TimePrice}>
-                10회
-              </span>
-            </button>
-            <button type="button" className={styles.btn}>
-              <span className={styles.tooltip} title={gymDetail.pt30TimePrice}>
-                30회
-              </span>
-            </button>
-          </div>
-
-          {/*--필라테스--*/}
-          <div>
-            <p className="d-flex justify-content-center mt-5">
-              <u>필라테스</u>
-            </p>
-            <button type="button" className={styles.btn}>
-              <span
-                className={styles.tooltip}
-                title={gymDetail.pilates1TimePrice}
-              >
-                1회
-              </span>
-            </button>
-            <button type="button" className={styles.btn}>
-              <span
-                className={styles.tooltip}
-                title={gymDetail.pilates10TimePrice}
-              >
-                10회
-              </span>
-            </button>
-            <button type="button" className={styles.btn}>
-              <span
-                className={styles.tooltip}
-                title={gymDetail.pilates30TimePrice}
-              >
-                30회
-              </span>
-            </button>
-          </div>
-          {/*--요가--*/}
-          <div>
-            <p className="d-flex justify-content-center mt-5">
-              <u>요가</u>
-            </p>
-            <button type="button" className={styles.btn}>
-              <span className={styles.tooltip} title={gymDetail.yoga1TimePrice}>
-                1회
-              </span>
-            </button>
-            <button type="button" className={styles.btn}>
-              <span
-                className={styles.tooltip}
-                title={gymDetail.yoga10TimePrice}
-              >
-                10회
-              </span>
-            </button>
-            <button type="button" className={styles.btn}>
-              <span
-                className={styles.tooltip}
-                title={gymDetail.yoga30TimePrice}
-              >
-                30회
-              </span>
-            </button>
-          </div>
-          {/* 헬스장 이용권 */}
-          <h3 className={styles.h3}>(헬스장)이용권</h3>
-          {/*--P.T--*/}
-          <div>
-            <div>
-              <p className="d-flex justify-content-center mt-5">
-                <u>헬스장</u>
-              </p>
-              <div className="d-flex justify-content-center">
-                {" "}
-                <button type="button" className={styles.btn}>
-                  <span
-                    className={styles.tooltip}
-                    title={gymDetail.gym1DayPrice}
-                  >
-                    1일
-                  </span>
-                </button>
-                <button type="button" className={styles.btn}>
-                  <span
-                    className={styles.tooltip}
-                    title={gymDetail.gym3DayPrice}
-                  >
-                    3일
-                  </span>
-                </button>
-                <button type="button" className={styles.btn}>
-                  <span
-                    className={styles.tooltip}
-                    title={gymDetail.gym7DayPrice}
-                  >
-                    7일
-                  </span>
-                </button>
+            <div className={styles.div2}>
+              <div>
+                <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
+                <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
               </div>
               <div>
-                <button type="button" className={styles.btn}>
-                  <span
-                    className={styles.tooltip}
-                    title={gymDetail.gymMonthPrice}
-                  >
-                    1개월
-                  </span>
-                </button>
-                <button type="button" className={styles.btn}>
-                  <span
-                    className={styles.tooltip}
-                    title={gymDetail.gym3MonthPrice}
-                  >
-                    3개월
-                  </span>
-                </button>
-                <button type="button" className={styles.btn}>
-                  <span
-                    className={styles.tooltip}
-                    title={gymDetail.gym6MonthPrice}
-                  >
-                    6개월
-                  </span>
-                </button>
-                <button type="button" className={styles.btn}>
-                  <span
-                    className={styles.tooltip}
-                    title={gymDetail.gymYearPrice}
-                  >
-                    12개월
-                  </span>
-                </button>
+                <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
+                <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
+              </div>
+              <div>
+                <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
+                <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
               </div>
             </div>
+          </div>
+          {/*임시끝*/}
+
+          {/*강사소개+이용권*/}
+          <div className="d-flex mt-5">
+            {/*(왼쪽)강사소개*/}
+            <div>
+              <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
+              <div>
+                <span className={styles.span}>{gymDetail.trainerName}</span>
+                <br />
+                <span>{gymDetail.trainerIntro}</span>
+                <br />
+                <span>{gymDetail.trainerSpecial}</span>
+              </div>
+            </div>
+            {/*(오른쪽)이용권*/}
+            <div>
+              <table className={styles.table}>
+                <tr>
+                  <th className={styles.th}></th>
+                  <th className={styles.th}>1회</th>
+                  <th className={styles.th}>10회</th>
+                  <th className={styles.th}>30회</th>
+                </tr>
+                <tr>
+                  <td className={styles.td}>P.T</td>
+                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td}>(더미)</td>
+                </tr>
+                <tr>
+                  <td className={styles.td}>필라테스</td>
+                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td}>(더미)</td>
+                </tr>
+                <tr>
+                  <td className={styles.td}>요가</td>
+                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td}>(더미)</td>
+                  <td className={styles.td}>(더미)</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          {/* 헬스장 이용권 */}
+          <h3 className={styles.h3}>헬스장 이용권</h3>
+          {/*--P.T--table*/}
+          <div>
+            <table className={styles.table}>
+              <tr>
+                <th className={styles.th2}>1회</th>
+                <th className={styles.th2}>10회</th>
+                <th className={styles.th2}>30회</th>
+              </tr>
+              <tr>
+                <td className={styles.td2}>(더미)60,000원</td>
+                <td className={styles.td2}>(더미)</td>
+                <td className={styles.td2}>(더미)</td>
+              </tr>
+            </table>
           </div>
 
           {/* 헬스장 사진 */}
@@ -346,33 +253,64 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/1 (1).jpg",
       gymAddress: "서울특별시 강남구 도곡로3길 19, 서희스타힐스 지하1층",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
-      // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
       gymNotice: "공지사항 입니다.",
-      //--임시
-      gym1DayPrice: "10,000원",
-      gym3DayPrice: "10,000원",
-      gym7DayPrice: "10,000원",
-      gymMonthPrice: "10,000원",
-      gym3MonthPrice: "10,000원",
-      gym6MonthPrice: "10,000원",
-      gymYearPrice: "10,000원",
-
       pt1TimePrice: "10,000원",
-      pt10TimePrice: "10,000원",
-      pt30TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
       pilates1TimePrice: "10,000원",
       pilates10TimePrice: "10,000원",
       pilates30TimePrice: "10,000원",
       yoga1TimePrice: "10,000원",
-      yoga10TimePrice: "10,000원",
-      yoga30TimePrice: "10,000원",
+      yoga10TimePrice: "",
+      yoga30TimePrice: "",
+      //--임시
+      /*
+      const gymDetail = [
+  {
+    albumId: 1,
+    id: 1,
+    trainerName: 박00,
+    trainerPhotoUrl: /people.jpg,
+    gymAddress: "서울특별시 강남구 도곡로3길 19, 서희스타힐스 지하1층",
+  },
+];
+
+ <div className="d-flex align-items-center mt-3">
+            <img src="/people.jpg" className={styles.img} />
+            {gymDetail.trainerPhotoUrl}
+            <div></div>
+    
+      */
+      // gymPriceItem : gymPrice[],
+      /*
+        gym1DayPrice: "",
+        gym3DayPrice: "",
+        gym7DayPrice: "",
+        gymMonthPrice: "",
+        gym3MonthPrice: "",
+        gym6MonthPrice: "",
+        gymYearPrice: ""
+   */
+      // trainerPriceItem : personalPrice[],
+      /*
+      pt1TimePrice: "",
+      pt10TimePrice: "",
+      pt30TimePrice: "",
+      pilates1TimePrice: "",
+      pilates10TimePrice: "",
+      pilates30TimePrice: "",
+      yoga1TimePrice: "",
+      yoga10TimePrice: "",
+      yoga30TimePrice: "",
+  */
     },
     {
       albumId: 1,

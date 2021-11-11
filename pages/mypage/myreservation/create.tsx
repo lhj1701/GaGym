@@ -44,11 +44,17 @@ const ReservationCreate = ({reservation}:IndexProp) => {
 //   }
 //  }
   const gymName = useRef() as MutableRefObject<HTMLHeadingElement>;
+<<<<<<< HEAD
   const ptName = useRef() as MutableRefObject<HTMLInputElement>;
   const service = useRef() as MutableRefObject<HTMLInputElement>;
   // const service2 = useRef() as MutableRefObject<HTMLInputElement>;
   // const service3 = useRef() as MutableRefObject<HTMLInputElement>;
   const price = useRef() as MutableRefObject<HTMLInputElement>;
+=======
+  const ptName = useRef() as MutableRefObject<HTMLButtonElement>;
+  const service = useRef() as MutableRefObject<HTMLButtonElement>;
+  const price = useRef() as MutableRefObject<HTMLButtonElement>;
+>>>>>>> bb2a5a52f050993644c4619c10c9d4c27eaf0d78
   const name = useRef() as MutableRefObject<HTMLInputElement>;
   const tel = useRef() as MutableRefObject<HTMLInputElement>;
   const request = useRef() as MutableRefObject<HTMLTextAreaElement>;
@@ -98,16 +104,26 @@ return (
             <div >
               <h3 className="d-flex justify-content-center mt-5 my-3"> 희망 PT 이용권 선택</h3>
               <div className="d-flex justify-content-center my-1">
+<<<<<<< HEAD
               <button value="PT 1회권" ref={service} type="button" >
               PT 1회</button>
               <button value="PT 10회권" ref={service} type="button" >
               PT 10회</button>
               <button value="PT 30회권" ref={service} type="button" >
               PT 30회</button>
+=======
+              <div> <button value="PT 1회권" ref={service} type="button">
+              PT 1회</button></div>
+              <div><button value="PT 10회권" ref={service} type="button" >
+              PT 10회</button></div>
+              <div><button value="PT 30회권" ref={service} type="button" >
+              PT 30회</button></div>
+>>>>>>> bb2a5a52f050993644c4619c10c9d4c27eaf0d78
              </div>
             </div>
             <div >
              <h3 className="d-flex justify-content-center mt-5 my-3"> 희망 강사 선택</h3>
+<<<<<<< HEAD
              {/* <div className="d-flex justify-content-center my-1">
               <button type="button"  ref={ptName} >
               {item.trainerName1}
@@ -131,6 +147,22 @@ return (
               {item.trainerName3}
               <input type="radio" name="강사정보" value={item.trainerName4} ref={ptName}/>
               {item.trainerName4}
+=======
+             <div className="d-flex justify-content-center my-1">
+               <div>
+              <button value={item.trainerName1} type="button"  ref={ptName} >
+              {item.trainerName1}
+              </button></div>
+              <div><button value={item.trainerName2} type="button"  ref={ptName} >
+              {item.trainerName2}
+              </button></div>
+              <div><button value={item.trainerName3} type="button"  ref={ptName} >
+              {item.trainerName3}
+              </button></div>
+              <button type="button"  ref={ptName} >
+              {item.trainerName4}
+              </button>
+>>>>>>> bb2a5a52f050993644c4619c10c9d4c27eaf0d78
              </div>
             </div>
           </div>
