@@ -60,7 +60,7 @@ const diaryEdit = () => {
       // item.diaryCreateTime = diaryCreateTime.current?.value;
 
       dispatch(requestModifyDiary(item));
-      //dispatch(modifyDiary(item));
+      // dispatch(modifyDiary(item));
       router.push("/mypage/diary/diary-list");
     }
   };
@@ -146,11 +146,19 @@ const diaryEdit = () => {
               </tr>
               <tr>
                 <th>담당 강사</th>
-                <td>(DiaryItem?.trainerName) 땡겨오기</td>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="담당강사 수정"
+                    defaultValue={DiaryItem?.trainerName}
+                    ref={trainerName}
+                  />
+                </td>
               </tr>
               <tr>
                 <th>강사 피드백</th>
-                <td>(DiaryItem?.trainerFeedback) 땡겨오기</td>
+                <td>(DiaryItem?.trainerFeedback) 받기</td>
               </tr>
             </tbody>
           </table>

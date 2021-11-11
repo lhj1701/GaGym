@@ -70,7 +70,7 @@ const diaryCreate = () => {
             <tbody>
               <tr>
                 <th>날짜</th>
-                <td>????</td>
+                <td>??</td>
               </tr>
 
               <tr>
@@ -130,6 +130,18 @@ const diaryCreate = () => {
                     className="form-control"
                     placeholder="문의사항"
                     ref={diaryRequest}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>담당강사</th>
+                <td>
+                  {" "}
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="담당강사"
+                    ref={trainerName}
                   />
                 </td>
               </tr>

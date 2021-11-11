@@ -15,14 +15,12 @@ const mypage = () => {
   const diary = useSelector((state: RootState) => state.diary);
 
   const router = useRouter();
-  const reservation = useSelector((state: RootState) => state.reservation)
+  const reservation = useSelector((state: RootState) => state.reservation);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (!reservation.isFetched) {
-      dispatch(
-        requestFetchReservation()
-      );
+      dispatch(requestFetchReservation());
     }
   }, [dispatch, reservation.isFetched]);
 
@@ -95,7 +93,7 @@ const mypage = () => {
               <th>식단내용</th>
               <th>운동내용</th>
               <th>문의사항</th>
-              <th style={{ color: "red" }}>담당강사</th>
+              <th>담당강사</th>
               <th style={{ color: "red" }}>강사피드백</th>
             </thead>
             <tbody>
@@ -107,9 +105,7 @@ const mypage = () => {
                   <td className={styles.text}>{item.diaryMorning}</td>
                   <td className={styles.text}>{item.diaryRoutine}</td>
                   <td className={styles.text}>{item.diaryRequest}</td>
-                  <td className={styles.text} style={{ color: "red" }}>
-                    {item.trainerName}
-                  </td>
+                  <td className={styles.text}>{item.trainerName}</td>
                   <td className={styles.text} style={{ color: "red" }}>
                     {item.trainerFeedback}
                   </td>

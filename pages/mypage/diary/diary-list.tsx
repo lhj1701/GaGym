@@ -113,7 +113,7 @@ const diaryList = () => {
                 <th>저녁식단</th>
                 <th>운동내역</th>
                 <th>문의사항</th>
-                <th style={{ color: "red" }}>담당 강사</th>
+                <th>담당 강사</th>
                 <th style={{ color: "red" }}>강사 피드백</th>
               </tr>
             </thead>
@@ -135,9 +135,7 @@ const diaryList = () => {
                   <td className={styles.text}>{item.diaryDinner}</td>
                   <td className={styles.text}>{item.diaryRoutine}</td>
                   <td className={styles.text}>{item.diaryRequest}</td>
-                  <td className={styles.text} style={{ color: "red" }}>
-                    {item.trainerName}
-                  </td>
+                  <td className={styles.text}>{item.trainerName}</td>
                   <td className={styles.text} style={{ color: "red" }}>
                     {item.trainerFeedback}
                   </td>

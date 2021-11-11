@@ -73,14 +73,12 @@ const diaryDetail = () => {
                 </tr>
                 <tr>
                   <th>담당 강사</th>
-                  <td style={{ color: "red" }}>
-                    (diaryItem.trainerName) 땡겨오기
-                  </td>
+                  <td>{diaryItem.trainerName}</td>
                 </tr>
                 <tr>
                   <th>강사 피드백</th>
                   <td style={{ color: "red" }}>
-                    (diaryItem.trainerFeedback) 땡겨오기
+                    (diaryItem.trainerFeedback) 받기
                   </td>
                 </tr>
               </tbody>

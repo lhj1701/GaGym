@@ -80,6 +80,7 @@ const diarySlice = createSlice({
         diaryItem.diaryDinner = modifyItem.diaryDinner;
         diaryItem.diaryRoutine = modifyItem.diaryRoutine;
         diaryItem.diaryRequest = modifyItem.diaryRequest;
+        diaryItem.trainerName = modifyItem.trainerName;
         diaryItem.trainerFeedback = modifyItem.trainerFeedback;
         diaryItem.diaryCreateTime = modifyItem.diaryCreateTime;
 
