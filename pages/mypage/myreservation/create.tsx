@@ -46,7 +46,9 @@ const ReservationCreate = ({reservation}:IndexProp) => {
   const gymName = useRef() as MutableRefObject<HTMLHeadingElement>;
   const ptName = useRef() as MutableRefObject<HTMLInputElement>;
   const service = useRef() as MutableRefObject<HTMLInputElement>;
-  const price = useRef() as MutableRefObject<HTMLButtonElement>;
+  // const service2 = useRef() as MutableRefObject<HTMLInputElement>;
+  // const service3 = useRef() as MutableRefObject<HTMLInputElement>;
+  const price = useRef() as MutableRefObject<HTMLInputElement>;
   const name = useRef() as MutableRefObject<HTMLInputElement>;
   const tel = useRef() as MutableRefObject<HTMLInputElement>;
   const request = useRef() as MutableRefObject<HTMLTextAreaElement>;
@@ -96,12 +98,12 @@ return (
             <div >
               <h3 className="d-flex justify-content-center mt-5 my-3"> 희망 PT 이용권 선택</h3>
               <div className="d-flex justify-content-center my-1">
-              <div> <button value="PT 1회권" ref={service} type="button">
-              PT 1회</button></div>
-              <div><button value="PT 10회권" ref={service} type="button" >
-              PT 10회</button></div>
-              <div><button value="PT 30회권" ref={service} type="button" >
-              PT 30회</button></div>
+              <button value="PT 1회권" ref={service} type="button" >
+              PT 1회</button>
+              <button value="PT 10회권" ref={service} type="button" >
+              PT 10회</button>
+              <button value="PT 30회권" ref={service} type="button" >
+              PT 30회</button>
              </div>
             </div>
             <div >

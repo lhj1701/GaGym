@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 
 import styles from "../../styles/mypage.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
-import { useSelector } from "react-redux";
-import { RootState } from "../../provider";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../provider";
 
 import getTimeString from "../../provider/modules/getTimeString";
+import { requestFetchReservation } from "../../middleware/modules/reservation";
 
 const mypage = () => {
   const diary = useSelector((state: RootState) => state.diary);
 
   const router = useRouter();
-  const reservation = useSelector((state: RootState) => state.reservation);
+  const reservation = useSelector((state: RootState) => state.reservation)
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    if (!reservation.isFetched) {
+      dispatch(
+        requestFetchReservation()
+      );
+    }
+  }, [dispatch, reservation.isFetched]);
 
   return (
     <div>
