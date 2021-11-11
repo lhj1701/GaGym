@@ -54,6 +54,7 @@ interface gymDetailProp {
 
 const gymDetail = ({ gymDetail }: gymDetailProp) => {
   const router = useRouter();
+  const id = router.query.id as string;
 
   return (
     <div className={styles.container}>
