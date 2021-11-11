@@ -8,10 +8,7 @@ import {
   requestRemoveReservationNext,
   // requestRemoveReservationPaging,
 } from "../../../../middleware/modules/reservation";
-import { ReservationList } from "../../../../provider/modules/reservation";
 import Layout from "../../../../components/layout";
-
-import styles from "./mypagereservationdetail.module.css"
 const ReservationDetail = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
@@ -49,7 +46,7 @@ const ReservationDetail = () => {
   };
   return(
     <Layout>
- <div className={styles.ReservationDetail}>
+ <div>
  <div className="my-5 d-flex justify-content-center">
     <h2>예약 상세</h2></div>
     <div className="my-5 d-flex justify-content-center">

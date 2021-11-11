@@ -5,8 +5,6 @@ import reservationReducer, {
   initialReservationItem,
   initialReservation,
   initialCompleted,
-  addTotalpages,
-  initialPagedReservation,
   initialNextReservation,
   ReservationList,
   ReservationPage
@@ -16,7 +14,6 @@ import { createAction, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import {
   call,
   put,
-  select,
   takeEvery,
   takeLatest,
 } from "@redux-saga/core/effects";
@@ -28,7 +25,6 @@ import api, {
 import { AxiosResponse } from "axios";
 import { endProgress, startProgress } from "../../provider/modules/progress";
 import { addAlert } from "../../provider/modules/alert";
-import { RootState } from "../../provider";
 
 /* ========= saga action Payload 타입 =============== */
 export interface PageRequest {
@@ -262,21 +258,21 @@ function* fetchNextData(action: PayloadAction<PageRequest>) {
     );
   }
 }
-// // 1건의 데이터만 조회
-// function* fetchDataItem(action: PayloadAction<number>) {
-//   yield console.log("--fetchDataItem--");
+// 1건의 데이터만 조회
+function* fetchDataItem(action: PayloadAction<number>) {
+  yield console.log("--fetchDataItem--");
 
-//   const id = action.payload;
+  const id = action.payload;
 
-//   // 백엔드에서 데이터 받아오기
-//   const result: AxiosResponse<ReservationItemResponse> = yield call(api.get, id);
+  // 백엔드에서 데이터 받아오기
+  const result: AxiosResponse<ReservationItemResponse> = yield call(api.get, id);
 
-//   const reservation = result.data;
-//   if (reservation) {
-//     // state 초기화 reducer 실행
-//     yield put(initialReservationItem(reservation));
-//   }
-// }
+  const reservation = result.data;
+  if (reservation) {
+    // state 초기화 reducer 실행
+    yield put(initialReservationItem(reservation));
+  }
+}
 
 // 삭제처리
 function* removeDataNext(action: PayloadAction<number>) {
@@ -375,7 +371,7 @@ export default function* reservationSaga() {
   // 동일한 타입의 액션중에서 가장 마지막 액션만 처리, 이전 액션은 취소
 
   // 1건의 데이터만 조회
-  // yield takeEvery(requestFetchReservationItem, fetchDataItem);
+  yield takeEvery(requestFetchReservationItem, fetchDataItem);
   yield takeLatest(requestFetchReservation, fetchData);
   yield takeLatest(requestFetchNextReservation, fetchNextData);
 

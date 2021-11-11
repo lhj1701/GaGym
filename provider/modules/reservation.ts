@@ -40,7 +40,6 @@ const initialState: ReservationState = {
   data: [],
   isFetched: false,
   page: 0,
-  // pageSize: reservationPageSize ? +reservationPageSize : 8,
   pageSize: 8,
   totalPages: 0,
 };
@@ -49,8 +48,6 @@ const reservationSlice = createSlice({
   name: "reservation",
   initialState,
   reducers: {
-    // PayloadAction<payload타입>
-    // payload로 item객체를 받음
     addReservation: (state, action: PayloadAction<ReservationList>) => {
       const reserve = action.payload;
       console.log("--in reducer function--");
