@@ -15,8 +15,7 @@ const ReservationDetail = () => {
 
   // /mypage/reservation/detail/[id]
   const id = router.query.id as string;
-  console.log(id);
-
+  
   let reservationItem = useSelector((state: RootState) =>
     state.reservation.data.find((item) => item.id === +id)
   );

@@ -33,50 +33,37 @@ export interface PageRequest {
 }
 
 /* ========= saga action을 생성하는 부분 =============== */
-
-// photo를 추가하도록 요청하는 action
-// {type:string, payload:PhotoItem}
-// {type:"photo/requestAddPhoto", payload: {title, photoUrl...}}
-
-// photo를 추가하도록 요청하는 action creator를 생성
-// const actionCreator = createAction<Payload타입>(Action.type문자열)
-// 전체 데이터 조횡에서 추가할 때
 export const requestAddReservation = createAction<ReservationList>(
   `${reservationReducer.name}/requestAddReservation`
 );
-// 더보기 페이징에서 추가할 때
-export const requestAddReservationNext = createAction<ReservationList>(
-  `${reservationReducer.name}/requestAddReservationNext`
-);
+// // 더보기 페이징에서 추가할 때
+// export const requestAddReservationNext = createAction<ReservationList>(
+//   `${reservationReducer.name}/requestAddReservationNext`
+// );
 
 // reservation을 가져오는 action
 export const requestFetchReservation = createAction(
-  `${reservationReducer.name}/requestFetchReservaion`
+  `${reservationReducer.name}/requestFetchReservtaion`
 );
 
 // reservation을 페이징으로 가져오는 action
 export const requestFetchPagingReservation = createAction<PageRequest>(
-  `${reservationReducer.name}/requestFetchPagingReservaion`
+  `${reservationReducer.name}/requestFetchPagingReservation`
 );
 
-// 다음 페이지 reservation을 가져오는 action
-export const requestFetchNextReservation = createAction<PageRequest>(
-  `${reservationReducer.name}/requestFetchNextReservaion`
-);
+// // 다음 페이지 reservation을 가져오는 action
+// export const requestFetchNextReservation = createAction<PageRequest>(
+//   `${reservationReducer.name}/requestFetchNextReservation`
+// );
 
-// 1건의 reservation을 가져오는 action
-export const requestFetchReservationItem = createAction<number>(
-  `${reservationReducer.name}/requestFetchReservationItem`
-);
+// // 1건의 reservation을 가져오는 action
+// export const requestFetchReservationItem = createAction<number>(
+//   `${reservationReducer.name}/requestFetchReservationItem`
+// );
 
 // reservation을 삭제하는 action
 export const requestRemoveReservation = createAction<number>(
   `${reservationReducer.name}/requestRemoveReservation`
-);
-
-// reservation을 삭제하는 action(더보기페이징일때)
-export const requestRemoveReservationNext = createAction<number>(
-  `${reservationReducer.name}/requestRemoveReservationNext`
 );
 
 // reservation을 수정하는 action
@@ -87,8 +74,8 @@ export const requestModifyReservation = createAction<ReservationList>(
 /* ========= saga action을 처리하는 부분 =============== */
 
 // 서버에 POST로 데이터를 보내 추가하고, redux state를 변경
-function* addDataNext(action: PayloadAction<ReservationList>) {
-  yield console.log("--addDataNext--");
+function* addData(action: PayloadAction<ReservationList>) {
+  yield console.log("--addData--");
   yield console.log(action);
 
   try {
@@ -202,62 +189,62 @@ function* fetchData() {
 }
 
 // 더보기 목록 조회
-function* fetchNextData(action: PayloadAction<PageRequest>) {
-  yield console.log("--fetchNextData--");
+// function* fetchNextData(action: PayloadAction<PageRequest>) {
+//   yield console.log("--fetchNextData--");
 
-  const page = action.payload.page;
-  const size = action.payload.size;
+//   const page = action.payload.page;
+//   const size = action.payload.size;
 
-  // spinner 보여주기
-  yield put(startProgress());
+//   // spinner 보여주기
+//   yield put(startProgress());
 
-  try {
-    // 백엔드에서 데이터 받아오기
-    const result: AxiosResponse<ReservationPagingReponse> = yield call(
-      api.fetchPaging,
-      page,
-      size
-    );
+//   try {
+//     // 백엔드에서 데이터 받아오기
+//     const result: AxiosResponse<ReservationPagingReponse> = yield call(
+//       api.fetchPaging,
+//       page,
+//       size
+//     );
 
-    // spinner 사라지게 하기
-    yield put(endProgress());
+//     // spinner 사라지게 하기
+//     yield put(endProgress());
 
-    // 받아온 페이지 데이터를 Payload 변수로 변환
-    const reservationPage: ReservationPage = {
-      // 응답데이터배열을 액션페이로드배열로 변환
-      // PhotoItemReponse[] => PhotoItem[]
-      data: result.data.content.map(
-        (item) =>
-          ({
-            id: item.id,
-            gymName: item.gymName,
-            trainerName: item.trainerName,
-            boughtService: item.boughtService,
-            price:item.price,
-            memberName: item.memberName,
-            memberPhone: item.memberPhone,
-            memberRequest: item.memberRequest
-           } as ReservationList)
-      ),
-      totalElements: result.data.totalElements,
-      totalPages: result.data.totalPages,
-      page: result.data.number,
-      pageSize: result.data.size,
-      isLast: result.data.last,
-    };
+//     // 받아온 페이지 데이터를 Payload 변수로 변환
+//     const reservationPage: ReservationPage = {
+//       // 응답데이터배열을 액션페이로드배열로 변환
+//       // PhotoItemReponse[] => PhotoItem[]
+//       data: result.data.content.map(
+//         (item) =>
+//           ({
+//             id: item.id,
+//             gymName: item.gymName,
+//             trainerName: item.trainerName,
+//             boughtService: item.boughtService,
+//             price:item.price,
+//             memberName: item.memberName,
+//             memberPhone: item.memberPhone,
+//             memberRequest: item.memberRequest
+//            } as ReservationList)
+//       ),
+//       totalElements: result.data.totalElements,
+//       totalPages: result.data.totalPages,
+//       page: result.data.number,
+//       pageSize: result.data.size,
+//       isLast: result.data.last,
+//     };
 
-    // state 초기화 reducer 실행
-    yield put(initialNextReservation(reservationPage));
-  } catch (e: any) {
-    // 에러발생
-    // spinner 사라지게 하기
-    yield put(endProgress());
-    // alert박스를 추가해줌
-    yield put(
-      addAlert({ id: nanoid(), variant: "danger", message: e.message })
-    );
-  }
-}
+//     // state 초기화 reducer 실행
+//     yield put(initialNextReservation(reservationPage));
+//   } catch (e: any) {
+//     // 에러발생
+//     // spinner 사라지게 하기
+//     yield put(endProgress());
+//     // alert박스를 추가해줌
+//     yield put(
+//       addAlert({ id: nanoid(), variant: "danger", message: e.message })
+//     );
+//   }
+// }
 // 1건의 데이터만 조회
 function* fetchDataItem(action: PayloadAction<number>) {
   yield console.log("--fetchDataItem--");
@@ -265,7 +252,8 @@ function* fetchDataItem(action: PayloadAction<number>) {
   const id = action.payload;
 
   // 백엔드에서 데이터 받아오기
-  const result: AxiosResponse<ReservationItemResponse> = yield call(api.get, id);
+  const result: AxiosResponse<ReservationItemResponse> = yield call(
+    api.get, id);
 
   const reservation = result.data;
   if (reservation) {
@@ -275,7 +263,7 @@ function* fetchDataItem(action: PayloadAction<number>) {
 }
 
 // 삭제처리
-function* removeDataNext(action: PayloadAction<number>) {
+function* removeData(action: PayloadAction<number>) {
   yield console.log("--removeDataNext--");
 
   // id값
@@ -364,21 +352,8 @@ function* modifyData(action: PayloadAction<ReservationList>) {
 export default function* reservationSaga() {
   // takeEvery(처리할액션, 액션을처리할함수)
   // 동일한 타입의 액션은 모두 처리함
-  yield takeEvery(requestAddReservation, addDataNext);
-  yield takeEvery(requestAddReservationNext, addDataNext);
-
-  // takeLatest(처리할액션, 액션을처리할함수)
-  // 동일한 타입의 액션중에서 가장 마지막 액션만 처리, 이전 액션은 취소
-
-  // 1건의 데이터만 조회
-  yield takeEvery(requestFetchReservationItem, fetchDataItem);
+  yield takeEvery(requestAddReservation, addData);
   yield takeLatest(requestFetchReservation, fetchData);
-  yield takeLatest(requestFetchNextReservation, fetchNextData);
-
-  // 삭제처리
-  yield takeEvery(requestRemoveReservation, removeDataNext);
-  yield takeEvery(requestRemoveReservationNext, removeDataNext);
-
-  // 수정처리
+  yield takeEvery(requestRemoveReservation, removeData);
   yield takeEvery(requestModifyReservation, modifyData);
 }
