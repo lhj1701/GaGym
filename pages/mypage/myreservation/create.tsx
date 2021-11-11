@@ -45,7 +45,7 @@ const ReservationCreate = ({reservation}:IndexProp) => {
 //  }
   const gymName = useRef() as MutableRefObject<HTMLHeadingElement>;
   const ptName = useRef() as MutableRefObject<HTMLInputElement>;
-  const service = useRef() as MutableRefObject<HTMLButtonElement>;
+  const service = useRef() as MutableRefObject<HTMLInputElement>;
   const price = useRef() as MutableRefObject<HTMLButtonElement>;
   const name = useRef() as MutableRefObject<HTMLInputElement>;
   const tel = useRef() as MutableRefObject<HTMLInputElement>;
