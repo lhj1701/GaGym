@@ -76,8 +76,7 @@ const mypage = () => {
             <p className={styles.p}>PT일지 목록</p>
             <button
               type="button"
-              className="btn btn-secondary btn-sm mx-4"
-              style={{ width: "80px", height: "30px" }}
+              className={styles.btn}
               onClick={() => {
                 router.push("./diary/diary-list");
               }}
