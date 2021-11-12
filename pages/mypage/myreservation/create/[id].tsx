@@ -32,13 +32,22 @@ const ReservationCreate = ({gymDetail}:IndexProp) => {
   );
 
   const dispatch = useDispatch<AppDispatch>();
-  
+  // const voucher = document.getElementsByName('희망 이용권');
+  // var voucherrChoice; // 여기에 선택된 radio 버튼의 값이 담기게 된다.
+  // for(let i=0; i<voucher.length; i++) {
+  //   if(voucher[i].checked) {
+  //     voucherrChoice = voucher[i].value;
+  //   }
+  // }
   const gymName = useRef() as MutableRefObject<HTMLHeadingElement>;
   const ptName = useRef() as MutableRefObject<HTMLInputElement>;
   const service = useRef() as MutableRefObject<HTMLInputElement>;
+  // const service2 = useRef() as MutableRefObject<HTMLInputElement>;
+  // const service3 = useRef() as MutableRefObject<HTMLInputElement>;
   const name = useRef() as MutableRefObject<HTMLInputElement>;
   const tel = useRef() as MutableRefObject<HTMLInputElement>;
   const request = useRef() as MutableRefObject<HTMLTextAreaElement>;
+  
 
   // isAddCompleted값이 변경되면 처리(처음 렌더링되는 시점에도 처리됨)
   // 2. state가 변경되면 처리되는 함수
@@ -84,12 +93,9 @@ return (
             <div >
               <h3 className="d-flex justify-content-center mt-5 my-3"> 희망 PT 이용권 선택</h3>
               <div className="d-flex justify-content-center my-1">
-              <button value="PT 1회권" ref={service} type="button" >
-              PT 1회</button>
-              <button value="PT 10회권" ref={service} type="button" >
-              PT 10회</button>
-              <button value="PT 30회권" ref={service} type="button" >
-              PT 30회</button>
+              <label><input value="PT 1회권" name="희망 이용권" type="radio"  ref={service}/>PT 1회권</label>
+              <label><input value="PT 10회권" name="희망 이용권"  type="radio" ref={service}/>PT 10회권</label>
+              <label><input value="PT 30회권" name="희망 이용권"  type="radio" ref={service}/>PT 30회권</label>
              </div>
             </div>
             <div >
