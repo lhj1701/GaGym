@@ -71,12 +71,13 @@ const mypage = () => {
               ))}
             </tbody>
           </table>
-          {/*>PT일지 목록*/} push
+          {/*>PT일지 목록*/}
           <div className="d-flex mt-5">
             <p className={styles.p}>PT일지 목록</p>
             <button
               type="button"
-              className={styles.btn}
+              className="btn btn-secondary btn-sm mx-4"
+              style={{ width: "80px", height: "30px" }}
               onClick={() => {
                 router.push("./diary/diary-list");
               }}
