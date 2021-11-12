@@ -4,21 +4,25 @@ import { useRouter } from "next/router";
 import { AppDispatch, RootState } from "../../../../provider";
 import {
   requestFetchReservationItem,
+  requestFetchReservation,
   requestRemoveReservation,
-  requestRemoveReservationNext,
-  // requestRemoveReservationPaging,
 } from "../../../../middleware/modules/reservation";
 import Layout from "../../../../components/layout";
 const ReservationDetail = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-
-  // /mypage/reservation/detail/[id]
   const id = router.query.id as string;
   
+  const reservation = useSelector((state: RootState) => state.reservation);
   let reservationItem = useSelector((state: RootState) =>
     state.reservation.data.find((item) => item.id === +id)
   );
+
+  useEffect(() => {
+    if (!reservation.isFetched) {
+      dispatch(requestFetchReservation());
+    }
+  }, [dispatch, reservation.isFetched]);
 
   if (id) {
     // redux에 데이터가 없으면
@@ -55,7 +59,6 @@ const ReservationDetail = () => {
     <tr><th>헬스장명</th><td>{reservationItem?.gymName}</td></tr>
     <tr><th>강사</th><td >{reservationItem?.trainerName}</td></tr>
     <tr><th>이용권</th><td >{reservationItem?.boughtService}</td></tr>
-    <tr><th>이용가격</th><td>{reservationItem?.price}</td></tr>
     <tr><th>예약자 명</th><td>{reservationItem?.memberName}</td></tr>
     <tr><th>예약자 연락처</th><td>{reservationItem?.memberPhone}</td></tr>
     <tr><th>문의사항</th><td>{reservationItem?.memberRequest}</td></tr>

@@ -44,7 +44,6 @@ const mypage = () => {
               <th>헬스장 명</th>
               <th>강사 명</th>
               <th>이용권</th>
-              <th>이용가격</th>
               <th>상세보기</th>
             </thead>
             <tbody>
@@ -59,7 +58,6 @@ const mypage = () => {
                   <td>{item.gymName}</td>
                   <td>{item.trainerName}</td>
                   <td>{item.boughtService}</td>
-                  <td>{item.price}</td>
                   <td>
                     <button
                       type="button"
