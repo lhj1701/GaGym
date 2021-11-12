@@ -10,6 +10,13 @@
   text-overflow: ellipsis;
 }
 
+.textd {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration-color: rgb(3, 48, 129);
+}
 .main {
   flex: 1;
   display: flex;
