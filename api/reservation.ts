@@ -6,7 +6,6 @@ export interface ReservationItemResponse {
   gymName:string,
   trainerName:string,
   boughtService:string,
-  price:string,
   memberName : string
   memberPhone : string;
   memberRequest : string,
@@ -16,7 +15,6 @@ export interface ReservationItemRequest {
   gymName:string,
   trainerName:string,
   boughtService:string,
-  price:string,
   memberName : string
   memberPhone : string;
   memberRequest : string,

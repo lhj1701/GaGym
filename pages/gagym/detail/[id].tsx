@@ -97,7 +97,7 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
                 className="btn btn-outline-dark btn-lg mt-2"
                 style={{ width: "400px" }}
                 onClick={() => {
-                  router.push(`../../mypage/myreservation/create`);
+                  router.push(`../../mypage/myreservation/create/${id}`);
                 }}
               >
                 예약하러 가기

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface ReservationList {
+  [x: string]: any;
   id : number
   gymName:string,
   trainerName:string,
   boughtService:string,
-  price:string,
   memberName : string
   memberPhone : string;
   memberRequest : string,

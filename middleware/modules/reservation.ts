@@ -37,9 +37,9 @@ export const requestAddReservation = createAction<ReservationList>(
   `${reservationReducer.name}/requestAddReservation`
 );
 // // 더보기 페이징에서 추가할 때
-// export const requestAddReservationNext = createAction<ReservationList>(
-//   `${reservationReducer.name}/requestAddReservationNext`
-// );
+export const requestAddReservationNext = createAction<ReservationList>(
+  `${reservationReducer.name}/requestAddReservationNext`
+);
 
 // reservation을 가져오는 action
 export const requestFetchReservation = createAction(
@@ -52,14 +52,14 @@ export const requestFetchPagingReservation = createAction<PageRequest>(
 );
 
 // // 다음 페이지 reservation을 가져오는 action
-// export const requestFetchNextReservation = createAction<PageRequest>(
-//   `${reservationReducer.name}/requestFetchNextReservation`
-// );
+export const requestFetchNextReservation = createAction<PageRequest>(
+  `${reservationReducer.name}/requestFetchNextReservation`
+);
 
 // // 1건의 reservation을 가져오는 action
-// export const requestFetchReservationItem = createAction<number>(
-//   `${reservationReducer.name}/requestFetchReservationItem`
-// );
+export const requestFetchReservationItem = createAction<number>(
+  `${reservationReducer.name}/requestFetchReservationItem`
+);
 
 // reservation을 삭제하는 action
 export const requestRemoveReservation = createAction<number>(
@@ -90,7 +90,6 @@ function* addData(action: PayloadAction<ReservationList>) {
       gymName: reservationItemPayload.gymName,
       trainerName:reservationItemPayload.trainerName,
       boughtService:reservationItemPayload.boughtService,
-      price:reservationItemPayload.price,
       memberName: reservationItemPayload.memberName,
       memberPhone: reservationItemPayload.memberPhone,
       memberRequest: reservationItemPayload.memberRequest,
@@ -121,7 +120,6 @@ function* addData(action: PayloadAction<ReservationList>) {
       gymName: result.data.gymName,
       trainerName: result.data.trainerName,
       boughtService: result.data.boughtService,
-      price:result.data.price,
       memberName: result.data.memberName,
       memberPhone: result.data.memberPhone,
       memberRequest: result.data.memberRequest,
@@ -177,7 +175,6 @@ function* fetchData() {
         gymName: item.gymName,
         trainerName: item.trainerName,
         boughtService: item.boughtService,
-        price:item.price,
         memberName: item.memberName,
         memberPhone: item.memberPhone,
         memberRequest: item.memberRequest
@@ -312,7 +309,6 @@ function* modifyData(action: PayloadAction<ReservationList>) {
     gymName: reservationItemPayload.gymName,
     trainerName:reservationItemPayload.trainerName,
     boughtService:reservationItemPayload.boughtService,
-    price:reservationItemPayload.price,
     memberName: reservationItemPayload.memberName,
     memberPhone: reservationItemPayload.memberPhone,
     memberRequest: reservationItemPayload.memberRequest,
@@ -333,7 +329,6 @@ function* modifyData(action: PayloadAction<ReservationList>) {
     gymName:result.data.gymName,
     trainerName:result.data.trainerName,
     boughtService:result.data.boughtService,
-    price:result.data.price,
     memberName: result.data.memberName,
     memberPhone: result.data.memberPhone,
     memberRequest: result.data.memberRequest,
@@ -354,6 +349,7 @@ export default function* reservationSaga() {
   // 동일한 타입의 액션은 모두 처리함
   yield takeEvery(requestAddReservation, addData);
   yield takeLatest(requestFetchReservation, fetchData);
+  yield takeEvery(requestFetchReservationItem, fetchDataItem);
   yield takeEvery(requestRemoveReservation, removeData);
   yield takeEvery(requestModifyReservation, modifyData);
 }
