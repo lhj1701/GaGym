@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 
-import styles from "../../styles/mypage.module.css";
+import styles from "../../styles/Mypage.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
@@ -11,7 +11,7 @@ import { AppDispatch, RootState } from "../../provider";
 import getTimeString from "../../provider/modules/getTimeString";
 import { requestFetchReservation } from "../../middleware/modules/reservation";
 
-const mypage = () => {
+const Mypage = () => {
   const diary = useSelector((state: RootState) => state.diary);
 
   const router = useRouter();
@@ -50,7 +50,7 @@ const mypage = () => {
               {reservation.data.map((item, index) => (
                 <tr
                   onClick={() => {
-                    router.push(`/mypage/myreservation/detail/${item.id}`);
+                    router.push(`/Mypage/myreservation/detail/${item.id}`);
                   }}
                   style={{ cursor: "pointer" }}
                 >
@@ -119,4 +119,4 @@ const mypage = () => {
   );
 };
 
-export default mypage;
+export default Mypage;

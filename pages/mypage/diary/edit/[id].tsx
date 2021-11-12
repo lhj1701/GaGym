@@ -14,7 +14,7 @@ import AppBar from "../../../../components/appbar";
 
 import getTimeString from "../../../../provider/modules/getTimeString";
 
-const diaryEdit = () => {
+const DiaryEdit = () => {
   const router = useRouter();
 
   const id = router.query.id as string;
@@ -189,4 +189,4 @@ const diaryEdit = () => {
   );
 };
 
-export default diaryEdit;
+export default DiaryEdit;

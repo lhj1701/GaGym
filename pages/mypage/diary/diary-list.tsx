@@ -17,7 +17,7 @@ const getTimeString = (unixtime: number) => {
   return month + "/" + day;
 };
 
-const diaryList = () => {
+const DiaryList = () => {
   const diary = useSelector((state: RootState) => state.diary);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
@@ -157,4 +157,4 @@ const diaryList = () => {
   );
 };
 
-export default diaryList;
+export default DiaryList;

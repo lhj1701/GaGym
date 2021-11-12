@@ -15,7 +15,7 @@ import { requestAddDiary } from "../../../middleware/modules/diary";
 
 import getTimeString from "../../../provider/modules/getTimeString";
 
-const diaryCreate = () => {
+const DiaryCreate = () => {
   const memberName = useRef() as MutableRefObject<HTMLInputElement>;
   const diaryMorning = useRef() as MutableRefObject<HTMLInputElement>;
   const diaryLunch = useRef() as MutableRefObject<HTMLInputElement>;
@@ -174,4 +174,4 @@ const diaryCreate = () => {
   );
 };
 
-export default diaryCreate;
+export default DiaryCreate;

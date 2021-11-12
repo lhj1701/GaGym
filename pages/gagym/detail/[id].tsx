@@ -7,9 +7,6 @@ import { useRouter } from "next/router";
 
 import { GetServerSideProps } from "next";
 
-import axios from "axios";
-import { Tooltip } from "react-bootstrap";
-
 interface GymDetail {
   albumId: number;
   id: number;
@@ -78,7 +75,8 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
               />
             </div>
             {/* 내용 */}
-            <div style={{ width: "520px" }}>
+            {/* <div style={{ width: "520px" }}> */}
+            <div style={{ width: "auto", height: "300px" }}>
               {/* 헬스장명 */}
               <h3>{gymDetail.gymName}</h3>
               {/* 헬스장주소 */}
@@ -92,16 +90,18 @@ const gymDetail = ({ gymDetail }: gymDetailProp) => {
                 {gymDetail.gymTime}
               </p>
               {/* 예약버튼 */}
-              <button
-                type="button"
-                className="btn btn-outline-dark btn-lg mt-2"
-                style={{ width: "400px" }}
-                onClick={() => {
-                  router.push(`../../mypage/myreservation/create/${id}`);
-                }}
-              >
-                예약하러 가기
-              </button>
+              <div className="d-flex justify-content-center">
+                <button
+                  type="button"
+                  className={styles.btnrsv}
+                  style={{ width: "350px" }}
+                  onClick={() => {
+                    router.push(`../../mypage/myreservation/create/${id}`);
+                  }}
+                >
+                  예약하러 가기
+                </button>
+              </div>
             </div>
           </div>
 
@@ -332,7 +332,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymAddress:
         "서울특별시 강남구 논현로119길 23, 준미빌딩 B1 리젠트프라이빗짐",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",
@@ -348,7 +349,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/3 (1).jpg",
       gymAddress: "서울특별시 강남구 삼성로 317, 우석빌딩 지하2 로그짐 대치점",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",
@@ -364,7 +366,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/4 (1).jpg",
       gymAddress: "서울 강남구 역삼로 542 신사에스엔지 지하 1층",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",
@@ -380,7 +383,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/5 (1).jpg",
       gymAddress: "서울특별시 강남구 테헤란로 311 지하1층",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",
@@ -396,7 +400,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/6 (1).jpg",
       gymAddress: "서울특별시 강남구 선릉로94길 7 현죽빌딩 지하 1층",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",
@@ -412,7 +417,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/7 (1).jpg",
       gymAddress: "서울특별시 강남구 압구정로28길 40, 5층 로그짐",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",
@@ -428,7 +434,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/8 (1).jpg",
       gymAddress: "서울특별시 강남구 논현로 626, 엠빌딩 지하2층",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",
@@ -444,7 +451,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/9 (1).jpg",
       gymAddress: "서울특별시 강남구 테헤란로25길 7 창성재단빌딩 지하 1, 2층",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",
@@ -460,7 +468,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       thumbnailUrl: "/gymimg/10 (1).jpg",
       gymAddress: "서울특별시 강남구 학동로97길 20 튼튼병원 별관 지하1층",
       gymCoNum: "0504-3172-6899",
-      gymTime: "[평 일] 06:00 ~ 21:30 [토요일] 08:00 ~ 18:00 [휴관일] 공휴일",
+      gymTime:
+        "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
       trainerPhotoUrl: "",
       trainerIntro: "강사 박00 입니다.",

@@ -13,7 +13,7 @@ import AppBar from "../../../../components/appbar";
 
 import getTimeString from "../../../../provider/modules/getTimeString";
 
-const diaryDetail = () => {
+const DiaryDetail = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
@@ -121,4 +121,4 @@ const diaryDetail = () => {
   );
 };
 
-export default diaryDetail;
+export default DiaryDetail;
