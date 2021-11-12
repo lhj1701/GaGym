@@ -71,7 +71,7 @@ const mypage = () => {
               ))}
             </tbody>
           </table>
-          {/*>PT일지 목록*/}
+          {/*>PT일지 목록*/} push
           <div className="d-flex mt-5">
             <p className={styles.p}>PT일지 목록</p>
             <button
