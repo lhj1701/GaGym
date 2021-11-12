@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 
-import styles from "../../styles/Mypage.module.css";
+import styles from "../../styles/mypage.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
@@ -76,8 +76,7 @@ const Mypage = () => {
             <p className={styles.p}>PT일지 목록</p>
             <button
               type="button"
-              className="btn btn-secondary btn-sm mx-4"
-              style={{ width: "80px", height: "30px" }}
+              className={styles.btn}
               onClick={() => {
                 router.push("./diary/diary-list");
               }}

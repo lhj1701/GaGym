@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeLogo from "../../components/homelogo";
 
-const mvsnm = () => {
+const Mvsnm = () => {
   const router = useRouter();
 
   return (
@@ -39,4 +39,4 @@ const mvsnm = () => {
   );
 };
 
-export default mvsnm;
+export default Mvsnm;

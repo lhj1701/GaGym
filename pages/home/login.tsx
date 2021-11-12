@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeLogo from "../../components/homelogo";
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
 
   return (
@@ -63,4 +63,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
