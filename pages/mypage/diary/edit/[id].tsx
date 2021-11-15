@@ -40,8 +40,6 @@ const DiaryEdit = () => {
   const diaryCreateTime = useRef() as MutableRefObject<HTMLInputElement>;
 
   useEffect(() => {
-    console.log("--isEditcompleted 변경: ");
-
     isModifyCompleted && router.push("/mypage/diary/diary-list");
   }, [isModifyCompleted, router]);
 

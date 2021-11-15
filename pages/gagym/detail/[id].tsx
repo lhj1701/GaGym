@@ -135,14 +135,14 @@ const GymDetail = ({ gymDetail }: gymDetailProp) => {
                 <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
                 <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
               </div>
-              <div className={styles.divp}>
+              {/* <div className={styles.divp}>
                 <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
                 <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
               </div>
               <div className={styles.divp}>
                 <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
                 <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
-              </div>
+              </div> */}
             </div>
           </div>
           {/*임시끝*/}
@@ -238,28 +238,6 @@ const GymDetail = ({ gymDetail }: gymDetailProp) => {
               style={{ width: "150px" }}
               className="border border-light"
             ></img>
-            {/*
-              <img
-                src="/gymimg/1 (1).jpg"
-                style={{ width: "150px" }}
-                className="border border-light"
-              />
-              <img
-                src="/gymimg/1 (2).jpg"
-                style={{ width: "150px" }}
-                className="border border-light"
-              />
-              <img
-                src="/gymimg/1 (3).jpg"
-                style={{ width: "150px" }}
-                className="border border-light"
-              />
-              <img
-                src="/gymimg/1 (4).jpg"
-                style={{ width: "150px" }}
-                className="border border-light"
-              />
-              */}
           </div>
           {/* 부가서비스 */}
           <h4 className={styles.h4}>부가서비스</h4>
@@ -299,7 +277,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       trainerSpecial: "근력운동",
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
-
       pt1TimePrice: "10,000원",
       pt10TimePrice: "20,000원",
       pt30TimePrice: "30,000원",
@@ -328,12 +305,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
@@ -345,12 +338,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
@@ -362,12 +371,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
@@ -379,12 +404,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
@@ -396,12 +437,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
@@ -413,12 +470,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
@@ -430,12 +503,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
@@ -447,12 +536,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
@@ -464,12 +569,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
       gymPhotoUrl: "/gymimg/1 (1).jpg",
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
   ];
 

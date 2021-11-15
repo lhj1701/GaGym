@@ -10,10 +10,10 @@ import { AppDispatch, RootState } from "../../provider";
 
 import getTimeString from "../../provider/modules/getTimeString";
 import { requestFetchReservation } from "../../middleware/modules/reservation";
+import { requestFetchDiary } from "../../middleware/modules/diary";
 
 const Mypage = () => {
   const diary = useSelector((state: RootState) => state.diary);
-
   const router = useRouter();
   const reservation = useSelector((state: RootState) => state.reservation);
   const dispatch = useDispatch<AppDispatch>();
@@ -23,6 +23,15 @@ const Mypage = () => {
       dispatch(requestFetchReservation());
     }
   }, [dispatch, reservation.isFetched]);
+
+  //----------------------임시
+  // useEffect(() => {
+  //   if (!diary.isFetched) {
+  //     dispatch(requestFetchDiary());
+  //   }
+  // }, [dispatch, diary.isFetched]);
+
+  //----------------------임시끝
 
   return (
     <div>
@@ -50,7 +59,7 @@ const Mypage = () => {
               {reservation.data.map((item, index) => (
                 <tr
                   onClick={() => {
-                    router.push(`/Mypage/myreservation/detail/${item.id}`);
+                    router.push(`/mypage/myreservation/detail/${item.id}`);
                   }}
                   style={{ cursor: "pointer" }}
                 >
@@ -72,18 +81,27 @@ const Mypage = () => {
             </tbody>
           </table>
           {/*>PT일지 목록*/}
-          <div className="d-flex mt-5">
-            <p className={styles.p}>PT일지 목록</p>
-            <button
-              type="button"
-              className={styles.btn}
-              onClick={() => {
-                router.push("./diary/diary-list");
-              }}
-            >
-              상세보기
-            </button>
+          <div>
+            <div>
+              <div className="d-flex mt-5">
+                <p className={styles.p}>PT일지 목록</p>
+                <button
+                  type="button"
+                  className={styles.btn}
+                  onClick={() => {
+                    router.push("./diary/diary-list");
+                  }}
+                >
+                  상세보기
+                </button>
+              </div>
+              {/*-------------------------------임시*/}
+            </div>
+
+            <div className="d-flex justify-content-end align-items-center"></div>
           </div>
+          {/*-------------------------------임시끝*/}
+
           <table className="table">
             <thead>
               <th>날짜</th>

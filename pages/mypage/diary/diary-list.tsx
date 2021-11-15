@@ -8,7 +8,7 @@ import AppBar from "../../../components/appbar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../provider";
-import { requestFetchPagingDiarys } from "../../../middleware/modules/diary";
+import { requestFetchPagingDiary } from "../../../middleware/modules/diary";
 
 const getTimeString = (unixtime: number) => {
   const dateTime = new Date(unixtime);
@@ -24,10 +24,12 @@ const DiaryList = () => {
 
   useEffect(() => {
     if (!diary.isFetched) {
+      const diaryPageSize = localStorage.getItem("diary_page_size");
+
       dispatch(
-        requestFetchPagingDiarys({
+        requestFetchPagingDiary({
           page: 0,
-          size: diary.pageSize,
+          size: diaryPageSize ? +diaryPageSize : diary.pageSize,
         })
       );
     }
@@ -36,7 +38,7 @@ const DiaryList = () => {
   const handlePageChanged = (page: number) => {
     console.log("--page: " + page);
     dispatch(
-      requestFetchPagingDiarys({
+      requestFetchPagingDiary({
         page,
         size: diary.pageSize,
       })
@@ -46,7 +48,7 @@ const DiaryList = () => {
   const handlePageSizeChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log(e.currentTarget.value);
     dispatch(
-      requestFetchPagingDiarys({
+      requestFetchPagingDiary({
         page: diary.page,
         size: +e.currentTarget.value,
       })
@@ -83,18 +85,6 @@ const DiaryList = () => {
             </div>
 
             <div className="d-flex justify-content-end align-items-center">
-              {/*-----------------*/}
-              {/*
-              <button
-                className="btn btn-secondary btn-sm"
-                style={{ width: "100px;" }}
-                onClick={() => {
-                  dispatch(requestFetchDiarys());
-                }}
-              >
-                <i className="bi bi-arrow-clockwise"></i>
-              </button>
-              */}
               <select
                 className="form-select form-select-sm mx-1 p-1"
                 style={{ width: "55px", height: "30px" }}
@@ -102,7 +92,7 @@ const DiaryList = () => {
                   handlePageSizeChanged(e);
                 }}
               >
-                {[3, 5, 10, 20].map((size) => (
+                {[3, 5, 10, 20, 30].map((size) => (
                   <option value={size} selected={diary.pageSize === size}>
                     {size}
                   </option>

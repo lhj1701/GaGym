@@ -28,12 +28,12 @@ export const requestAddDiary = createAction<DiaryItem>(
   `${diaryReducer.name}/requestAddDiary`
 );
 
-export const requestFetchDiarys = createAction(
-  `${diaryReducer.name}/requestFetchDiarys`
+export const requestFetchDiary = createAction(
+  `${diaryReducer.name}/requestFetchDiary`
 );
 
-export const requestFetchPagingDiarys = createAction<PageRequest>(
-  `${diaryReducer.name}/requestFetchPagingDiarys`
+export const requestFetchPagingDiary = createAction<PageRequest>(
+  `${diaryReducer.name}/requestFetchPagingDiary`
 );
 
 export const requestRemoveDiary = createAction<number>(
@@ -107,7 +107,7 @@ function* fetchData() {
 
   const result: AxiosResponse<DiaryItemResponse[]> = yield call(api.fetch);
 
-  const diarys = result.data.map(
+  const diary = result.data.map(
     (item) =>
       ({
 
@@ -126,7 +126,7 @@ function* fetchData() {
       } as DiaryItem)
   );
 
-  yield put(initialDiary(diarys));
+  yield put(initialDiary(diary));
 }
 
 function* fetchPagingData(action: PayloadAction<PageRequest>) {
@@ -232,8 +232,8 @@ export default function* diarySaga() {
 
   yield takeEvery(requestAddDiary, addData);
 
-  yield takeLatest(requestFetchDiarys, fetchData);
-  yield takeLatest(requestFetchPagingDiarys, fetchPagingData);
+  yield takeLatest(requestFetchDiary, fetchData);
+  yield takeLatest(requestFetchPagingDiary, fetchPagingData);
 
   yield takeEvery(requestRemoveDiary, removeData);
 
