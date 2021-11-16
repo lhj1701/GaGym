@@ -35,29 +35,34 @@ export interface DiaryItemRequest {
 }
 
 const diaryApi = {
-
+  //11/16 추가
+  get: (id: number) =>
+    axios.get<DiaryItemResponse[]>(`http://localhost:8080/diary`),
+  //11/16 추가끝
+  
   fetch: () =>
-  axios.get<DiaryItemResponse[]>(`http://localhost:8080/diarys`),
+  axios.get<DiaryItemResponse[]>(`http://localhost:8080/diary`),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<DiaryPagingResponse>(
-      `http://localhost:8080/diarys/paging?page=${page}&size=${size}`
+      `http://localhost:8080/diary/paging?page=${page}&size=${size}`
     ),
 
 
   add: (diaryItem: DiaryItemRequest) =>
     axios.post<DiaryItemResponse>(
-      `http://localhost:8080/diarys`,
+      `http://localhost:8080/diary`,
+      // `http://localhost:8080/diary`,
       diaryItem
     ),
 
   remove: (id: number) =>
-    axios.delete<boolean>(`http://localhost:8080/diarys/${id}`),
+    axios.delete<boolean>(`http://localhost:8080/diary/${id}`),
 
 
   modify: (id: number, diaryItem: DiaryItemRequest) =>
     axios.put<DiaryItemResponse>(
-      `http://localhost:8080/diarys/${id}`,
+      `http://localhost:8080/diary/${id}`,
       diaryItem
     )
 };

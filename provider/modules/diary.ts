@@ -87,15 +87,32 @@ const diarySlice = createSlice({
       }
            state.isModifyCompleted = true;
     },
-
+   initialDiaryItem: (state, action: PayloadAction<DiaryItem>) => {
+      const diary = action.payload;
+      // 백엔드에서 받아온 데이터
+      state.data = [{ ... diary }];
+    },
     initialDiary: (state, action: PayloadAction<DiaryItem[]>) => {
-      const diarys = action.payload;
-      state.data = diarys;
+      const diary = action.payload;
+      state.data = diary;
       state.isFetched = true;
+    },
+        addTotalpages: (state) => {
+      state.totalPages++;
     },
     initialPagedDiary: (state, action: PayloadAction<DiaryPage>) => {
 
       state.data = action.payload.data;
+      state.totalElements = action.payload.totalElements;
+      state.totalPages = action.payload.totalPages;
+      state.page = action.payload.page;
+      state.pageSize = action.payload.pageSize;
+      state.isLast = action.payload.isLast;
+      state.isFetched = true;
+    },
+        initialNextDiary: (state, action: PayloadAction<DiaryPage>) => {
+
+      state.data = state.data.concat(action.payload.data);
       state.totalElements = action.payload.totalElements;
       state.totalPages = action.payload.totalPages;
       state.page = action.payload.page;
@@ -109,10 +126,12 @@ const diarySlice = createSlice({
 export const { 
   addDiary, 
   removeDiary, 
-  modifyDiary,  
+  modifyDiary,
+  initialDiaryItem,
   initialDiary,
   initialCompleted,
   initialPagedDiary,
+  initialNextDiary,
 } = diarySlice.actions;
 
 

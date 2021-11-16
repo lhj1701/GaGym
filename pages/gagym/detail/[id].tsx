@@ -12,7 +12,7 @@ import { GetServerSideProps } from "next";
 interface GymDetail {
   albumId: number;
   id: number;
-  thumbnailUrl: string;
+  gymPhoto: string;
   gymName: string;
   gymAddress: string;
   gymCoNum: number;
@@ -83,7 +83,7 @@ const GymDetail = ({ gymDetail }: gymDetailProp) => {
             {/* 사진 */}
             <div style={{ cursor: "pointer" }} className={styles.src}>
               <Image
-                src={gymDetail.thumbnailUrl}
+                src={gymDetail.gymPhoto}
                 // className="card-img-top"
                 alt={gymDetail.gymName}
                 /* 이미지 크기에 맞게 가운데부분 노출 */
@@ -135,14 +135,14 @@ const GymDetail = ({ gymDetail }: gymDetailProp) => {
                 <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
                 <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
               </div>
-              <div className={styles.divp}>
+              {/* <div className={styles.divp}>
                 <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
                 <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
               </div>
               <div className={styles.divp}>
                 <img src={gymDetail.trainerPhotoUrl} className={styles.img} />
                 <h5 className="mx-4 mt-2">{gymDetail.trainerName}</h5>
-              </div>
+              </div> */}
             </div>
           </div>
           {/*임시끝*/}
@@ -228,9 +228,9 @@ const GymDetail = ({ gymDetail }: gymDetailProp) => {
           </div>
 
           {/*------임시끝*/}
-
+          {/*------11/16 헬스장 사진 삭제*/}
           {/* 헬스장 사진 */}
-          <h4 className={styles.h4}>헬스장 사진</h4>
+          {/* <h4 className={styles.h4}>헬스장 사진</h4>
 
           <div className="mt-3">
             <img
@@ -238,29 +238,9 @@ const GymDetail = ({ gymDetail }: gymDetailProp) => {
               style={{ width: "150px" }}
               className="border border-light"
             ></img>
-            {/*
-              <img
-                src="/gymimg/1 (1).jpg"
-                style={{ width: "150px" }}
-                className="border border-light"
-              />
-              <img
-                src="/gymimg/1 (2).jpg"
-                style={{ width: "150px" }}
-                className="border border-light"
-              />
-              <img
-                src="/gymimg/1 (3).jpg"
-                style={{ width: "150px" }}
-                className="border border-light"
-              />
-              <img
-                src="/gymimg/1 (4).jpg"
-                style={{ width: "150px" }}
-                className="border border-light"
-              />
-              */}
-          </div>
+          </div> */}
+          {/*------11/16 헬스장 사진 삭제끝*/}
+
           {/* 부가서비스 */}
           <h4 className={styles.h4}>부가서비스</h4>
           <div className="mb-5">{gymDetail.gymService}</div>
@@ -288,7 +268,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       albumId: 1,
       id: 1,
       gymName: "강남 화이트짐",
-      thumbnailUrl: "/gymimg/1 (1).jpg",
+      gymPhoto: "/gymimg/1 (1).jpg",
       gymAddress: "서울특별시 강남구 도곡로3길 19, 서희스타힐스 지하1층",
       gymCoNum: "0504-3172-6899",
       gymTime:
@@ -297,9 +277,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
-      // gymService : gymserviceList[],
 
+      // gymService : gymserviceList[],
       pt1TimePrice: "10,000원",
       pt10TimePrice: "20,000원",
       pt30TimePrice: "30,000원",
@@ -321,155 +300,299 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       albumId: 1,
       id: 2,
       gymName: "논현 REGENT 프라이빗짐",
-      thumbnailUrl: "/gymimg/2 (1).jpg",
+      gymPhoto: "/gymimg/2 (1).jpg",
       gymAddress:
         "서울특별시 강남구 논현로119길 23, 준미빌딩 B1 리젠트프라이빗짐",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
       id: 3,
       gymName: "대치 로그짐",
-      thumbnailUrl: "/gymimg/3 (1).jpg",
+      gymPhoto: "/gymimg/3 (1).jpg",
       gymAddress: "서울특별시 강남구 삼성로 317, 우석빌딩 지하2 로그짐 대치점",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
       id: 4,
       gymName: "대치 휘트니스G",
-      thumbnailUrl: "/gymimg/4 (1).jpg",
+      gymPhoto: "/gymimg/4 (1).jpg",
       gymAddress: "서울 강남구 역삼로 542 신사에스엔지 지하 1층",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
       id: 5,
       gymName: "선릉 바디스페이스",
-      thumbnailUrl: "/gymimg/5 (1).jpg",
+      gymPhoto: "/gymimg/5 (1).jpg",
       gymAddress: "서울특별시 강남구 테헤란로 311 지하1층",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
       id: 6,
       gymName: "선릉 보리스짐",
-      thumbnailUrl: "/gymimg/6 (1).jpg",
+      gymPhoto: "/gymimg/6 (1).jpg",
       gymAddress: "서울특별시 강남구 선릉로94길 7 현죽빌딩 지하 1층",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
       id: 7,
       gymName: "압구정 로그짐",
-      thumbnailUrl: "/gymimg/7 (1).jpg",
+      gymPhoto: "/gymimg/7 (1).jpg",
       gymAddress: "서울특별시 강남구 압구정로28길 40, 5층 로그짐",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
       id: 8,
       gymName: "언주 아트짐 토탈휘트니스",
-      thumbnailUrl: "/gymimg/8 (1).jpg",
+      gymPhoto: "/gymimg/8 (1).jpg",
       gymAddress: "서울특별시 강남구 논현로 626, 엠빌딩 지하2층",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
       id: 9,
       gymName: "역삼 F&G휘트니스",
-      thumbnailUrl: "/gymimg/9 (1).jpg",
+      gymPhoto: "/gymimg/9 (1).jpg",
       gymAddress: "서울특별시 강남구 테헤란로25길 7 창성재단빌딩 지하 1, 2층",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
     {
       albumId: 1,
       id: 10,
       gymName: "청담 리발란스K",
-      thumbnailUrl: "/gymimg/10 (1).jpg",
+      gymPhoto: "/gymimg/10 (1).jpg",
       gymAddress: "서울특별시 강남구 학동로97길 20 튼튼병원 별관 지하1층",
       gymCoNum: "0504-3172-6899",
       gymTime:
         "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
       trainerName: "박00",
-      trainerPhotoUrl: "",
+      trainerPhotoUrl: "/trainer/trainer (1).jpg",
       trainerIntro: "강사 박00 입니다.",
       trainerSpecial: "근력운동",
       // gymPrice : gymPrice[],
-      gymPhotoUrl: "/gymimg/1 (1).jpg",
+
       // gymService : gymserviceList[],
+      pt1TimePrice: "10,000원",
+      pt10TimePrice: "20,000원",
+      pt30TimePrice: "30,000원",
+      pilates1TimePrice: "10,000원",
+      pilates10TimePrice: "10,000원",
+      pilates30TimePrice: "10,000원",
+      yoga1TimePrice: "10,000원",
+      yoga10TimePrice: "10,000원",
+      yoga30TimePrice: "10,000원",
+      gym1DayPrice: "10,000원",
+      gym3DayPrice: "10,000원",
+      gym7DayPrice: "10,000원",
+      gymMonthPrice: "10,000원",
+      gym3MonthPrice: "10,000원",
+      gym6MonthPrice: "10,000원",
+      gymYearPrice: "10,000원",
     },
   ];
 

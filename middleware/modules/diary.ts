@@ -3,6 +3,7 @@ import diaryReducer, {
   initialCompleted,
   initialPagedDiary,
   initialDiary,
+  initialDiaryItem,
   modifyDiary,
   DiaryPage,
   removeDiary,
@@ -28,12 +29,27 @@ export const requestAddDiary = createAction<DiaryItem>(
   `${diaryReducer.name}/requestAddDiary`
 );
 
-export const requestFetchDiarys = createAction(
-  `${diaryReducer.name}/requestFetchDiarys`
+// // 더보기 페이징에서 추가할 때
+export const requestAddDiaryNext = createAction<DiaryItem>(
+  `${diaryReducer.name}/requestAddDiaryNext`
 );
 
-export const requestFetchPagingDiarys = createAction<PageRequest>(
-  `${diaryReducer.name}/requestFetchPagingDiarys`
+export const requestFetchDiary = createAction(
+  `${diaryReducer.name}/requestFetchDiary`
+);
+
+export const requestFetchPagingDiary = createAction<PageRequest>(
+  `${diaryReducer.name}/requestFetchPagingDiary`
+);
+
+// // 다음 페이지 diary을 가져오는 action
+export const requestFetchNextDiary = createAction<PageRequest>(
+  `${diaryReducer.name}/requestFetchNextDiary`
+);
+
+// // 1건의 diary을 가져오는 action
+export const requestFetchDiaryItem = createAction<number>(
+  `${diaryReducer.name}/requestFetchDiaryItem`
 );
 
 export const requestRemoveDiary = createAction<number>(
@@ -71,8 +87,6 @@ function* addData(action: PayloadAction<DiaryItem>) {
     );
 
     const diaryItem: DiaryItem = {
-
-
       id: result.data.id,
       memberName: result.data.memberName,
       diaryMorning: result.data.diaryMorning,
@@ -107,10 +121,9 @@ function* fetchData() {
 
   const result: AxiosResponse<DiaryItemResponse[]> = yield call(api.fetch);
 
-  const diarys = result.data.map(
+  const diary = result.data.map(
     (item) =>
       ({
-
       id: item.id,
       memberName: item.memberName,
       diaryMorning: item.diaryMorning,
@@ -121,12 +134,10 @@ function* fetchData() {
       trainerName: item.trainerName,
       trainerFeedback: item.trainerFeedback,
       diaryCreateTime: item.diaryCreateTime,
-
-
       } as DiaryItem)
   );
 
-  yield put(initialDiary(diarys));
+  yield put(initialDiary(diary));
 }
 
 function* fetchPagingData(action: PayloadAction<PageRequest>) {
@@ -168,6 +179,25 @@ function* fetchPagingData(action: PayloadAction<PageRequest>) {
 
   yield put(initialPagedDiary(diaryPage));
 }
+//11/16 추가시작
+function* fetchDataItem(action: PayloadAction<number>) {
+  yield console.log("--fetchDataItem--");
+
+  const id = action.payload;
+
+  // 백엔드에서 데이터 받아오기
+  const result: AxiosResponse<DiaryItemResponse> = yield call(
+    api.get, id);
+
+  const diary = result.data;
+  if (diary) {
+    // state 초기화 reducer 실행
+    yield put(initialDiaryItem(diary));
+  }
+}
+
+//11/16 추가끝
+
 
 function* removeData(action: PayloadAction<number>) {
   yield console.log("--removeData--");
@@ -207,8 +237,6 @@ function* modifyData(action: PayloadAction<DiaryItem>) {
   );
 
   const diaryItem: DiaryItem = {
-
-
     id: result.data.id,
       memberName: result.data.memberName,
       diaryMorning: result.data.diaryMorning,
@@ -231,11 +259,9 @@ function* modifyData(action: PayloadAction<DiaryItem>) {
 export default function* diarySaga() {
 
   yield takeEvery(requestAddDiary, addData);
-
-  yield takeLatest(requestFetchDiarys, fetchData);
-  yield takeLatest(requestFetchPagingDiarys, fetchPagingData);
-
+  yield takeLatest(requestFetchDiary, fetchData);
+  yield takeEvery(requestFetchDiaryItem, fetchDataItem);
+  yield takeLatest(requestFetchPagingDiary, fetchPagingData);
   yield takeEvery(requestRemoveDiary, removeData);
-
   yield takeEvery(requestModifyDiary, modifyData);
 }
