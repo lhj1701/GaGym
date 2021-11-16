@@ -9,12 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../provider";
 
 import getTimeString from "../../provider/modules/getTimeString";
-<<<<<<< HEAD
 import { requestFetchNextReservation, requestFetchPagingReservation, requestFetchReservation } from "../../middleware/modules/reservation";
-=======
-import { requestFetchReservation } from "../../middleware/modules/reservation";
 import { requestFetchDiary } from "../../middleware/modules/diary";
->>>>>>> 74ea30a7cdc4c464f83a9cdbfc13d5203b6552bf
 
 const Mypage = () => {
   const diary = useSelector((state: RootState) => state.diary);
@@ -31,11 +27,11 @@ const Mypage = () => {
   
 
   //----------------------11/15임시
-  useEffect(() => {
-    if (!diary.isFetched) {
-      dispatch(requestFetchDiary());
-    }
-  }, [dispatch, diary.isFetched]);
+  // useEffect(() => {
+  //   if (!diary.isFetched) {
+  //     dispatch(requestFetchDiary());
+  //   }
+  // }, [dispatch, diary.isFetched]);
 
   //----------------------11/15임시끝
 
