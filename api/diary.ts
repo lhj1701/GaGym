@@ -35,7 +35,11 @@ export interface DiaryItemRequest {
 }
 
 const diaryApi = {
-
+  //11/16 추가
+  get: (id: number) =>
+    axios.get<DiaryItemResponse[]>(`http://localhost:8080/diary`),
+  //11/16 추가끝
+  
   fetch: () =>
   axios.get<DiaryItemResponse[]>(`http://localhost:8080/diary`),
 
@@ -48,6 +52,7 @@ const diaryApi = {
   add: (diaryItem: DiaryItemRequest) =>
     axios.post<DiaryItemResponse>(
       `http://localhost:8080/diary`,
+      // `http://localhost:8080/diary`,
       diaryItem
     ),
 

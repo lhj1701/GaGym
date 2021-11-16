@@ -7,7 +7,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../../../provider";
-import { requestRemoveDiary } from "../../../../middleware/modules/diary";
+import {
+  requestFetchDiary,
+  requestFetchDiaryItem,
+  requestRemoveDiary,
+} from "../../../../middleware/modules/diary";
 
 import AppBar from "../../../../components/appbar";
 
@@ -20,9 +24,25 @@ const DiaryDetail = () => {
   const id = router.query.id as string;
   console.log(id);
 
+  const diary = useSelector((state: RootState) => state.diary);
+
   let diaryItem = useSelector((state: RootState) =>
     state.diary.data.find((item) => item.id === +id)
   );
+
+  useEffect(() => {
+    if (!diary.isFetched) {
+      dispatch(requestFetchDiary());
+    }
+  }, [dispatch, diary.isFetched]);
+
+  if (id) {
+    // redux에 데이터가 없으면
+    if (!diaryItem) {
+      // 1건에 데이터를 가져와 store에 추가함
+      dispatch(requestFetchDiaryItem(+id));
+    }
+  }
 
   const isRemoveCompleted = useSelector(
     (state: RootState) => state.diary.isRemoveCompleted

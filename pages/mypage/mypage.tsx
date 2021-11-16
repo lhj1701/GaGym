@@ -24,14 +24,14 @@ const Mypage = () => {
     }
   }, [dispatch, reservation.isFetched]);
 
-  //----------------------임시
+  //----------------------11/15임시
   useEffect(() => {
     if (!diary.isFetched) {
       dispatch(requestFetchDiary());
     }
   }, [dispatch, diary.isFetched]);
 
-  //----------------------임시끝
+  //----------------------11/15임시끝
 
   return (
     <div>
