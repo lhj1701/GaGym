@@ -17,7 +17,7 @@ const getTimeString = (unixtime: number) => {
   return month + "/" + day;
 };
 
-const diaryList = () => {
+const DiaryList = () => {
   const diary = useSelector((state: RootState) => state.diary);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
@@ -74,6 +74,12 @@ const diaryList = () => {
                   일지 작성
                 </button>
               </div>
+              <div className="d-flex">
+                <h6 style={{ color: "rgb(3, 48, 129)" }}>
+                  <b>날짜</b>
+                </h6>
+                <h6>를 누르시면 일지 Detail을 확인 하실 수 있습니다.</h6>
+              </div>
             </div>
 
             <div className="d-flex justify-content-end align-items-center">
@@ -120,15 +126,15 @@ const diaryList = () => {
 
             <tbody className="tbody">
               {diary.data.map((item, index) => (
-                <tr className="display-flex">
+                <tr>
                   <td
-                    style={{ cursor: "pointer" }}
-                    className={styles.text}
+                    style={{ cursor: "pointer", color: "rgb(3, 48, 129)" }}
+                    className={styles.textd}
                     onClick={() => {
                       router.push(`/mypage/diary/detail/${item.id}`);
                     }}
                   >
-                    {getTimeString(item.diaryCreateTime)}
+                    <b>{getTimeString(item.diaryCreateTime)}</b>
                   </td>
                   <td className={styles.text}>{item.diaryMorning}</td>
                   <td className={styles.text}>{item.diaryLunch}</td>
@@ -151,4 +157,4 @@ const diaryList = () => {
   );
 };
 
-export default diaryList;
+export default DiaryList;

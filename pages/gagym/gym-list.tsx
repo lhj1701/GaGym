@@ -5,8 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
 import { useRouter } from "next/router";
 
-import axios from "axios";
-
 interface GymPhoto {
   albumId: number;
   id: number;
@@ -20,7 +18,7 @@ interface gymListProp {
   gymList: GymPhoto[];
 }
 
-const gymList = ({ gymList }: gymListProp) => {
+const GymList = ({ gymList }: gymListProp) => {
   const router = useRouter();
 
   return (
@@ -183,4 +181,4 @@ export async function getServerSideProps() {
   return { props: { gymList } };
 }
 
-export default gymList;
+export default GymList;

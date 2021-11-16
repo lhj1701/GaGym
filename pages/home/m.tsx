@@ -19,7 +19,7 @@ interface Home {
   completed: boolean;
 }
 
-const m = () => {
+const M = () => {
   const router = useRouter();
 
   return (
@@ -56,4 +56,4 @@ const m = () => {
   );
 };
 
-export default m;
+export default M;

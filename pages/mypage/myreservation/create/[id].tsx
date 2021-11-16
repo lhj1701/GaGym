@@ -7,6 +7,7 @@ import { ReservationList } from "../../../../provider/modules/reservation";
 import { requestAddReservation } from "../../../../middleware/modules/reservation";
 import Image from "next/image";
 import { GetServerSideProps } from "next";
+import GymInfoResponse from "../../../../api/reservation"
 
 interface GymDetail {
   id:number,
@@ -32,18 +33,10 @@ const ReservationCreate = ({gymDetail}:IndexProp) => {
   );
 
   const dispatch = useDispatch<AppDispatch>();
-  // const voucher = document.getElementsByName('희망 이용권');
-  // var voucherrChoice; // 여기에 선택된 radio 버튼의 값이 담기게 된다.
-  // for(let i=0; i<voucher.length; i++) {
-  //   if(voucher[i].checked) {
-  //     voucherrChoice = voucher[i].value;
-  //   }
-  // }
+
   const gymName = useRef() as MutableRefObject<HTMLHeadingElement>;
   const ptName = useRef() as MutableRefObject<HTMLInputElement>;
-  const service = useRef() as MutableRefObject<HTMLInputElement>;
-  // const service2 = useRef() as MutableRefObject<HTMLInputElement>;
-  // const service3 = useRef() as MutableRefObject<HTMLInputElement>;
+  const service = useRef() as MutableRefObject<HTMLSelectElement>;
   const name = useRef() as MutableRefObject<HTMLInputElement>;
   const tel = useRef() as MutableRefObject<HTMLInputElement>;
   const request = useRef() as MutableRefObject<HTMLTextAreaElement>;
@@ -62,7 +55,7 @@ const ReservationCreate = ({gymDetail}:IndexProp) => {
       id: reservationData.length ? reservationData[0].id + 1 : 1,
       gymName: gymName.current?.innerText,
       trainerName: ptName.current.value,
-      boughtService: service.current?.value,
+      boughtService: service.current.value,
       // 입력 정보
       memberName: name.current?.value,
       memberPhone: tel.current?.value,
@@ -93,9 +86,11 @@ return (
             <div >
               <h3 className="d-flex justify-content-center mt-5 my-3"> 희망 PT 이용권 선택</h3>
               <div className="d-flex justify-content-center my-1">
-              <label><input value="PT 1회권" name="희망 이용권" type="radio"  ref={service}/>PT 1회권</label>
-              <label><input value="PT 10회권" name="희망 이용권"  type="radio" ref={service}/>PT 10회권</label>
-              <label><input value="PT 30회권" name="희망 이용권"  type="radio" ref={service}/>PT 30회권</label>
+              <select ref={service}>
+                <option defaultValue="PT 1회권"> PT 1회권</option>
+                <option defaultValue="PT 10회권"> PT 10회권</option>
+                <option defaultValue="PT 30회권"> PT 30회권</option>
+              </select>
              </div>
             </div>
             <div >
@@ -163,6 +158,7 @@ return (
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params?.id as string;
+  
 // export async function getServerSideProps() {
   // const res = await fetch("https://jsonplaceholder.typicode.com/users");
   // const res = await axios.get<GymInfo[]>("https://jsonplaceholder.typicode.com/photos?_start=0&_limit=1");

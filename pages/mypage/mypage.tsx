@@ -9,9 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../provider";
 
 import getTimeString from "../../provider/modules/getTimeString";
-import { requestFetchReservation } from "../../middleware/modules/reservation";
+import { requestFetchNextReservation, requestFetchPagingReservation, requestFetchReservation } from "../../middleware/modules/reservation";
 
-const mypage = () => {
+const Mypage = () => {
   const diary = useSelector((state: RootState) => state.diary);
 
   const router = useRouter();
@@ -22,7 +22,9 @@ const mypage = () => {
     if (!reservation.isFetched) {
       dispatch(requestFetchReservation());
     }
+
   }, [dispatch, reservation.isFetched]);
+  
 
   return (
     <div>
@@ -34,7 +36,6 @@ const mypage = () => {
       </Head>
       <main className={styles.main}>
         <div className={styles.div}>
-          {/*예약내역*/}
           <div className="d-flex mt-5">
             <p className={styles.p}>예약내역</p>
           </div>
@@ -76,8 +77,7 @@ const mypage = () => {
             <p className={styles.p}>PT일지 목록</p>
             <button
               type="button"
-              className="btn btn-secondary btn-sm mx-4"
-              style={{ width: "80px", height: "30px" }}
+              className={styles.btn}
               onClick={() => {
                 router.push("./diary/diary-list");
               }}
@@ -119,4 +119,4 @@ const mypage = () => {
   );
 };
 
-export default mypage;
+export default Mypage;

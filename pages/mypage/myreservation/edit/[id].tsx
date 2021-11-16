@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { AppDispatch, RootState } from "../../../../provider";
 import { requestFetchReservation, requestModifyReservation } from "../../../../middleware/modules/reservation";
 import { ReservationList } from "../../../../provider/modules/reservation";
-import reservationApi, {ReservationItemResponse} from "../../../../api/reservation";
+// import reservationApi, {ReservationItemResponse} from "../../../../api/reservation";
 
 import Layout from "../../../../components/layout";
 

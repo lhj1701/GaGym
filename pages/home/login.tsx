@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeLogo from "../../components/homelogo";
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
 
   return (
@@ -26,7 +26,7 @@ const login = () => {
         </button>
         <form className="mt-5 row-vh d-flex flex-column align-items-end justify-content-space-evenly">
           <div className="row mb-3">
-            <label className="col-sm-3 col-form-label">회원명</label>
+            <label className="col-sm-3 col-form-label mr-3">회원명</label>
             <div className="col-sm-6">
               <input
                 type="email"
@@ -63,4 +63,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
