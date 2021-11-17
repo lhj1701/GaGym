@@ -9,7 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../provider";
 
 import getTimeString from "../../provider/modules/getTimeString";
-import { requestFetchNextReservation, requestFetchPagingReservation, requestFetchReservation } from "../../middleware/modules/reservation";
+import {
+  requestFetchNextReservation,
+  requestFetchPagingReservation,
+  requestFetchReservation,
+} from "../../middleware/modules/reservation";
 import { requestFetchDiary } from "../../middleware/modules/diary";
 
 const Mypage = () => {
@@ -21,10 +25,11 @@ const Mypage = () => {
   useEffect(() => {
     if (!reservation.isFetched) {
       dispatch(requestFetchReservation());
+      if (!diary.isFetched) {
+        dispatch(requestFetchDiary());
+      }
     }
-
-  }, [dispatch, reservation.isFetched]);
-  
+  }, [dispatch, reservation.isFetched, diary.isFetched]);
 
   //----------------------11/15임시
   // useEffect(() => {

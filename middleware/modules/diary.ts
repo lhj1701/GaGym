@@ -86,6 +86,8 @@ function* addData(action: PayloadAction<DiaryItem>) {
       diaryItemRequest
     );
 
+
+
     const diaryItem: DiaryItem = {
       id: result.data.id,
       memberName: result.data.memberName,
@@ -103,24 +105,45 @@ function* addData(action: PayloadAction<DiaryItem>) {
     yield put(addDiary(diaryItem));
 
     yield put(initialCompleted());
-
-    yield put(
-      addAlert({ id: nanoid(), variant: "success", message: "저장중입니다☺" })
-    );
+    
+    // yield put(
+    //   addAlert({ id: nanoid(), variant: "success", message: "저장중입니다☺" })
+    // );
   } catch (e: any) {
 
-    yield put(
-      addAlert({ id: nanoid(), variant: "danger", message: e.message })
-    );
+    // yield put(
+    //   addAlert({ id: nanoid(), variant: "danger", message: e.message })
+    // );
   }
 }
 
+// 11/17 추가
+function* diarySendMqData(action: PayloadAction<DiaryItem>) {
+  const diaryItemPayload = action.payload;
+
+const diaryItemRequest: DiaryItemRequest = {
+  memberName: diaryItemPayload.memberName,
+  diaryMorning: diaryItemPayload.diaryMorning,
+  diaryLunch: diaryItemPayload.diaryLunch,
+  diaryDinner: diaryItemPayload.diaryDinner,
+  diaryRoutine: diaryItemPayload.diaryRoutine,
+  diaryRequest: diaryItemPayload.diaryRequest,
+  trainerName: diaryItemPayload.trainerName,
+  trainerFeedback: diaryItemPayload.trainerFeedback,
+    };
+
+    const result: AxiosResponse<DiaryItemResponse> = yield call(
+      api.diarySendMq,
+      diaryItemRequest
+    );
+
+  yield put(initialCompleted());
+}
+  // 11/17 추가끝
 
 function* fetchData() {
   yield console.log("--fetchData--");
-
   const result: AxiosResponse<DiaryItemResponse[]> = yield call(api.fetch);
-
   const diary = result.data.map(
     (item) =>
       ({
@@ -264,4 +287,5 @@ export default function* diarySaga() {
   yield takeLatest(requestFetchPagingDiary, fetchPagingData);
   yield takeEvery(requestRemoveDiary, removeData);
   yield takeEvery(requestModifyDiary, modifyData);
+  yield takeEvery(requestAddDiary, diarySendMqData);
 }

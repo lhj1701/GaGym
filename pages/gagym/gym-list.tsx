@@ -5,17 +5,39 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
 import { useRouter } from "next/router";
 
-interface GymPhoto {
+interface GymDetail {
   albumId: number;
+
+  // id: number;
+  // gymName: string;
+  // gymAddress: string;
+  // url: string;
+  // gymPhoto: string;
+
+  // 11/17 변경
   id: number;
   gymName: string;
+  gymCoNum: string;
+  gymLocateSi: string;
+  gymLocateGunGu: string;
   gymAddress: string;
-  url: string;
+  gymPhoneNum: string;
+  gymTime: string;
+  gymService: string;
   gymPhoto: string;
+  fileName: string;
+  fileType: string;
+  gym1DayPrice: string;
+  gym3DayPrice: string;
+  gym7DayPrice: string;
+  gymMonthPrice: string;
+  gym3MonthPrice: string;
+  gym6MonthPrice: string;
+  gymYearPrice: string;
 }
 
 interface gymListProp {
-  gymList: GymPhoto[];
+  gymList: GymDetail[];
 }
 
 const GymList = ({ gymList }: gymListProp) => {
@@ -100,7 +122,7 @@ const GymList = ({ gymList }: gymListProp) => {
 };
 
 export async function getServerSideProps() {
-  // const res = await axios.get<GymPhoto[]>(
+  // const res = await axios.get<GymDetail[]>(
   //   "https://jsonplaceholder.typicode.com/gymList?_start=0&_limit=8"
   // );
   // const gymList = res.data;
