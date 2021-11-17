@@ -32,7 +32,7 @@ export interface ReservationPagingReponse {
 export interface GymInfoResponse {
   id : number,
   gymName:string,
-  thumbnailUrl:string,
+  gymPhoto:string,
   gymAddress:string,
   gymTime:string,
   trainerName:string,
@@ -56,11 +56,11 @@ const reservationApi = {
       // `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
       `http://localhost:8080/reservation`
     ),
-  // fetchGymInfo: () =>
-  //   axios.get<GymInfoResponse[]>(
-  //     // `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
-  //     `http://localhost:8080/gyminfo`
-  //   ),
+  fetchGymInfo: () =>
+    axios.get<GymInfoResponse[]>(
+      // `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
+      `http://localhost:8080/gyminfo`
+    ),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<ReservationPagingReponse>(

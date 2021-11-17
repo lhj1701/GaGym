@@ -21,9 +21,12 @@ const Mypage = () => {
   useEffect(() => {
     if (!reservation.isFetched) {
       dispatch(requestFetchReservation());
+      if (!diary.isFetched) {
+            dispatch(requestFetchDiary());
+          }
     }
 
-  }, [dispatch, reservation.isFetched]);
+  }, [dispatch, reservation.isFetched, diary.isFetched]);
   
 
   //----------------------11/15임시
