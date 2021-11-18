@@ -14,29 +14,26 @@ const AppBar = () => {
               <img style={{ width: "100px" }} src="/logo.png" alt="logo" />
             </Link>
           </Navbar.Brand>
-          <div
-            className="d-flex justify-content-end align-items-center"
-            style={{ fontSize: "19px" }}
-          >
+          <div className="d-flex justify-content-end align-items-center">
             <Nav>
               <Nav.Link>
                 <Link href="/" passHref>
-                  <a className="text-dark">HOME</a>
+                  <a className="text-dark mx-1">HOME</a>
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link href="/home/select">
-                  <a className="text-dark">헬스장찾기</a>
+                  <a className="text-dark mx-1">헬스장찾기</a>
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link href="/mypage/mypage">
-                  <a className="text-dark">마이페이지</a>
+                  <a className="text-dark mx-1">마이페이지</a>
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link href="/mypage/diary/diary-list">
-                  <a className="text-dark">PT일지</a>
+                  <a className="text-dark mx-1">PT일지</a>
                 </Link>
               </Nav.Link>
             </Nav>

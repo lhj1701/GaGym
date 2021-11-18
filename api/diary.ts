@@ -43,10 +43,10 @@ const diaryApi = {
   fetch: () =>
   axios.get<DiaryItemResponse[]>(`http://localhost:8080/diary`),
 
-// 11/17 추가
-  diaryfetchMq: () =>
-  axios.get<DiaryItemResponse[]>(`http://localhost:5052/diary`),
-// 11/17 추가 끝
+// // 11/17 추가
+//   diaryfetchMq: () =>
+//   axios.get<DiaryItemResponse[]>(`http://localhost:5052/diary`),
+// // 11/17 추가 끝
 
   fetchPaging: (page: number, size: number) =>
     axios.get<DiaryPagingResponse>(
@@ -58,13 +58,13 @@ const diaryApi = {
       `http://localhost:8080/diary`,
       diaryItem
     ),
-// 11/17 추가
+// // 11/17 추가
   diarySendMq: (diaryItem: DiaryItemRequest) =>
     axios.post<DiaryItemResponse>(
       `http://localhost:5050/diary`,
       diaryItem
     ),
-// 11/17 추가 끝
+// // 11/17 추가 끝
   remove: (id: number) =>
     axios.delete<boolean>(`http://localhost:8080/diary/${id}`),
 
