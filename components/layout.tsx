@@ -1,8 +1,9 @@
 import Head from "next/head";
 
 import React from "react";
-import styles from "./layout.module.css";
+import styles from "../styles/layout.module.css";
 import AppBar from "./appbar";
+import Footer from "./footer";
 
 import Progress from "./progress";
 import AlertStack from "./alert/alertStack";
@@ -24,6 +25,7 @@ export default function Layout({ children }: LayoutProps) {
         {children}
         <Progress />
         <AlertStack />
+        <Footer />
       </main>
     </>
   );

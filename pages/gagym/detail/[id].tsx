@@ -4,6 +4,7 @@ import styles from "../../../styles/Gymdetail.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../../components/appbar";
 import { useRouter } from "next/router";
+import Footer from "../../../components/footer";
 
 import { GetServerSideProps } from "next";
 import axios from "axios";
@@ -80,14 +81,14 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
             </div>
 
             {/* 내용 */}
-            <div style={{ width: "auto", height: "300px" }}>
+            <div style={{ width: "auto", height: "300px" }} className="px-3">
               {/* 헬스장명 */}
               <h3>{gymDetail.gymName}</h3>
               {/* 헬스장주소 */}
               <h6>{gymDetail.gymAddress}</h6>
               {/* 헬스장 전화번호 */}
               <h6>{gymDetail.gymPhoneNum}</h6>
-              <h6>{gymDetail.gymCoNum}//임시</h6>
+              {/* <h6>{gymDetail.gymCoNum}//임시</h6> */}
               {/* 헬스장 운영시간 */}
               <p className={styles.p}>
                 <b>[운영시간]</b>
@@ -109,11 +110,9 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
               </div>
             </div>
           </div>
-
           {/*--------------2. 강사소개/이용권/헬스장사진/부가서비스 시작 --------------*/}
           {/* 강사소개 */}
           <h4 className={styles.h4}>강사 소개 및 이용권</h4>
-
           {/*강사소개+이용권*/}
           {trainers.map((item, index) => (
             <div className="d-flex mt-5 align-items-center">
@@ -197,14 +196,50 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
               <span className={styles.span4}>{gymDetail.gymYearPrice}</span>
             </div>
           </div>
-
           {/* 부가서비스 */}
           <h4 className={styles.h4}>부가서비스</h4>
-          <div className="mb-5">{gymDetail.gymService}</div>
+          <div className="mb-5">{gymDetail.gymService}</div> {/*추후없앨예정*/}
+          <div className={styles.divser1}>
+            <div className={styles.divser11}>
+              <img
+                src={"/gymservice/inbody.png"}
+                style={{ width: "100px" }}
+                // className={styles.imgd}
+              />
+              <span className={styles.divser111}>인바디 측정</span>
+            </div>
+            <div className={styles.divser11}>
+              <img
+                src={"/gymservice/locker.png"}
+                style={{ width: "100px" }}
 
+                // className={styles.imgd}
+              />
+              <span className={styles.divser111}>라커룸</span>
+            </div>
+            <div className={styles.divser11}>
+              <img
+                src={"/gymservice/shower.png"}
+                style={{ width: "100px" }}
+
+                // className={styles.imgd}
+              />
+              <span className={styles.divser111}>샤워시설</span>
+            </div>
+            <div className={styles.divser11}>
+              <img
+                src={"/gymservice/wifi.png"}
+                style={{ width: "100px" }}
+
+                // className={styles.imgd}
+              />
+              <span className={styles.divser111}>와이파이</span>
+            </div>
+          </div>
           {/*강사소개/이용권/헬스장사진/부가서비스/공지사항 끝*/}
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

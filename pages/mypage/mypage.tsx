@@ -5,6 +5,7 @@ import styles from "../../styles/mypage.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
+import Footer from "../../components/footer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../provider";
 
@@ -137,7 +138,7 @@ const Mypage = () => {
         </div>
       </main>
 
-      <footer className={styles.footer}></footer>
+      <Footer />
     </div>
   );
 };

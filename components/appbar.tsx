@@ -6,8 +6,8 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 const AppBar = () => {
   const router = useRouter();
   return (
-    <div>
-      <Navbar className={styles.appbar} expand="lg">
+    <div className={styles.appbar}>
+      <Navbar className={styles.appbar1} expand="lg">
         <Container>
           <Navbar.Brand>
             <Link href="/" passHref>
@@ -18,22 +18,22 @@ const AppBar = () => {
             <Nav>
               <Nav.Link>
                 <Link href="/" passHref>
-                  <a className="text-dark mx-1">HOME</a>
+                  <a className={styles.txt}>HOME</a>
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link href="/home/select">
-                  <a className="text-dark mx-1">헬스장찾기</a>
+                  <a className={styles.txt}>헬스장찾기</a>
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link href="/mypage/mypage">
-                  <a className="text-dark mx-1">마이페이지</a>
+                  <a className={styles.txt}>마이페이지</a>
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link href="/mypage/diary/diary-list">
-                  <a className="text-dark mx-1">PT일지</a>
+                  <a className={styles.txt}>PT일지</a>
                 </Link>
               </Nav.Link>
             </Nav>
