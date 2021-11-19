@@ -81,22 +81,14 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
             </div>
 
             {/* 내용 */}
-<<<<<<< HEAD
-            <div style={{ width: "auto", height: "300px" }}>
-=======
             <div style={{ width: "auto", height: "300px" }} className="px-3">
->>>>>>> 92d191e2b0c953ac99ff60bd9e03680a115f944b
               {/* 헬스장명 */}
               <h3>{gymDetail.gymName}</h3>
               {/* 헬스장주소 */}
               <h6>{gymDetail.gymAddress}</h6>
               {/* 헬스장 전화번호 */}
               <h6>{gymDetail.gymPhoneNum}</h6>
-<<<<<<< HEAD
-              <h6>{gymDetail.gymCoNum}//임시</h6>
-=======
               {/* <h6>{gymDetail.gymCoNum}//임시</h6> */}
->>>>>>> 92d191e2b0c953ac99ff60bd9e03680a115f944b
               {/* 헬스장 운영시간 */}
               <p className={styles.p}>
                 <b>[운영시간]</b>
@@ -121,10 +113,6 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           {/*--------------2. 강사소개/이용권/헬스장사진/부가서비스 시작 --------------*/}
           {/* 강사소개 */}
           <h4 className={styles.h4}>강사 소개 및 이용권</h4>
-<<<<<<< HEAD
-
-=======
->>>>>>> 92d191e2b0c953ac99ff60bd9e03680a115f944b
           {/*강사소개+이용권*/}
           {trainers.map((item, index) => (
             <div className="d-flex mt-5 align-items-center">
@@ -208,10 +196,6 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
               <span className={styles.span4}>{gymDetail.gymYearPrice}</span>
             </div>
           </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 92d191e2b0c953ac99ff60bd9e03680a115f944b
           {/* 부가서비스 */}
           <h4 className={styles.h4}>부가서비스</h4>
           <div className="mb-5">{gymDetail.gymService}</div> {/*추후없앨예정*/}

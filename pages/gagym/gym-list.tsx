@@ -67,15 +67,6 @@ const GymList = ({ gymList }: gymListProp) => {
             </Link>
           </span>
         </div>
-<<<<<<< HEAD
-        {/* 헬스장 mapping 시작 */}
-        <div>
-          <div
-            className="d-flex flex-wrap justify-content-center"
-            style={{ margin: "40px 0 0 0" }}
-          >
-            {gymList.map((item, index) => (
-=======
       </div>
       {/* 헬스장 mapping 시작 */}
       <div>
@@ -93,35 +84,12 @@ const GymList = ({ gymList }: gymListProp) => {
                 width: "calc((100% - 10rem) / 5)", //3rem
               }}
             >
->>>>>>> 92d191e2b0c953ac99ff60bd9e03680a115f944b
               <div
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   router.push(`/gagym/detail/${item.id}`);
                 }}
               >
-<<<<<<< HEAD
-                <div
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    router.push(`/gagym/detail/${item.id}`);
-                  }}
-                >
-                  {/* 11/17 사진-희균님 데이터 받아오기 전까지 잠시 주석*/}
-                  <Image
-                    // src={item.gymPhoto}
-                    src={"/gymimg/1 (1).jpg"} //1118임시
-                    alt={item.gymName}
-                    layout="responsive"
-                    objectFit="cover" //써야됨 or none
-                    width={100}
-                    height={100}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{item.gymName}</h5>
-                    <h6 className="card-title">{item.gymAddress}</h6>
-                  </div>
-=======
                 {/* 11/17 사진-희균님 데이터 받아오기 전까지 잠시 주석*/}
                 <Image
                   // src={item.gymPhoto}
@@ -135,7 +103,6 @@ const GymList = ({ gymList }: gymListProp) => {
                 <div className="card-body">
                   <h5 className="card-title">{item.gymName}</h5>
                   <h6 className="card-title">{item.gymAddress}</h6>
->>>>>>> 92d191e2b0c953ac99ff60bd9e03680a115f944b
                 </div>
               </div>
             </div>
@@ -153,18 +120,11 @@ const GymList = ({ gymList }: gymListProp) => {
         </div>
         
         페이지네이션 끝*/}
-<<<<<<< HEAD
-        </div>
-        {/* 헬스장 mapping 끝 */}
-      </main>
-      <footer className={styles.footer}></footer>
-=======
       </div>
       {/* 헬스장 mapping 끝 */}
       {/* </main> */}
       {/* </Layout> */}
       <Footer />
->>>>>>> 92d191e2b0c953ac99ff60bd9e03680a115f944b
     </div>
   );
 };

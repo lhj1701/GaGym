@@ -60,7 +60,7 @@ const Mypage = () => {
               <th>헬스장 명</th>
               <th>강사 명</th>
               <th>이용권</th>
-              <th>상세보기</th>
+              {/* <th>상세보기</th> */}
             </thead>
             <tbody>
               {reservation.data.map((item, index) => (
@@ -74,7 +74,7 @@ const Mypage = () => {
                   <td>{item.gymName}</td>
                   <td>{item.trainerName}</td>
                   <td>{item.boughtService}</td>
-                  <td>
+                  {/* <td>
                     <button
                       type="button"
                       // `btn btn-primary btn-sm mx-4`
@@ -83,7 +83,7 @@ const Mypage = () => {
                     >
                       상세보기
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
