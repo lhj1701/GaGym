@@ -70,7 +70,10 @@ const DiaryDetail = () => {
                   <th>날짜</th>
                   <td>{getTimeString(diaryItem.diaryCreateTime)}</td>
                 </tr>
-
+                <tr>
+                  <th>회원명</th>
+                  <td>{diaryItem.memberName}</td>
+                </tr>
                 <tr>
                   <th>아침식단</th>
                   <td>{diaryItem.diaryMorning}</td>

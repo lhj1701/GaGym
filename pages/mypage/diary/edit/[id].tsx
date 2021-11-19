@@ -47,7 +47,7 @@ const DiaryEdit = () => {
     if (DiaryItem) {
       const item = { ...DiaryItem };
 
-      // item.memberName = memberName.current?.value;
+      item.memberName = memberName.current?.value;
       item.diaryMorning = diaryMorning.current?.value;
       item.diaryLunch = diaryLunch.current?.value;
       item.diaryDinner = diaryDinner.current?.value;
@@ -76,7 +76,19 @@ const DiaryEdit = () => {
                 <th>날짜</th>
                 <td>{getTimeString(DiaryItem?.diaryCreateTime)}</td>
               </tr>
-
+              <tr>
+                <th>회원명</th>
+                <td>
+                  {" "}
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="식단 수정"
+                    defaultValue={DiaryItem?.memberName}
+                    ref={memberName}
+                  />
+                </td>
+              </tr>
               <tr>
                 <th>아침식단</th>
                 <td>

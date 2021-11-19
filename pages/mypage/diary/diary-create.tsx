@@ -72,7 +72,18 @@ const DiaryCreate = () => {
                 <th>날짜</th>
                 <td>??</td>
               </tr>
-
+              <tr>
+                <th>회원명</th>
+                <td>
+                  {" "}
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="회원명"
+                    ref={memberName}
+                  />
+                </td>
+              </tr>
               <tr>
                 <th>아침식단</th>
                 <td>

@@ -1,9 +1,44 @@
-.appbar {
-  /* width: calc((100% - 2rem) / 3); */
+/* original */
+
+/* width: calc((100% - 2rem) / 3);
   margin-left: 100px;
   width: calc((100% - 200px));
-  /* width: 100%; */
   border-bottom: solid black;
   font-size: 20px;
-  border-width: 0.3vh;
+  border-width: 0.3vh; */
+
+.appbar {
+  /* display: flex; */
+  position: sticky;
+  background-color: white;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 150px;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.appbar1 {
+  /* margin-left: 100px; */
+  /* width: calc((100% - 200px)); */
+  width: 100%;
+  border-bottom: solid #0000a4;
+  border-width: 5px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.txt {
+  text-decoration-line: none;
+  color: 10px #0000a4;
+  margin: 0 10px 0 10px;
+}
+
+.txt:visited {
+  color: #0000a4;
 }

@@ -14,7 +14,7 @@ const AlertStack = () => {
   return (
     <div className="fixed-bottom d-flex justify-content-center">
       <div className="w-25">
-        {alert.map((item: { id: string; variant: string; message: string; }) => (
+        {alert.map((item: { id: string; variant: string; message: string }) => (
           <Alert
             key={`alert-${item.id}`}
             variant={item.variant}

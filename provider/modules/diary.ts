@@ -83,7 +83,6 @@ const diarySlice = createSlice({
         diaryItem.trainerName = modifyItem.trainerName;
         diaryItem.trainerFeedback = modifyItem.trainerFeedback;
         diaryItem.diaryCreateTime = modifyItem.diaryCreateTime;
-
       }
            state.isModifyCompleted = true;
     },
