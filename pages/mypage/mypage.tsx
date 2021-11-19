@@ -26,19 +26,10 @@ const Mypage = () => {
     if (!reservation.isFetched) {
       dispatch(requestFetchReservation());
       if (!diary.isFetched) {
-<<<<<<< HEAD
-            dispatch(requestFetchDiary());
-          }
-    }
-
-  }, [dispatch, reservation.isFetched, diary.isFetched]);
-  
-=======
         dispatch(requestFetchDiary());
       }
     }
   }, [dispatch, reservation.isFetched, diary.isFetched]);
->>>>>>> eb5c7d58cc71ed1b00608cee81a3da00e6c47329
 
   //----------------------11/15임시
   // useEffect(() => {
@@ -85,8 +76,9 @@ const Mypage = () => {
                   <td>
                     <button
                       type="button"
-                      className="btn btn-secondary btn-sm mx-4"
-                      style={{ width: "80px", height: "30px" }}
+                      // `btn btn-primary btn-sm mx-4`
+                      className={styles.detailbtn}
+                      // style={{ width: "80px", height: "30px" }}
                     >
                       상세보기
                     </button>

@@ -9,13 +9,6 @@ import axios from "axios";
 
 interface GymDetail {
   albumId: number;
-
-  // id: number;
-  // gymName: string;
-  // gymAddress: string;
-  // url: string;
-  // gymPhoto: string;
-
   // 11/17 변경
   id: number;
   gymName: string;
@@ -66,7 +59,7 @@ const GymList = ({ gymList }: gymListProp) => {
           </svg>
           서울특별시 강남구
         </div>
-        {/* 리스트 시작 */}
+        {/* 헬스장 mapping 시작 */}
         <div>
           <div
             className="d-flex flex-wrap justify-content-center"
@@ -88,14 +81,16 @@ const GymList = ({ gymList }: gymListProp) => {
                     router.push(`/gagym/detail/${item.id}`);
                   }}
                 >
-                  {/* <Image
-                    src={item.gymPhoto}
+                  {/* 11/17 사진-희균님 데이터 받아오기 전까지 잠시 주석*/}
+                  <Image
+                    // src={item.gymPhoto}
+                    src={"/gymimg/1 (1).jpg"} //1118임시
                     alt={item.gymName}
                     layout="responsive"
                     objectFit="cover" //써야됨 or none
                     width={100}
                     height={100}
-                  /> */}
+                  />
                   <div className="card-body">
                     <h5 className="card-title">{item.gymName}</h5>
                     <h6 className="card-title">{item.gymAddress}</h6>
@@ -117,6 +112,7 @@ const GymList = ({ gymList }: gymListProp) => {
         
         페이지네이션 끝*/}
         </div>
+        {/* 헬스장 mapping 끝 */}
       </main>
       <footer className={styles.footer}></footer>
     </div>
@@ -125,8 +121,7 @@ const GymList = ({ gymList }: gymListProp) => {
 
 export async function getServerSideProps() {
   const res = await axios.get<GymDetail[]>(
-    //   "https://jsonplaceholder.typicode.com/gymList?_start=0&_limit=8"
-    "http://localhost:5051/gymdetail" ///${id}
+    "http://localhost:8080/gagym/gym-list"
   );
   const gymList = res.data;
 
@@ -146,63 +141,7 @@ export async function getServerSideProps() {
   //     gymPhoto: "/gymimg/2 (1).jpg",
   //     gymAddress:
   //       "서울특별시 강남구 논현로119길 23, 준미빌딩 B1 리젠트프라이빗짐",
-  //   },
-  //   {
-  //     // albumId: 1,
-  //     id: 3,
-  //     gymName: "대치 로그짐",
-  //     gymPhoto: "/gymimg/3 (1).jpg",
-  //     gymAddress: "서울특별시 강남구 삼성로 317, 우석빌딩 지하2 로그짐 대치점",
-  //   },
-  //   {
-  //     // albumId: 1,
-  //     id: 4,
-  //     gymName: "대치 휘트니스G",
-  //     gymPhoto: "/gymimg/4 (1).jpg",
-  //     gymAddress: "서울 강남구 역삼로 542 신사에스엔지 지하 1층",
-  //   },
-  //   {
-  //     // albumId: 1,
-  //     id: 5,
-  //     gymName: "선릉 바디스페이스",
-  //     gymPhoto: "/gymimg/5 (1).jpg",
-  //     gymAddress: "서울특별시 강남구 테헤란로 311 지하1층",
-  //   },
-  //   {
-  //     // albumId: 1,
-  //     id: 6,
-  //     gymName: "선릉 보리스짐",
-  //     gymPhoto: "/gymimg/6 (1).jpg",
-  //     gymAddress: "서울특별시 강남구 선릉로94길 7 현죽빌딩 지하 1층",
-  //   },
-  //   {
-  //     // albumId: 1,
-  //     id: 7,
-  //     gymName: "압구정 로그짐",
-  //     gymPhoto: "/gymimg/7 (1).jpg",
-  //     gymAddress: "서울특별시 강남구 압구정로28길 40, 5층 로그짐",
-  //   },
-  //   {
-  //     // albumId: 1,
-  //     id: 8,
-  //     gymName: "언주 아트짐 토탈휘트니스",
-  //     gymPhoto: "/gymimg/8 (1).jpg",
-  //     gymAddress: "서울특별시 강남구 논현로 626, 엠빌딩 지하2층",
-  //   },
-  //   {
-  //     // albumId: 1,
-  //     id: 9,
-  //     gymName: "역삼 F&G휘트니스",
-  //     gymPhoto: "/gymimg/9 (1).jpg",
-  //     gymAddress: "서울특별시 강남구 테헤란로25길 7 창성재단빌딩 지하 1, 2층",
-  //   },
-  //   {
-  //     // albumId: 1,
-  //     id: 10,
-  //     gymName: "청담 리발란스K",
-  //     gymPhoto: "/gymimg/10 (1).jpg",
-  //     gymAddress: "서울특별시 강남구 학동로97길 20 튼튼병원 별관 지하1층",
-  //   },
+  //   }
   // ];
   return { props: { gymList } };
 }

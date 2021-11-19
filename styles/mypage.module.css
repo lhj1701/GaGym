@@ -45,6 +45,20 @@
   font-size: 10px;
 }
 
+.detailbtn {
+  width: 75px;
+  height: 25px;
+  /* margin-top: 5px;
+  margin-left: 20px; */
+  border-radius: 8px;
+  /* border-style: double; */
+  /* border-width: 4.5px; */
+  background: #0100a4;
+  color: white;
+  /* border-color: #0100a4; */
+  font-size: 0.8rem;
+}
+
 /*
 .footer {
   display: flex;

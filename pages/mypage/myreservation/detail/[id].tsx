@@ -8,6 +8,7 @@ import {
   requestRemoveReservation,
 } from "../../../../middleware/modules/reservation";
 import Layout from "../../../../components/layout";
+import styles from "../../../../styles/mypage.module.css";
 const ReservationDetail = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
@@ -48,8 +49,9 @@ const ReservationDetail = () => {
     // dispatch(requestRemoveReservationNext(+id)); // 더보기 페이징일 때
   };
   return(
+    <div>
     <Layout>
- <div>
+ <div style={{ width: "60vw" }} className="mx-auto">
  <div className="my-5 d-flex justify-content-center">
     <h2>예약 상세</h2></div>
     <div className="my-5 d-flex justify-content-center">
@@ -66,15 +68,16 @@ const ReservationDetail = () => {
     </table>
     </div>
     <div className="d-flex justify-content-center">
-      <button className="btn btn-primary float-end mx-1"
+      <button className={styles.detailbtn}
       onClick={() => {
         router.push(`/mypage/myreservation/edit/${id}`);
       }}>수정</button>
-      <button className="btn btn-primary float-end" onClick={() => {
+      <button className={styles.detailbtn} onClick={() => {
                 handDeleteClick();
               }} >예약취소</button></div>
     </div>
     </Layout>
+    </div>
   )
 }
 export default ReservationDetail;

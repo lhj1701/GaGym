@@ -28,38 +28,19 @@ export interface ReservationPagingReponse {
   size: number;
   number: number;
 }
-
-export interface GymInfoResponse {
-  id : number,
-  gymName:string,
-  gymPhoto:string,
-  gymAddress:string,
-  gymTime:string,
-  trainerName:string,
-}
 // 서버하고 데이터 연동하는 api처리 목록을 별도의 객체로 작성
 // process.env.변수명
 const reservationApi = {
   get: (id: number) =>
     axios.get<ReservationItemResponse>(
       // `${process.env.NEXT_PUBLIC_API_BASE}/reservation/{id}`
-      `http://localhost:8080/reservation/{id}`
-    ),
-  getGymInfo: (id: number) =>
-    axios.get<GymInfoResponse>(
-      // `${process.env.NEXT_PUBLIC_API_BASE}/gyminfo/{id}`
-      `http://localhost:8080/gyminfo/{id}`
+      `http://localhost:8080/reservation/${id}`
     ),
   // axios.get<응답데이터의타입>(요청URL);
   fetch: () =>
     axios.get<ReservationItemResponse[]>(
       // `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
       `http://localhost:8080/reservation`
-    ),
-  fetchGymInfo: () =>
-    axios.get<GymInfoResponse[]>(
-      // `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
-      `http://localhost:8080/gyminfo`
     ),
 
   fetchPaging: (page: number, size: number) =>

@@ -7,6 +7,7 @@ import { ReservationList } from "../../../../provider/modules/reservation";
 // import reservationApi, {ReservationItemResponse} from "../../../../api/reservation";
 
 import Layout from "../../../../components/layout";
+import styles from "../../../../styles/mypage.module.css";
 
 const ReservationEdit = () => {
   const router = useRouter();
@@ -55,8 +56,8 @@ const ReservationEdit = () => {
   };
   return(
     <Layout>
-  <div className="my-5">
-    <div className="d-flex justify-content-center">
+  <div style={{ width: "60vw" }} className="mx-auto">
+    <div className="d-flex justify-content-center my-5">
     <h2>예약자 정보 수정</h2></div>
     <div className="my-2 d-flex justify-content-center">
     <table>
@@ -70,11 +71,11 @@ const ReservationEdit = () => {
     </table>
     </div>
     <div className="d-flex justify-content-center">
-      <button className="btn btn-primary float-end" onClick={() => {
+      <button className={styles.detailbtn} onClick={() => {
                   router.push(`/mypage/mypage`);
                 }} >목록</button>
                 <button
-            className="btn btn-primary float-end"
+            className={styles.detailbtn}
             onClick={() => {handleSave();}}>
             <i className="bi bi-check" />
             저장

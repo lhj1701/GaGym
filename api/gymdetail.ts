@@ -70,7 +70,6 @@ const gymApi = {
       `http://localhost:8080/gym/paging?page=${page}&size=${size}`
     ),
 
-
   add: (gymItem: GymItemRequest) =>
     axios.post<GymItemResponse>(
       `http://localhost:8080/gym`,
