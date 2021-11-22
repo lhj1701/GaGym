@@ -69,8 +69,8 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
             <div style={{ cursor: "pointer" }} className={styles.src}>
               {/* 11/17 사진-희균님 데이터 받아오기 전까지 잠시 주석*/}
               <Image
-                // src={gymDetail.gymPhoto}
-                src={"/gymimg/1 (1).jpg"} //1118임시
+                src={gymDetail.gymPhoto}
+                // src={"/gymimg/1 (1).jpg"} //1118임시
                 className="card-img-top"
                 alt={gymDetail.gymName}
                 layout="responsive"
