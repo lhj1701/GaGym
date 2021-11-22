@@ -71,15 +71,16 @@ const ReservationEdit = () => {
     </table>
     </div>
     <div className="d-flex justify-content-center">
+    <div className="mx-1">
       <button className={styles.detailbtn} onClick={() => {
                   router.push(`/mypage/mypage`);
-                }} >목록</button>
-                <button
+                }} >목록</button></div>
+                <div className="mx-1"><button
             className={styles.detailbtn}
             onClick={() => {handleSave();}}>
             <i className="bi bi-check" />
             저장
-          </button>
+          </button></div>
                 </div>
     </div>
     </Layout>

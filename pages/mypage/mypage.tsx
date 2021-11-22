@@ -24,11 +24,9 @@ const Mypage = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    if (!reservation.isFetched) {
+    if (!reservation.isFetched || !diary.isFetched) {
       dispatch(requestFetchReservation());
-      if (!diary.isFetched) {
-        dispatch(requestFetchDiary());
-      }
+      dispatch(requestFetchDiary());
     }
   }, [dispatch, reservation.isFetched, diary.isFetched]);
 

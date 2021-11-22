@@ -93,7 +93,8 @@ return (
       <div className="d-flex justify-content-center" key={gymInfo.id}>
           <div style={{ width: "30vw" }} className="my-4">
             <Image
-              src={"/gymimg/1 (1).jpg"}
+              // src={"/gymimg/1 (1).jpg"}
+              src={gymInfo.gymPhoto}
               alt={gymInfo.gymName}
               width={300}
               height={300} />
