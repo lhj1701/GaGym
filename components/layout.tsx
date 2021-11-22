@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps) {
       <main className={styles.main}>
         {children}
         <Progress />
-        <AlertStack />
+        {/* <AlertStack /> */}
         <Footer />
       </main>
     </>
