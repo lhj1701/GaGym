@@ -120,7 +120,7 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           <h4 className={styles.h4}>강사 소개 및 이용권</h4>
           {/*강사소개+이용권*/}
           {trainers.map((item, index) => (
-            <div className={styles.divtrainer}>
+            <div className={styles.divtrainer} key={index}>
               {/*(왼쪽)강사소개*/}
               <div className={styles.imgtrainer}>
                 <img

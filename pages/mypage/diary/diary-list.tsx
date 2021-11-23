@@ -93,8 +93,12 @@ const DiaryList = () => {
                     handlePageSizeChanged(e);
                   }}
                 >
-                  {[3, 5, 10, 30].map((size) => (
-                    <option value={size} selected={diary.pageSize === size}>
+                  {[3, 5, 10, 30].map((size, index) => (
+                    <option
+                      value={size}
+                      selected={diary.pageSize === size}
+                      key={index}
+                    >
                       {size}
                     </option>
                   ))}
@@ -117,14 +121,15 @@ const DiaryList = () => {
               </thead>
 
               <tbody className="tbody">
-                {diary.data.map((item) => (
-                  <tr>
+                {diary.data.map((item, index) => (
+                  <tr key={index}>
                     <td
                       style={{ cursor: "pointer", color: "rgb(3, 48, 129)" }}
                       className={styles.textd}
                       onClick={() => {
                         router.push(`/mypage/diary/detail/${item.id}`);
                       }}
+                      key={index}
                     >
                       <b>{getTimeString(item.diaryCreateTime)}</b>
                       {/* <b>11/12</b> */}
