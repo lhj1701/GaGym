@@ -153,7 +153,7 @@ const GymList = ({ gymList }: gymListProp) => {
 
 export async function getServerSideProps() {
   const res = await axios.get<GymDetail[]>(
-    "http://localhost:8080/gagym/gym-list"
+    "http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gagym/gym-list"
   );
   const gymList = res.data;
 

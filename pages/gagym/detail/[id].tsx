@@ -256,14 +256,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   //axios처리 {gymDetail}
   const res = await axios.get<GymDetails[]>(
-    `http://localhost:8080/gagym/detail/{id}`
+    `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gagym/detail/{id}`
   );
 
   const gymDetail = res.data.find((item) => item.id === +id);
 
   //axios처리 {trainer}
   const trainer = await axios.get<Trainers[]>(
-    `http://localhost:8080/gagym/detail/trainer`
+    `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gagym/detail/trainer`
   );
 
   const trainers = trainer.data.filter(

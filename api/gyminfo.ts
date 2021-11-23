@@ -32,29 +32,29 @@ gymPhoto:string;
 
 const gymInfoApi = {
   get: (id: number) =>
-    axios.get<GymInfoResponse[]>(`http://localhost:8080/gyminfo/${id}`),
+    axios.get<GymInfoResponse[]>(`http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo/${id}`),
   fetch: () =>
-  axios.get<GymInfoResponse[]>(`http://localhost:8080/gyminfo`),
+  axios.get<GymInfoResponse[]>(`http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo`),
 
   // getTrainer: (id: number) =>
-  // axios.get<TrainerInfoResponse[]>(`http://localhost:8080/trainerinfo/${id}`),
+  // axios.get<TrainerInfoResponse[]>(`http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/trainerinfo/${id}`),
   // fetchTrainer: () =>
-  // axios.get<TrainerInfoResponse[]>(`http://localhost:8080/trainerinfo`),
+  // axios.get<TrainerInfoResponse[]>(`http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/trainerinfo`),
 
 
   // add: (gymItem: GymInfoRequest) =>
   //   axios.post<GymInfoResponse>(
-  //     `http://localhost:8080/gyminfo`,
+  //     `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo`,
   //     gymItem
   //   ),
 
   // remove: (id: number) =>
-  //   axios.delete<boolean>(`http://localhost:8080/gyminfo/${id}`),
+  //   axios.delete<boolean>(`http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo/${id}`),
 
 
   // modify: (id: number, gymItem: GymInfoRequest) =>
   //   axios.put<GymInfoResponse>(
-  //     `http://localhost:8080/gyminfo/${id}`,
+  //     `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo/${id}`,
   //     gymItem
   //   )
 };
