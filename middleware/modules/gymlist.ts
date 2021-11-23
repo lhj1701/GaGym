@@ -4,9 +4,9 @@ import gymlistReducer, {
   initialGymlist,
   initialGymlistItem,
   GymlistPage,
+  GymlistItem
 } from "../../provider/modules/gymlist";
 import { createAction, nanoid, PayloadAction } from "@reduxjs/toolkit";
-import { GymlistItem } from "../../provider/modules/gymlist";
 import { call, put, takeEvery, takeLatest } from "@redux-saga/core/effects";
 import api, { GymlistItemRequest, GymlistItemResponse, GymlistPagingResponse,} from "../../api/gymlist";
 import { AxiosResponse } from "axios";
