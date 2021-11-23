@@ -53,14 +53,9 @@ gymYearPrice : string;
 }
 
 const gymApi = {
-  //11/16 추가
   get: (id: number) =>
     axios.get<GymItemResponse[]>(`http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym`),
-  //11/16 추가끝
-  //11/17 추가
-    // get: (id: number) =>
-    // axios.get<GymItemResponse[]>(`http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym`),
-  //11/17 추가끝
+
 
   fetch: () =>
   axios.get<GymItemResponse[]>(`http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym`),
@@ -73,7 +68,6 @@ const gymApi = {
   add: (gymItem: GymItemRequest) =>
     axios.post<GymItemResponse>(
       `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym`,
-      // `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym`,
       gymItem
     ),
 

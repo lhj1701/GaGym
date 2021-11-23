@@ -17,19 +17,15 @@ import { AxiosResponse } from "axios";
 import { addAlert } from "../../provider/modules/alert";
 
 
-/* ========= saga action Payload 타입 =============== */
 export interface PageRequest {
   page: number;
   size: number;
 }
 
-/* ========= saga action을 생성하는 부분 =============== */
-
 export const requestAddDiary = createAction<DiaryItem>(
   `${diaryReducer.name}/requestAddDiary`
 );
 
-// // 더보기 페이징에서 추가할 때
 export const requestAddDiaryNext = createAction<DiaryItem>(
   `${diaryReducer.name}/requestAddDiaryNext`
 );
@@ -42,12 +38,10 @@ export const requestFetchPagingDiary = createAction<PageRequest>(
   `${diaryReducer.name}/requestFetchPagingDiary`
 );
 
-// // 다음 페이지 diary을 가져오는 action
 export const requestFetchNextDiary = createAction<PageRequest>(
   `${diaryReducer.name}/requestFetchNextDiary`
 );
 
-// // 1건의 diary을 가져오는 action
 export const requestFetchDiaryItem = createAction<number>(
   `${diaryReducer.name}/requestFetchDiaryItem`
 );
@@ -60,7 +54,6 @@ export const requestModifyDiary = createAction<DiaryItem>(
   `${diaryReducer.name}/requestModifyDiary`
 );
 
-/* ========= saga action을 처리하는 부분 =============== */
 
 //----------------------addData---------------------//
 function* addData(action: PayloadAction<DiaryItem>) {
@@ -105,43 +98,12 @@ function* addData(action: PayloadAction<DiaryItem>) {
     yield put(addDiary(diaryItem));
 
     yield put(initialCompleted());
-    
-    // yield put(
-    //   addAlert({ id: nanoid(), variant: "success", message: "저장중입니다☺" })
-    // );
+
   } catch (e: any) {
 
-    // yield put(
-    //   addAlert({ id: nanoid(), variant: "danger", message: e.message })
-    // );
   }
 }
 
-//----------------------diarySendMqData---------------------//
-
-// 11/17 추가
-// function* diarySendMqData(action: PayloadAction<DiaryItem>) {
-//   const diaryItemPayload = action.payload;
-
-// const diaryItemRequest: DiaryItemRequest = {
-//   memberName: diaryItemPayload.memberName,
-//   diaryMorning: diaryItemPayload.diaryMorning,
-//   diaryLunch: diaryItemPayload.diaryLunch,
-//   diaryDinner: diaryItemPayload.diaryDinner,
-//   diaryRoutine: diaryItemPayload.diaryRoutine,
-//   diaryRequest: diaryItemPayload.diaryRequest,
-//   trainerName: diaryItemPayload.trainerName,
-//   trainerFeedback: diaryItemPayload.trainerFeedback,
-//     };
-
-//     const result: AxiosResponse<DiaryItemResponse> = yield call(
-//       api.diarySendMq,
-//       diaryItemRequest
-//     );
-
-//   yield put(initialCompleted());
-// }
-  // 11/17 추가끝
 
 //----------------------fetchData---------------------//
 function* fetchData() {
@@ -166,26 +128,6 @@ function* fetchData() {
   yield put(initialDiary(diary));
 }
 
-//----------------------fetchDataItem---------------------//
-
-//11/16 추가시작 --- 1119삭제
-// function* fetchDataItem(action: PayloadAction<number>) {
-//   yield console.log("--fetchDataItem--");
-
-  // const id = action.payload;
-
-  // 백엔드에서 데이터 받아오기
-  // const result: AxiosResponse<DiaryItemResponse> = yield call(
-  //   api.get, id);
-
-  // const diary = result.data;
-  // if (diary) {
-  //   // state 초기화 reducer 실행
-  //   yield put(initialDiaryItem(diary));
-  // }
-// }
-
-//11/16 추가끝
 
 //----------------------fetchPagingData---------------------//
 function* fetchPagingData(action: PayloadAction<PageRequest>) {
@@ -293,9 +235,7 @@ export default function* diarySaga() {
 
   yield takeEvery(requestAddDiary, addData);
   yield takeLatest(requestFetchDiary, fetchData);
-  // yield takeEvery(requestFetchDiaryItem, fetchDataItem); //1119삭제
   yield takeLatest(requestFetchPagingDiary, fetchPagingData);
   yield takeEvery(requestRemoveDiary, removeData);
   yield takeEvery(requestModifyDiary, modifyData);
-  // yield takeEvery(requestAddDiary, diarySendMqData);
 }

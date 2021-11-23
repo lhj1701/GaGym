@@ -27,19 +27,7 @@ const Mypage = () => {
     if (!reservation.isFetched || !diary.isFetched) {
       dispatch(requestFetchReservation());
     }
-    // if (!diary.isFetched) {
-    //   dispatch(requestFetchDiary());
-    // }
   }, [dispatch, reservation.isFetched]);
-
-  //----------------------11/15임시
-  // useEffect(() => {
-  //   if (!diary.isFetched) {
-  //     dispatch(requestFetchDiary());
-  //   }
-  // }, [dispatch, diary.isFetched]);
-
-  //----------------------11/15임시끝
 
   return (
     <div>
@@ -93,12 +81,10 @@ const Mypage = () => {
                   상세보기
                 </button>
               </div>
-              {/*-------------------------------임시*/}
             </div>
 
             <div className="d-flex justify-content-end align-items-center"></div>
           </div>
-          {/*-------------------------------임시끝*/}
 
           <table className="table">
             <thead>

@@ -59,7 +59,6 @@ const DiaryList = () => {
   return (
     <div>
       <Layout>
-        {/* <AppBar /> */}
         <main className={styles.main}>
           <div className={styles.div}>
             {/*>PT일지 목록*/}
@@ -148,7 +147,6 @@ const DiaryList = () => {
                 ))}
               </tbody>
             </table>
-            {/* 페이지네이션 */}
           </div>
         </main>
       </Layout>

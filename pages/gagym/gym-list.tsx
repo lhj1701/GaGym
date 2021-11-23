@@ -11,7 +11,6 @@ import Link from "next/link";
 
 interface GymDetail {
   albumId: number;
-  // 11/17 변경
   id: number;
   gymName: string;
   gymCoNum: string;
@@ -42,9 +41,7 @@ const GymList = ({ gymList }: gymListProp) => {
 
   return (
     <div>
-      {/* <Layout> */}
       <AppBar />
-      {/* <main className="d-flex flex-wrap"> */}
       <div className={styles.svg1} style={{ margin: "30px 0 20px 120px" }}>
         <div className={styles.svg11}>
           <svg
@@ -52,7 +49,6 @@ const GymList = ({ gymList }: gymListProp) => {
             width="25"
             height="25"
             fill="currentColor"
-            // className="bi bi-geo-alt mx-2"
             className={styles.svg111}
             viewBox="0 0 16 16"
           >
@@ -66,7 +62,6 @@ const GymList = ({ gymList }: gymListProp) => {
           </span>
         </div>
       </div>
-      {/* 헬스장 mapping 시작 */}
       <div>
         <div
           className="d-flex flex-wrap justify-content-center"
@@ -88,10 +83,8 @@ const GymList = ({ gymList }: gymListProp) => {
                   router.push(`/gagym/detail/${item.id}`);
                 }}
               >
-                {/* 11/17 사진-희균님 데이터 받아오기 전까지 잠시 주석*/}
                 <Image
                   src={item.gymPhoto}
-                  // src={"/gymimg/1 (1).jpg"} //1118임시
                   alt={item.gymName}
                   layout="responsive"
                   objectFit="cover" //써야됨 or none
@@ -106,46 +99,8 @@ const GymList = ({ gymList }: gymListProp) => {
             </div>
           ))}
         </div>
-        {/* 페이지네이션 작업중 */}
-        {/* 페이지네이션 시작 */}
-        {/* <div className={styles.page}>
-          <button
-            className={styles.pagebtn}
-            onClick={() => router.push(`/?page=${GymList.page - 1}`)}
-          >
-            PREV
-          </button>
-          <button
-            className={styles.pagebtn}
-            onClick={() => router.push(`/?page=${this.props.page + 1}`)}
-          >
-            NEXT
-          </button>
-        </div> */}
-        {/* {!gymlist.isLast && (
-          <div className="d-flex justify-content-center mt-4">
-            <a
-              href="#!"
-              onClick={(e) => {
-                e.preventDefault(); // 기본 동작 방지
-                dispatch(
-                  requestFetchNextGymlist({
-                    page: gymlist.page + 1,
-                    size: gymlist.pageSize,
-                  })
-                );
-              }}
-              className="link-secondary fs-6 text-nowrap"
-            >
-              더보기
-            </a>
-          </div>
-        )} */}
-        {/* 페이지네이션 끝 */}
       </div>
-      {/* 헬스장 mapping 끝 */}
-      {/* </main> */}
-      {/* </Layout> */}
+
       <Footer />
     </div>
   );
