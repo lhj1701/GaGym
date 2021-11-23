@@ -19,11 +19,11 @@ const ReservationEdit = () => {
     state.reservation.data.find((item) => item.id === +id)
   );
 
-  useEffect(() => {
-    if (!reservation.isFetched) {
-      dispatch(requestFetchReservation());
-    }
-  }, [dispatch, reservation.isFetched]);
+  // useEffect(() => {
+  //   if (!reservation.isFetched) {
+  //     dispatch(requestFetchReservation());
+  //   }
+  // }, [dispatch, reservation.isFetched]);
 
   const isModifyCompleted = useSelector(
     (state: RootState) => state.reservation.isModifyCompleted
