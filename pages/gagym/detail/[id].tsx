@@ -120,12 +120,12 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           <h4 className={styles.h4}>강사 소개 및 이용권</h4>
           {/*강사소개+이용권*/}
           {trainers.map((item, index) => (
-            <div className="d-flex mt-5 align-items-center">
+            <div className={styles.divtrainer}>
               {/*(왼쪽)강사소개*/}
-              <div className="mx-5">
+              <div className={styles.imgtrainer}>
                 <img
-                  // src={gymDetail.trainerPhotoUrl}
-                  src={"/trainer/trainer (1).jpg"} //1118임시
+                  src={item.trainerPhotoUrl}
+                  // src={"/trainer/trainer (1).jpg"} //1118임시
                   className={styles.imgd}
                 />
                 <div className={styles.divsp}>
@@ -136,7 +136,7 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
                 </div>
               </div>
               {/*(오른쪽)이용권*/}
-              <div>
+              <div className={styles.divprice}>
                 <table className={styles.table1}>
                   <tr>
                     <th className={styles.th1}></th>

@@ -78,21 +78,22 @@
   border-width: 5px;
   /* border-radius: 18px; */
 }
+.divtrainer {
+  margin-top: 40px;
+  display: flex;
 
-.img {
-  /* margin-right: 100px; */
-  background-size: 100px 130px;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  border-style: solid;
-  border-color: #0100a4;
-  border-width: 2px;
+  /* "d-flex mt-5 align-items-center" */
 }
 
-.imgd {
-  /* margin-right: 100px; */
+.imgtrainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+}
+/* 
+.img {
   background-size: 100px 130px;
   background-repeat: no-repeat;
   border-radius: 50%;
@@ -101,8 +102,25 @@
   border-style: solid;
   border-color: #0100a4;
   border-width: 2px;
+} */
+
+.imgd {
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: auto;
+  height: 100px;
+  border-style: solid;
+  border-color: #0100a4;
+  border-width: 5px;
   display: flex;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+}
+
+.divprice {
+  display: flex;
+  align-items: center;
+  /* width: 500px; */
 }
 
 .btnrsv {
@@ -198,18 +216,14 @@
 }
 
 .table1 {
+  margin-left: 30px;
   border-collapse: separate;
   border-width: 1px;
   height: 140px;
   text-align: right;
-  /* border: solid grey; */
-  /* width: 100px;
-  height: 100px;
-  background-color: skyblue; */
   border-collapse: collapse;
   border-radius: 10px;
   border-style: hidden;
-  /* box-shadow: 0 0 0 1px #000; */
   box-shadow: 0px 1px 5px 1px rgb(8, 8, 70);
 }
 
