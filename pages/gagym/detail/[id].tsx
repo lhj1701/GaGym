@@ -196,7 +196,7 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           </div>
           {/* 부가서비스 */}
           <h4 className={styles.h4}>부가서비스</h4>
-          <div className="mb-2">{gymDetail.gymService} 외,</div>{" "}
+          <div className="mb-2">{gymDetail.gymService}</div>{" "}
           <div className={styles.divser1}>
             <div className={styles.divser11}>
               <img src={"/gymservice/inbody.png"} style={{ width: "100px" }} />

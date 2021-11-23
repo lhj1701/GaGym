@@ -10,6 +10,9 @@ import { GetServerSideProps } from "next";
 import axios from "axios";
 import styles from "../../../../styles/mypage.module.css";
 
+import AppBar from "../../../../components/appbar";
+import Footer from "../../../../components/footer";
+
 interface GymInfo {
   id: number;
   gymName: string;
@@ -79,7 +82,10 @@ const ReservationCreate = ({ gymInfo, trainers }: IndexProp) => {
   }
 
   return (
-    <Layout>
+    <div>
+      <AppBar />
+
+      {/* <Layout> */}
       <div style={{ width: "60vw" }} className="mx-auto mt-5">
         <div>
           <div className="d-flex justify-content-center" key={gymInfo.id}>
@@ -200,7 +206,9 @@ const ReservationCreate = ({ gymInfo, trainers }: IndexProp) => {
           </div>
         </div>
       </div>
-    </Layout>
+      {/* </Layout> */}
+      <Footer />
+    </div>
   );
 };
 
