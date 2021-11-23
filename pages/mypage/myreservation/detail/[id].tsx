@@ -19,11 +19,11 @@ const ReservationDetail = () => {
     state.reservation.data.find((item) => item.id === +id)
   );
 
-  useEffect(() => {
-    if (!reservation.isFetched) {
-      dispatch(requestFetchReservation());
-    }
-  }, [dispatch, reservation.isFetched]);
+  // useEffect(() => {
+  //   if (!reservation.isFetched) {
+  //     dispatch(requestFetchReservation());
+  //   }
+  // }, [dispatch, reservation.isFetched]);
 
   if (id) {
     // redux에 데이터가 없으면
@@ -68,13 +68,14 @@ const ReservationDetail = () => {
     </table>
     </div>
     <div className="d-flex justify-content-center">
-      <button className={styles.detailbtn}
+      <div className="mx-1"><button className={styles.detailbtn}
       onClick={() => {
         router.push(`/mypage/myreservation/edit/${id}`);
-      }}>수정</button>
-      <button className={styles.detailbtn} onClick={() => {
+      }}>수정</button></div>
+      <div className="mx-1"><button className={styles.detailbtn} onClick={() => {
                 handDeleteClick();
               }} >예약취소</button></div>
+              </div>
     </div>
     </Layout>
     </div>

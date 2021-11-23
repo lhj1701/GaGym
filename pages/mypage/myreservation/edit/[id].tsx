@@ -19,11 +19,11 @@ const ReservationEdit = () => {
     state.reservation.data.find((item) => item.id === +id)
   );
 
-  useEffect(() => {
-    if (!reservation.isFetched) {
-      dispatch(requestFetchReservation());
-    }
-  }, [dispatch, reservation.isFetched]);
+  // useEffect(() => {
+  //   if (!reservation.isFetched) {
+  //     dispatch(requestFetchReservation());
+  //   }
+  // }, [dispatch, reservation.isFetched]);
 
   const isModifyCompleted = useSelector(
     (state: RootState) => state.reservation.isModifyCompleted
@@ -71,15 +71,16 @@ const ReservationEdit = () => {
     </table>
     </div>
     <div className="d-flex justify-content-center">
+    <div className="mx-1">
       <button className={styles.detailbtn} onClick={() => {
                   router.push(`/mypage/mypage`);
-                }} >목록</button>
-                <button
+                }} >목록</button></div>
+                <div className="mx-1"><button
             className={styles.detailbtn}
             onClick={() => {handleSave();}}>
             <i className="bi bi-check" />
             저장
-          </button>
+          </button></div>
                 </div>
     </div>
     </Layout>

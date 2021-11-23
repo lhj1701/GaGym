@@ -26,9 +26,11 @@ const Mypage = () => {
   useEffect(() => {
     if (!reservation.isFetched || !diary.isFetched) {
       dispatch(requestFetchReservation());
-      dispatch(requestFetchDiary());
     }
-  }, [dispatch, reservation.isFetched, diary.isFetched]);
+    // if (!diary.isFetched) {
+    //   dispatch(requestFetchDiary());
+    // }
+  }, [dispatch, reservation.isFetched]);
 
   //----------------------11/15임시
   // useEffect(() => {
@@ -58,11 +60,11 @@ const Mypage = () => {
               <th>헬스장 명</th>
               <th>강사 명</th>
               <th>이용권</th>
-              {/* <th>상세보기</th> */}
             </thead>
             <tbody>
               {reservation.data.map((item, index) => (
                 <tr
+                  key={`reservation-item-${index}`}
                   onClick={() => {
                     router.push(`/mypage/myreservation/detail/${item.id}`);
                   }}
@@ -72,16 +74,6 @@ const Mypage = () => {
                   <td>{item.gymName}</td>
                   <td>{item.trainerName}</td>
                   <td>{item.boughtService}</td>
-                  {/* <td>
-                    <button
-                      type="button"
-                      // `btn btn-primary btn-sm mx-4`
-                      className={styles.detailbtn}
-                      // style={{ width: "80px", height: "30px" }}
-                    >
-                      상세보기
-                    </button>
-                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -119,7 +111,7 @@ const Mypage = () => {
             </thead>
             <tbody>
               {diary.data.map((item, index) => (
-                <tr>
+                <tr key={`diary-item-${index}`}>
                   <td className={styles.text}>
                     {getTimeString(item.diaryCreateTime)}
                   </td>

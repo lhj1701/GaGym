@@ -3,7 +3,6 @@ import React, { MutableRefObject, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { AppDispatch, RootState } from "../../../../provider";
 import Layout from "../../../../components/layout";
-import AppBar from "../../../../components/appbar";
 import { ReservationList } from "../../../../provider/modules/reservation";
 import { requestAddReservation } from "../../../../middleware/modules/reservation";
 import Image from "next/image";
@@ -18,7 +17,6 @@ interface GymInfo {
   gymCoNum : string;
   gymTime: string;
   gymPhoto: string;
-  // trainerInfo: TrainerInfo[]
 }
 
 interface Trainers {
@@ -80,20 +78,14 @@ const ReservationCreate = ({gymInfo, trainers}:IndexProp) => {
     router.push("/mypage/mypage");
   }
 
-  // const trainer = useSelector((state:RootState)=>state.trainer.data.find(item)=>item.gymCode == gymInfo.gymCoNum);
-
 return (
-<div >
-  <Layout>
-  {/* <AppBar/> */}
-    <div style={{ width: "60vw" }} className="mx-auto">
-    {/* <div className="d-flex justify-content-center float-end">
-      <h2>예약화면</h2></div> */}
+    <Layout>
+    <div style={{ width: "60vw" }} className="mx-auto mt-5">
       <div>
       <div className="d-flex justify-content-center" key={gymInfo.id}>
-          <div style={{ width: "30vw" }} className="my-4">
+          <div style={{ width: "30vw" }} >
             <Image
-              src={"/gymimg/1 (1).jpg"}
+              src={gymInfo.gymPhoto}
               alt={gymInfo.gymName}
               width={300}
               height={300} />
@@ -144,17 +136,12 @@ return (
                                       type="button">예약등록</button></td></tr>
             </tbody>
           </table>
-          {/* <button
-            className={styles.detailbtn}
-            onClick={() => {handleSaveClick ();}}
-            type="button">예약등록</button> */}
         </div>
       </div>
       </div>
         </div>
       </div>
   </Layout>
-  </div>
   );
 };
 
