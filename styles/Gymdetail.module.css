@@ -62,7 +62,10 @@
   white-space: pre-line;
   line-height: 1.6;
 }
-
+.h3 {
+  font-weight: 600;
+  font-size: 30px;
+}
 .h4 {
   margin-top: 100px;
   margin-bottom: 15px;
@@ -112,16 +115,14 @@
   color: white;
   background-color: #0100a4;
 
-  margin-top: 12px;
+  margin-top: 10px;
   padding: 5px 0px 5px 0px;
 }
 
 .btnrsv:hover {
   background-color: #fff;
   color: #0100a4;
-
   /* line-height: 2.5; */
-
   text-align: center;
 }
 

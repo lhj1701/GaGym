@@ -69,8 +69,7 @@ const DiaryList = () => {
                   <p className={styles.p}>PT일지 목록</p>
                   <button
                     type="button"
-                    className="btn btn-secondary btn-sm mx-3"
-                    style={{ width: "80px;", height: "30px" }}
+                    className={styles.btn}
                     onClick={() => {
                       router.push("/mypage/diary/diary-create");
                     }}
@@ -94,7 +93,7 @@ const DiaryList = () => {
                     handlePageSizeChanged(e);
                   }}
                 >
-                  {[3, 5, 10, 20, 300].map((size) => (
+                  {[3, 5, 10, 30].map((size) => (
                     <option value={size} selected={diary.pageSize === size}>
                       {size}
                     </option>
@@ -128,6 +127,7 @@ const DiaryList = () => {
                       }}
                     >
                       <b>{getTimeString(item.diaryCreateTime)}</b>
+                      {/* <b>11/12</b> */}
                     </td>
                     <td className={styles.text}>{item.memberName}</td>
                     <td className={styles.text}>{item.diaryMorning}</td>
@@ -144,7 +144,6 @@ const DiaryList = () => {
               </tbody>
             </table>
             {/* 페이지네이션 */}
-            <div className="d-flex justify-content-center mt-4"></div>
           </div>
         </main>
       </Layout>

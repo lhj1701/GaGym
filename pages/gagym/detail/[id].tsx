@@ -83,7 +83,7 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
             {/* 내용 */}
             <div style={{ width: "auto", height: "300px" }} className="px-3">
               {/* 헬스장명 */}
-              <h3>{gymDetail.gymName}</h3>
+              <h3 className={styles.h3}>{gymDetail.gymName}</h3>
               {/* 헬스장주소 */}
               <h6>{gymDetail.gymAddress}</h6>
               {/* 헬스장 전화번호 */}
@@ -93,7 +93,12 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
               <p className={styles.p}>
                 <b>[운영시간]</b>
                 <br />
-                {gymDetail.gymTime}
+                [평 일] 06:00 ~ 21:30
+                <br />
+                [토요일] 08:00 ~ 18:00
+                <br />
+                [휴관일] 공휴일
+                {/* {gymDetail.gymTime} */}
               </p>
               {/* 예약버튼 */}
               <div className="d-flex justify-content-center">
@@ -141,21 +146,22 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
                   </tr>
                   <tr>
                     <td className={styles.td1c}>P.T</td>
-                    <td className={styles.td1}>{item.pt1TimePrice}</td>
-                    <td className={styles.td1}>{item.pt10TimePrice}</td>
-                    <td className={styles.td1}>{item.pt30TimePrice}</td>
+                    <td className={styles.td1}>{item.pt1TimePrice}원</td>
+
+                    <td className={styles.td1}>{item.pt10TimePrice}원</td>
+                    <td className={styles.td1}>{item.pt30TimePrice}원</td>
                   </tr>
                   <tr>
                     <td className={styles.td1c}>필라테스</td>
-                    <td className={styles.td1}>{item.pilates1TimePrice}</td>
-                    <td className={styles.td1}>{item.pilates10TimePrice}</td>
-                    <td className={styles.td1}>{item.pilates30TimePrice}</td>
+                    <td className={styles.td1}>{item.pilates1TimePrice}원</td>
+                    <td className={styles.td1}>{item.pilates10TimePrice}원</td>
+                    <td className={styles.td1}>{item.pilates30TimePrice}원</td>
                   </tr>
                   <tr>
                     <td className={styles.td1c}>요가</td>
-                    <td className={styles.td1}>{item.yoga1TimePrice}</td>
-                    <td className={styles.td1}>{item.yoga10TimePrice}</td>
-                    <td className={styles.td1}>{item.yoga30TimePrice}</td>
+                    <td className={styles.td1}>{item.yoga1TimePrice}원</td>
+                    <td className={styles.td1}>{item.yoga10TimePrice}원</td>
+                    <td className={styles.td1}>{item.yoga30TimePrice}원</td>
                   </tr>
                 </table>
               </div>
@@ -167,38 +173,39 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           <div className="d-flex">
             <div className={styles.divspan}>
               <span className={styles.span1}>1일권</span>
-              <span className={styles.span2}>{gymDetail.gym1DayPrice}</span>
+              <span className={styles.span2}>{gymDetail.gym1DayPrice}원</span>
             </div>
             <div className={styles.divspan}>
               <span className={styles.span1}>3일권</span>
-              <span className={styles.span2}>{gymDetail.gym3DayPrice}</span>
+              <span className={styles.span2}>{gymDetail.gym3DayPrice}원</span>
             </div>
             <div className={styles.divspan}>
               <span className={styles.span1}>7일권</span>
-              <span className={styles.span2}>{gymDetail.gym7DayPrice}</span>
+              <span className={styles.span2}>{gymDetail.gym7DayPrice}원</span>
             </div>
           </div>
           <div className="d-flex">
             <div className={styles.divspan}>
               <span className={styles.span3}>1개월</span>
-              <span className={styles.span4}>{gymDetail.gymMonthPrice}</span>
+              <span className={styles.span4}>{gymDetail.gymMonthPrice}원</span>
             </div>
             <div className={styles.divspan}>
               <span className={styles.span3}>3개월</span>
-              <span className={styles.span4}>{gymDetail.gym3MonthPrice}</span>
+              <span className={styles.span4}>{gymDetail.gym3MonthPrice}원</span>
             </div>
             <div className={styles.divspan}>
               <span className={styles.span3}>6개월</span>
-              <span className={styles.span4}>{gymDetail.gym6MonthPrice}</span>
+              <span className={styles.span4}>{gymDetail.gym6MonthPrice}원</span>
             </div>
             <div className={styles.divspan}>
               <span className={styles.span3}>12개월</span>
-              <span className={styles.span4}>{gymDetail.gymYearPrice}</span>
+              <span className={styles.span4}>{gymDetail.gymYearPrice}원</span>
             </div>
           </div>
           {/* 부가서비스 */}
           <h4 className={styles.h4}>부가서비스</h4>
-          <div className="mb-5">{gymDetail.gymService}</div> {/*추후없앨예정*/}
+          <div className="mb-2">{gymDetail.gymService} 외,</div>{" "}
+          {/*추후없앨예정*/}
           <div className={styles.divser1}>
             <div className={styles.divser11}>
               <img

@@ -1,0 +1,104 @@
+.tr {
+}
+.th {
+  padding: 10px 60px 20px 20px;
+  text-align: end;
+  /* border-bottom: solid #0000a4; */
+}
+.td {
+  padding: 10px 20px 20px 0;
+  text-align: start;
+}
+.input {
+  border-top: white;
+  border-left: white;
+  border-right: white;
+  border-bottom: solid grey 2px;
+}
+.p {
+  font-size: 22px;
+  align-items: center;
+}
+
+.h2 {
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  border-right: solid rgb(23, 23, 105) 3px;
+  border-left: solid rgb(23, 23, 105) 3px;
+}
+/* "text-center my-4 mb-5" */
+
+/* .div1 {
+  display: flex;
+} */
+.div2 {
+  display: flex;
+  margin: auto;
+  margin-top: 30px;
+  width: 40vw;
+  flex-direction: column;
+  /* 임시추가 */
+  /* border: double #0000a4 10px; */
+  padding: 10px 30px 20px 30px;
+}
+.div3 {
+  display: flex;
+  justify-content: center;
+}
+
+.table {
+  /* border: solid #0000a4 3px; */
+  border-radius: 10%;
+}
+.btndiv {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.btn1 {
+  background-color: rgb(23, 23, 105);
+  border-color: black;
+  color: white;
+  font-size: 15px;
+}
+
+.btn2 {
+  background-color: rgb(23, 23, 105);
+  border-color: black;
+  color: white;
+  font-size: 15px;
+}
+
+/* -----11/22 */
+/* .text {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.textd {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration-color: rgb(3, 48, 129);
+}
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.div {
+  flex: 1;
+  display: flex;
+  width: 1000px;
+  border-collapse: collapse;
+  flex-direction: column;
+  align-items: stretch;
+} */

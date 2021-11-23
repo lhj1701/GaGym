@@ -14,8 +14,11 @@ import {
 } from "../../../../middleware/modules/diary";
 
 import AppBar from "../../../../components/appbar";
+import Footer from "../../../../components/footer";
 
 import getTimeString from "../../../../provider/modules/getTimeString";
+
+import styles from "../../../../styles/Diarydetail.module.css";
 
 const DiaryDetail = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -58,88 +61,94 @@ const DiaryDetail = () => {
   };
 
   return (
-    <div>
+    <div className={styles.div1}>
       <AppBar />
-      <div style={{ width: "40vw" }} className="mx-auto">
-        <h2 className="text-center my-4 mb-5">일지 상세</h2>
+      <div className={styles.div2}>
+        {/* <h2 className="text-center my-4 mb-5">일지 상세</h2> */}
+        <div className={styles.div3}>
+          <h2 className={styles.h2}>일지 상세</h2>
+        </div>
         <form className="mx-auto">
           {diaryItem && (
-            <table className="table table-borderless">
+            // <table className="table table-borderless">
+            <table className={styles.table}>
               <tbody>
-                <tr>
-                  <th>날짜</th>
-                  <td>{getTimeString(diaryItem.diaryCreateTime)}</td>
-                </tr>
-                <tr>
-                  <th>회원명</th>
-                  <td>{diaryItem.memberName}</td>
-                </tr>
-                <tr>
-                  <th>아침식단</th>
-                  <td>{diaryItem.diaryMorning}</td>
-                </tr>
-                <tr>
-                  <th>점심식단</th>
-                  <td>{diaryItem.diaryLunch}</td>
-                </tr>
-                <tr>
-                  <th>저녁식단</th>
-                  <td>{diaryItem.diaryDinner}</td>
-                </tr>
-                <tr>
-                  <th>운동내역</th>
-                  <td>{diaryItem.diaryRoutine}</td>
-                </tr>
-                <tr>
-                  <th>문의사항</th>
-                  <td>{diaryItem.diaryRequest}</td>
-                </tr>
-                <tr>
-                  <th>담당 강사</th>
-                  <td>{diaryItem.trainerName}</td>
-                </tr>
-                <tr>
-                  <th>강사 피드백</th>
-                  <td style={{ color: "red" }}>
-                    (diaryItem.trainerFeedback) 받기
+                <tr className={styles.tr}>
+                  <th className={styles.th}>날짜</th>
+                  <td className={styles.td}>
+                    {getTimeString(diaryItem.diaryCreateTime)}
                   </td>
+                </tr>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>회원명</th>
+                  <td className={styles.td}>{diaryItem.memberName}</td>
+                </tr>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>아침식단</th>
+                  <td className={styles.td}>{diaryItem.diaryMorning}</td>
+                </tr>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>점심식단</th>
+                  <td className={styles.td}>{diaryItem.diaryLunch}</td>
+                </tr>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>저녁식단</th>
+                  <td className={styles.td}>{diaryItem.diaryDinner}</td>
+                </tr>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>운동내역</th>
+                  <td className={styles.td}>{diaryItem.diaryRoutine}</td>
+                </tr>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>문의사항</th>
+                  <td className={styles.td}>{diaryItem.diaryRequest}</td>
+                </tr>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>담당 강사</th>
+                  <td className={styles.td}>{diaryItem.trainerName}</td>
+                </tr>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>강사 피드백</th>
+                  <td className={styles.td}>{diaryItem.trainerFeedback}</td>
                 </tr>
               </tbody>
             </table>
           )}
         </form>
 
-        <div className="mt-3">
+        <div className={styles.btndiv}>
           <button
-            className="btn btn-light border border-2 btn-sm p-2 float-start"
+            // className="btn btn-light border border-2 btn-sm p-2 float-start"
+            className={styles.btn1}
             onClick={() => {
               router.push("/mypage/diary/diary-list");
             }}
           >
-            <i className="bi bi-list me-1"></i>
             목록
           </button>
-          <button
-            className="btn btn-dark btn-sm p-2 float-end"
-            onClick={() => {
-              handleAddClick();
-            }}
-          >
-            <i className="bi bi-trash me-1"></i>
-            삭제
-          </button>
-
-          <button
-            className="btn btn-warning btn-sm p-2 float-end me-1"
-            onClick={() => {
-              router.push(`/mypage/diary/edit/${id}`);
-            }}
-          >
-            <i className="bi bi-pencil-square me-1"></i>
-            <b>수정</b>
-          </button>
+          <div>
+            <button
+              // className="btn btn-warning btn-sm p-2 float-end me-1"
+              className={styles.btn2}
+              onClick={() => {
+                router.push(`/mypage/diary/edit/${id}`);
+              }}
+            >
+              수정
+            </button>
+            <button
+              // className="btn btn-dark btn-sm p-2 float-end"
+              className={styles.btn3}
+              onClick={() => {
+                handleAddClick();
+              }}
+            >
+              삭제
+            </button>
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

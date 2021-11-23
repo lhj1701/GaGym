@@ -2,7 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import reservationReduer from "./modules/reservation"
 import progressReducer from "./modules/progress";
 import alertReducer from "./modules/alert";
-import diaryReduer from "./modules/diary";
+import diaryReducer from "./modules/diary";
+import gymlistReducer from "./modules/gymlist";
+
 
 // 최상위 사가
 import rootSaga from "../middleware";
@@ -20,7 +22,8 @@ export const store = configureStore({
   // 각 state별로 처리할 reducer 목록
   reducer: {
     // state이름: reducer이름
-    diary: diaryReduer,
+    diary: diaryReducer,
+    gymlist:gymlistReducer,
     progress: progressReducer,
     alert: alertReducer,
     reservation: reservationReduer

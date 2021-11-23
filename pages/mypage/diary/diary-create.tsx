@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../../components/appbar";
+import Footer from "../../../components/footer";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../provider";
@@ -14,6 +15,7 @@ import { DiaryItem } from "../../../provider/modules/diary";
 import { requestAddDiary } from "../../../middleware/modules/diary";
 
 import getTimeString from "../../../provider/modules/getTimeString";
+import styles from "../../../styles/Diarycreate.module.css";
 
 const DiaryCreate = () => {
   const memberName = useRef() as MutableRefObject<HTMLInputElement>;
@@ -61,97 +63,100 @@ const DiaryCreate = () => {
   const dateTime = new Date();
 
   return (
-    <div>
+    <div className={styles.div1}>
       <AppBar />
-      <div style={{ width: "40vw" }} className="mx-auto">
-        <h2 className="text-center my-4 mb-5">일지 작성</h2>
+      <div className={styles.div2}>
+        <div className={styles.div3}>
+          <h2 className={styles.h2}>일지 작성</h2>
+        </div>
         <form className="mx-auto">
-          <table className="table table-borderless">
+          <table className={styles.table}>
             <tbody>
-              <tr>
-                <th>날짜</th>
-                <td>??</td>
-              </tr>
-              <tr>
-                <th>회원명</th>
-                <td>
+              {/* <tr className={styles.tr}>
+                <th className={styles.th}>날짜</th>
+                <td className={styles.td}>??</td>
+              </tr> */}
+              <tr className={styles.tr}>
+                <th className={styles.th}>회원명</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="회원명"
+                    // className="form-control"
+                    className={styles.input}
+                    // placeholder="회원명을 작성 해 주세요"
                     ref={memberName}
                   />
                 </td>
               </tr>
-              <tr>
-                <th>아침식단</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>아침식단</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="아침식단"
+                    className={styles.input}
+                    // placeholder="아침식단을 작성 해 주세요"
                     ref={diaryMorning}
                   />
                 </td>
               </tr>
-              <tr>
-                <th>점심식단</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>점심식단</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="점심식단"
+                    className={styles.input}
+                    // placeholder="점심식단을 작성 해 주세요"
                     ref={diaryLunch}
                   />
                 </td>
               </tr>
-              <tr>
-                <th>저녁식단</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>저녁식단</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="저녁식단"
+                    className={styles.input}
+                    // placeholder="저녁식단을 작성 해 주세요"
                     ref={diaryDinner}
                   />
                 </td>
               </tr>
-              <tr>
-                <th>운동내역</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>운동내역</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="운동내역"
+                    className={styles.input}
+                    // placeholder="운동내역을 작성 해 주세요"
                     ref={diaryRoutine}
                   />
                 </td>
               </tr>
-              <tr>
-                <th>문의사항</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>문의사항</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="문의사항"
+                    className={styles.input}
+                    // placeholder="문의사항을 작성 해 주세요"
                     ref={diaryRequest}
                   />
                 </td>
               </tr>
-              <tr>
-                <th>담당강사</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>담당강사</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="담당강사"
+                    className={styles.input}
+                    // placeholder="담당강사를 작성 해 주세요"
                     ref={trainerName}
                   />
                 </td>
@@ -160,27 +165,26 @@ const DiaryCreate = () => {
           </table>
         </form>
 
-        <div className="mt-3">
+        <div className={styles.btndiv}>
           <button
-            className="btn btn-light border border-2 btn-sm p-2 float-start"
+            className={styles.btn1}
             onClick={() => {
               router.push("/mypage/diary/diary-list");
             }}
           >
-            <i className="bi bi-list me-1"></i>
             목록
           </button>
           <button
-            className="btn btn-dark float-end btn-sm p-2"
+            className={styles.btn2}
             onClick={() => {
               handleSaveClick();
             }}
           >
-            <i className="bi bi-save me-1"></i>
             저장
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -14,6 +14,7 @@ const Select = () => {
         <div className={styles.select}>
           <select
             className="form-select mt-5"
+            // size={3}
             aria-label="Default select example"
             style={{ width: "80%" }}
           >

@@ -1,7 +1,7 @@
 import React from "react";
 
 import Head from "next/head";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Login.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeLogo from "../../components/homelogo";
@@ -25,23 +25,24 @@ const Login = () => {
           회원
         </button>
         <form className="mt-5 row-vh d-flex flex-column align-items-end justify-content-space-evenly">
-          <div className="row mb-3">
-            <label className="col-sm-3 col-form-label mr-3">회원명</label>
-            <div className="col-sm-6">
+          <div>
+            <div className={styles.divm}>
+              <label className={styles.label}>회원명</label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
-                id="inputEmail3"
+                style={{ width: "150px" }}
               ></input>
             </div>
           </div>
-          <div className="row mb-3">
-            <label className="col-sm-5 col-form-label">전화번호 끝 4자리</label>
-            <div className="col-sm-5">
+          <div className={styles.divm}>
+            <label className={styles.label}>전화번호</label>
+
+            <div>
               <input
                 type="password"
                 className="form-control"
-                id="inputPassword3"
+                style={{ width: "150px" }}
               ></input>
             </div>
           </div>
@@ -49,7 +50,7 @@ const Login = () => {
 
         <button
           type="button"
-          className="btn btn-outline-dark btn-sm mt-2"
+          className="btn btn-outline-dark btn-sm mt-5"
           onClick={() => {
             router.push(`/mypage/mypage`);
           }}

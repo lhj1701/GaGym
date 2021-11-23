@@ -23,7 +23,7 @@ export default function Layout({ children }: LayoutProps) {
       </header>
       <main className={styles.main}>
         {children}
-        <Progress />
+        {/* <Progress /> */}
         {/* <AlertStack /> */}
         <Footer />
       </main>

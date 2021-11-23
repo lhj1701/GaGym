@@ -1,4 +1,6 @@
 .div {
+  border-radius: 2%;
+  overflow: hidden;
   margin: 20px 20px 10px 20px;
   flex-direction: column;
 
@@ -59,6 +61,21 @@
 .svg1111:hover {
   color: white;
 }
+
+/* 1123 페이징처리시 필요 */
+.page {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.pagebtn {
+  margin: 0 20px 0 20px;
+  background-color: #0004ae;
+  color: white;
+  border-radius: 10%;
+}
+
 /*
 .footer {
   display: flex;

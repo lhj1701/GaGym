@@ -11,6 +11,7 @@ import { AppDispatch, RootState } from "../../../../provider";
 import { requestModifyDiary } from "../../../../middleware/modules/diary";
 
 import AppBar from "../../../../components/appbar";
+import Footer from "../../../../components/footer";
 
 import getTimeString from "../../../../provider/modules/getTimeString";
 
@@ -66,7 +67,6 @@ const DiaryEdit = () => {
   return (
     <div>
       <AppBar />
-
       <div style={{ width: "40vw" }} className="mx-auto">
         <h2 className="text-center my-4 mb-5">일지 수정</h2>
         <form className="mx-auto">
@@ -168,13 +168,14 @@ const DiaryEdit = () => {
               </tr>
               <tr>
                 <th>강사 피드백</th>
-                <td>(DiaryItem?.trainerFeedback) 받기</td>
+                {/* <td>(DiaryItem?.trainerFeedback) 받기</td> */}
+                <td>{DiaryItem?.trainerFeedback}</td>
               </tr>
             </tbody>
           </table>
         </form>
 
-        <div className="mt-3">
+        <div className="mt-5">
           <button
             className="btn btn-light border border-2 btn-sm p-2  float-start"
             onClick={() => {
@@ -195,6 +196,7 @@ const DiaryEdit = () => {
           </button>
         </div>
       </div>
+      <Footer />t
     </div>
   );
 };

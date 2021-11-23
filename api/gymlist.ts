@@ -1,7 +1,8 @@
 import axios from "axios";
+//GymlistItemRequest, GymlistItemResponse, GymlistPagingResponse,
 
-export interface GymPagingResponse {
-  content: GymItemResponse[];
+export interface GymlistPagingResponse {
+  content: GymlistItemResponse[];
   last: boolean;
   totalElements: number;
   totalPages: number;
@@ -9,7 +10,7 @@ export interface GymPagingResponse {
   number: number;
 }
 
-export interface GymItemResponse {
+export interface GymlistItemResponse {
 id: number;
 gymName:string;
 gymCoNum : string;
@@ -31,7 +32,7 @@ gym6MonthPrice : string;
 gymYearPrice : string;
 
 }
-export interface GymItemRequest {
+export interface GymlistItemRequest {
 gymName:string;
 gymCoNum : string;
 gymLocateSi : string;
@@ -52,40 +53,14 @@ gym6MonthPrice : string;
 gymYearPrice : string;
 }
 
-const gymApi = {
-  //11/16 추가
-  get: (id: number) =>
-    axios.get<GymItemResponse[]>(`http://localhost:8080/gym`),
-  //11/16 추가끝
-  //11/17 추가
-    // get: (id: number) =>
-    // axios.get<GymItemResponse[]>(`http://localhost:8080/gym`),
-  //11/17 추가끝
-
+const gymlistApi = {
   fetch: () =>
-  axios.get<GymItemResponse[]>(`http://localhost:8080/gym`),
+  axios.get<GymlistItemResponse[]>(`http://localhost:8080/gym`),
 
   fetchPaging: (page: number, size: number) =>
-    axios.get<GymPagingResponse>(
+    axios.get<GymlistPagingResponse>(
       `http://localhost:8080/gym/paging?page=${page}&size=${size}`
     ),
-
-  add: (gymItem: GymItemRequest) =>
-    axios.post<GymItemResponse>(
-      `http://localhost:8080/gym`,
-      // `http://localhost:8080/gym`,
-      gymItem
-    ),
-
-  remove: (id: number) =>
-    axios.delete<boolean>(`http://localhost:8080/gym/${id}`),
-
-
-  modify: (id: number, gymItem: GymItemRequest) =>
-    axios.put<GymItemResponse>(
-      `http://localhost:8080/gym/${id}`,
-      gymItem
-    )
 };
 
-export default gymApi;
+export default gymlistApi;
