@@ -3,7 +3,6 @@ import reservationReduer from "./modules/reservation"
 import progressReducer from "./modules/progress";
 import alertReducer from "./modules/alert";
 import diaryReducer from "./modules/diary";
-import gymlistReducer from "./modules/gymlist";
 
 
 // 최상위 사가
@@ -23,7 +22,6 @@ export const store = configureStore({
   reducer: {
     // state이름: reducer이름
     diary: diaryReducer,
-    gymlist:gymlistReducer,
     progress: progressReducer,
     alert: alertReducer,
     reservation: reservationReduer

@@ -8,15 +8,6 @@ import Layout from "../../components/layout";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
-// 1123 페이징처리
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../provider";
-import { useEffect } from "react";
-import {
-  requestFetchPagingGymlist,
-  requestFetchNextGymlist,
-} from "../../middleware/modules/gymlist";
-import Pagination from "../../components/pagination";
 
 interface GymDetail {
   albumId: number;
@@ -47,35 +38,7 @@ interface gymListProp {
 }
 
 const GymList = ({ gymList }: gymListProp) => {
-  const gymlist = useSelector((state: RootState) => state.gymlist);
-
   const router = useRouter();
-  // 1123 페이징 추가
-  const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    if (!gymlist.isFetched) {
-      const gymlistPageSize = localStorage.getItem("gymlist_page_size");
-
-      dispatch(
-        requestFetchPagingGymlist({
-          page: 0,
-          size: gymlistPageSize ? +gymlistPageSize : gymlist.pageSize,
-        })
-      );
-    }
-  }, [dispatch, gymlist.isFetched, gymlist.pageSize]);
-
-  const handlePageChanged = (page: number) => {
-    // console.log("--page: " + page);
-    dispatch(
-      requestFetchPagingGymlist({
-        page,
-        size: gymlist.pageSize,
-      })
-    );
-  };
-  // 끝
 
   return (
     <div>
@@ -159,7 +122,7 @@ const GymList = ({ gymList }: gymListProp) => {
             NEXT
           </button>
         </div> */}
-        {!gymlist.isLast && (
+        {/* {!gymlist.isLast && (
           <div className="d-flex justify-content-center mt-4">
             <a
               href="#!"
@@ -177,7 +140,7 @@ const GymList = ({ gymList }: gymListProp) => {
               더보기
             </a>
           </div>
-        )}
+        )} */}
         {/* 페이지네이션 끝 */}
       </div>
       {/* 헬스장 mapping 끝 */}
