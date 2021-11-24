@@ -88,7 +88,6 @@ const diarySlice = createSlice({
     },
    initialDiaryItem: (state, action: PayloadAction<DiaryItem>) => {
       const diary = action.payload;
-      // 백엔드에서 받아온 데이터
       state.data = [{ ... diary }];
     },
     initialDiary: (state, action: PayloadAction<DiaryItem[]>) => {

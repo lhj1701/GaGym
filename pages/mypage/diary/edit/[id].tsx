@@ -168,7 +168,6 @@ const DiaryEdit = () => {
               </tr>
               <tr>
                 <th>강사 피드백</th>
-                {/* <td>(DiaryItem?.trainerFeedback) 받기</td> */}
                 <td>{DiaryItem?.trainerFeedback}</td>
               </tr>
             </tbody>

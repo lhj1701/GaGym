@@ -67,10 +67,8 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           {/* 1. 헬스장 사진 + 내용 + 예약버튼 */}
           <div className="d-flex mt-5">
             <div style={{ cursor: "pointer" }} className={styles.src}>
-              {/* 11/17 사진-희균님 데이터 받아오기 전까지 잠시 주석*/}
               <Image
                 src={gymDetail.gymPhoto}
-                // src={"/gymimg/1 (1).jpg"} //1118임시
                 className="card-img-top"
                 alt={gymDetail.gymName}
                 layout="responsive"
@@ -88,7 +86,6 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
               <h6>{gymDetail.gymAddress}</h6>
               {/* 헬스장 전화번호 */}
               <h6>{gymDetail.gymPhoneNum}</h6>
-              {/* <h6>{gymDetail.gymCoNum}//임시</h6> */}
               {/* 헬스장 운영시간 */}
               <p className={styles.p}>
                 <b>[운영시간]</b>
@@ -120,14 +117,10 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           <h4 className={styles.h4}>강사 소개 및 이용권</h4>
           {/*강사소개+이용권*/}
           {trainers.map((item, index) => (
-            <div className="d-flex mt-5 align-items-center">
+            <div className={styles.divtrainer} key={index}>
               {/*(왼쪽)강사소개*/}
-              <div className="mx-5">
-                <img
-                  // src={gymDetail.trainerPhotoUrl}
-                  src={"/trainer/trainer (1).jpg"} //1118임시
-                  className={styles.imgd}
-                />
+              <div className={styles.imgtrainer}>
+                <img src={item.trainerPhotoUrl} className={styles.imgd} />
                 <div className={styles.divsp}>
                   <span>{item.trainerName}</span>
                   <br />
@@ -136,7 +129,7 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
                 </div>
               </div>
               {/*(오른쪽)이용권*/}
-              <div>
+              <div className={styles.divprice}>
                 <table className={styles.table1}>
                   <tr>
                     <th className={styles.th1}></th>
@@ -169,7 +162,6 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           ))}
           {/* 헬스장 이용권 */}
           <h4 className={styles.h4}>헬스장 이용권</h4>
-          {/*------임시*/}
           <div className="d-flex">
             <div className={styles.divspan}>
               <span className={styles.span1}>1일권</span>
@@ -204,33 +196,18 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
           </div>
           {/* 부가서비스 */}
           <h4 className={styles.h4}>부가서비스</h4>
-          <div className="mb-2">{gymDetail.gymService} 외,</div>{" "}
-          {/*추후없앨예정*/}
+          <div className="mb-2">{gymDetail.gymService}</div>{" "}
           <div className={styles.divser1}>
             <div className={styles.divser11}>
-              <img
-                src={"/gymservice/inbody.png"}
-                style={{ width: "100px" }}
-                // className={styles.imgd}
-              />
+              <img src={"/gymservice/inbody.png"} style={{ width: "100px" }} />
               <span className={styles.divser111}>인바디 측정</span>
             </div>
             <div className={styles.divser11}>
-              <img
-                src={"/gymservice/locker.png"}
-                style={{ width: "100px" }}
-
-                // className={styles.imgd}
-              />
+              <img src={"/gymservice/locker.png"} style={{ width: "100px" }} />
               <span className={styles.divser111}>라커룸</span>
             </div>
             <div className={styles.divser11}>
-              <img
-                src={"/gymservice/shower.png"}
-                style={{ width: "100px" }}
-
-                // className={styles.imgd}
-              />
+              <img src={"/gymservice/shower.png"} style={{ width: "100px" }} />
               <span className={styles.divser111}>샤워시설</span>
             </div>
             <div className={styles.divser11}>
@@ -256,121 +233,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   //axios처리 {gymDetail}
   const res = await axios.get<GymDetails[]>(
-    `http://localhost:8080/gagym/detail/{id}`
+    `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gagym/detail/{id}`
   );
 
   const gymDetail = res.data.find((item) => item.id === +id);
 
   //axios처리 {trainer}
   const trainer = await axios.get<Trainers[]>(
-    `http://localhost:8080/gagym/detail/trainer`
+    `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gagym/detail/trainer`
   );
 
   const trainers = trainer.data.filter(
     (item) => item.gymCode == gymDetail.gymCoNum
   );
-
-  // 11/17 더미데이터 주석처리
-  // const gymDetail = [
-  //   {
-  //     //      albumId: 1,
-  //     id: 39,
-  //     gymName: "강남 화이트짐",
-  //     gymPhoto: "/gymimg/1 (1).jpg",
-  //     gymAddress: "서울특별시 강남구 도곡로3길 19, 서희스타힐스 지하1층",
-  //     gymCoNum: "110-203-10230",
-
-  //     gymTime:
-  //       "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
-  //     trainerName: "박00",
-  //     trainerPhotoUrl: "/trainer/trainer (1).jpg",
-  //     trainerIntro: "강사 박00 입니다.",
-  //     gym1DayPrice: "20000원",
-  //     gym3DayPrice: "30000원",
-  //     gym7DayPrice: "50000원",
-  //     gymMonthPrice: "20000원",
-  //     gym3MonthPrice: "200000원",
-  //     gym6MonthPrice: "400000원",
-  //     gymYearPrice: "800000원",
-  //   },
-  //   {
-  //     //      albumId: 1,
-  //     id: 2,
-  //     gymName: "논현 REGENT 프라이빗짐",
-  //     gymPhoto: "/gymimg/2 (1).jpg",
-  //     gymAddress:
-  //       "서울특별시 강남구 논현로119길 23, 준미빌딩 B1 리젠트프라이빗짐",
-  //     gymCoNum: "110-203-10232",
-
-  //     gymTime:
-  //       "[평 일] 06:00 ~ 21:30 \n [토요일] 08:00 ~ 18:00 \n [휴관일] 공휴일",
-  //     trainerName: "박00",
-  //     trainerPhotoUrl: "/trainer/trainer (1).jpg",
-  //     trainerIntro: "강사 박00 입니다.",
-  //     gym1DayPrice: "20000원",
-  //     gym3DayPrice: "30000원",
-  //     gym7DayPrice: "50000원",
-  //     gymMonthPrice: "20000원",
-  //     gym3MonthPrice: "200000원",
-  //     gym6MonthPrice: "400000원",
-  //     gymYearPrice: "800000원",
-  //   },
-  // ];
-
-  // const trainers = [
-  //   {
-  //     //      albumId: 1,
-  //     id: 39,
-  //     gymCode: "110-203-102300",
-  //     trainerName: "박00",
-  //     trainerPhotoUrl: "/trainer/trainer (1).jpg",
-  //     trainerIntro: "강사 박00 입니다.",
-  //     trainerSpecial: "근력운동",
-  //     pt1TimePrice: "10,000원",
-  //     pt10TimePrice: "20,000원",
-  //     pt30TimePrice: "30,000원",
-  //     pilates1TimePrice: "10,000원",
-  //     pilates10TimePrice: "10,000원",
-  //     pilates30TimePrice: "10,000원",
-  //     yoga1TimePrice: "10,000원",
-  //     yoga10TimePrice: "10,000원",
-  //     yoga30TimePrice: "10,000원",
-  //     gym1DayPrice: "10,000원",
-  //     gym3DayPrice: "10,000원",
-  //     gym7DayPrice: "10,000원",
-  //     gymMonthPrice: "10,000원",
-  //     gym3MonthPrice: "10,000원",
-  //     gym6MonthPrice: "10,000원",
-  //     gymYearPrice: "10,000원",
-  //   },
-  //   {
-  //     //      albumId: 1,
-  //     id: 38,
-  //     gymCode: "110-203-102300",
-  //     trainerName: "윤00",
-  //     trainerPhotoUrl: "/trainer/trainer (2).jpg",
-  //     trainerIntro: "강사 윤00 입니다.",
-  //     trainerSpecial: "하체운동",
-  //     pt1TimePrice: "10,000원",
-  //     pt10TimePrice: "20,000원",
-  //     pt30TimePrice: "30,000원",
-  //     pilates1TimePrice: "10,000원",
-  //     pilates10TimePrice: "10,000원",
-  //     pilates30TimePrice: "10,000원",
-  //     yoga1TimePrice: "10,000원",
-  //     yoga10TimePrice: "10,000원",
-  //     yoga30TimePrice: "10,000원",
-  //     gym1DayPrice: "10,000원",
-  //     gym3DayPrice: "10,000원",
-  //     gym7DayPrice: "10,000원",
-  //     gymMonthPrice: "10,000원",
-  //     gym3MonthPrice: "10,000원",
-  //     gym6MonthPrice: "10,000원",
-  //     gymYearPrice: "10,000원",
-  //   },
-  // ];
-
-  // const gymDetail = gymDetail.find((item) => item.id === +id);
 
   return { props: { gymDetail, trainers } };
 };

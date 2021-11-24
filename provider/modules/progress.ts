@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// redux-toolkit에는 immer가 내장되어있기 때문에
-// state 타입은 객체 타입만 가능함
-// 원시타입(string, number, boolean) 안 됨
 interface ProgressState {
   status: boolean;
 }

@@ -53,37 +53,31 @@ gymYearPrice : string;
 }
 
 const gymApi = {
-  //11/16 추가
   get: (id: number) =>
-    axios.get<GymItemResponse[]>(`http://localhost:8080/gym`),
-  //11/16 추가끝
-  //11/17 추가
-    // get: (id: number) =>
-    // axios.get<GymItemResponse[]>(`http://localhost:8080/gym`),
-  //11/17 추가끝
+    axios.get<GymItemResponse[]>(`http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym`),
+
 
   fetch: () =>
-  axios.get<GymItemResponse[]>(`http://localhost:8080/gym`),
+  axios.get<GymItemResponse[]>(`http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym`),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<GymPagingResponse>(
-      `http://localhost:8080/gym/paging?page=${page}&size=${size}`
+      `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym/paging?page=${page}&size=${size}`
     ),
 
   add: (gymItem: GymItemRequest) =>
     axios.post<GymItemResponse>(
-      `http://localhost:8080/gym`,
-      // `http://localhost:8080/gym`,
+      `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym`,
       gymItem
     ),
 
   remove: (id: number) =>
-    axios.delete<boolean>(`http://localhost:8080/gym/${id}`),
+    axios.delete<boolean>(`http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym/${id}`),
 
 
   modify: (id: number, gymItem: GymItemRequest) =>
     axios.put<GymItemResponse>(
-      `http://localhost:8080/gym/${id}`,
+      `http://ec2-3-36-96-181.ap-northeast-2.compute.amazonaws.com:8080/gym/${id}`,
       gymItem
     )
 };

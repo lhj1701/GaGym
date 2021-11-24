@@ -1,2 +1,0 @@
-ssh -i "c:\git_GaGym\ga_gym\gagym.pem" ubuntu@52.79.254.140 "pkill -f node"
-ssh -i "C:\git_GaGym\ga_gym\gagym.pem" ubuntu@52.79.254.140 "cd /home/ubuntu/git_GaGym/ga_gym; git pull; npm run build; nohup npm start 1>/dev/null 2>&1 &"

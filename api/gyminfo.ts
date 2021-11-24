@@ -17,46 +17,11 @@ gymTime : string;
 gymPhoto:string;
 }
 
-// export interface TrainerInfoResponse {
-// id: number;
-// gymCode : string;
-// trainerName : string;
-// }
-
-// export interface TrainerInfoRequest {
-// gymCode : string;
-// trainerName : string;
-// }
-  
-
-
 const gymInfoApi = {
   get: (id: number) =>
-    axios.get<GymInfoResponse[]>(`http://localhost:8080/gyminfo/${id}`),
+    axios.get<GymInfoResponse[]>(`http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo/${id}`),
   fetch: () =>
-  axios.get<GymInfoResponse[]>(`http://localhost:8080/gyminfo`),
-
-  // getTrainer: (id: number) =>
-  // axios.get<TrainerInfoResponse[]>(`http://localhost:8080/trainerinfo/${id}`),
-  // fetchTrainer: () =>
-  // axios.get<TrainerInfoResponse[]>(`http://localhost:8080/trainerinfo`),
-
-
-  // add: (gymItem: GymInfoRequest) =>
-  //   axios.post<GymInfoResponse>(
-  //     `http://localhost:8080/gyminfo`,
-  //     gymItem
-  //   ),
-
-  // remove: (id: number) =>
-  //   axios.delete<boolean>(`http://localhost:8080/gyminfo/${id}`),
-
-
-  // modify: (id: number, gymItem: GymInfoRequest) =>
-  //   axios.put<GymInfoResponse>(
-  //     `http://localhost:8080/gyminfo/${id}`,
-  //     gymItem
-  //   )
+  axios.get<GymInfoResponse[]>(`http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo`),
 };
 
 export default gymInfoApi;

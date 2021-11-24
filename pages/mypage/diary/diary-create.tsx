@@ -72,17 +72,12 @@ const DiaryCreate = () => {
         <form className="mx-auto">
           <table className={styles.table}>
             <tbody>
-              {/* <tr className={styles.tr}>
-                <th className={styles.th}>날짜</th>
-                <td className={styles.td}>??</td>
-              </tr> */}
               <tr className={styles.tr}>
                 <th className={styles.th}>회원명</th>
                 <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
-                    // className="form-control"
                     className={styles.input}
                     // placeholder="회원명을 작성 해 주세요"
                     ref={memberName}

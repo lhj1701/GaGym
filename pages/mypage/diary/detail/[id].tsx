@@ -1,9 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-//import { useParams } from "react-router-dom";
-
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../../../provider";
@@ -40,9 +37,7 @@ const DiaryDetail = () => {
   }, [dispatch, diary.isFetched]);
 
   if (id) {
-    // redux에 데이터가 없으면
     if (!diaryItem) {
-      // 1건에 데이터를 가져와 store에 추가함
       dispatch(requestFetchDiaryItem(+id));
     }
   }
@@ -64,13 +59,11 @@ const DiaryDetail = () => {
     <div className={styles.div1}>
       <AppBar />
       <div className={styles.div2}>
-        {/* <h2 className="text-center my-4 mb-5">일지 상세</h2> */}
         <div className={styles.div3}>
           <h2 className={styles.h2}>일지 상세</h2>
         </div>
         <form className="mx-auto">
           {diaryItem && (
-            // <table className="table table-borderless">
             <table className={styles.table}>
               <tbody>
                 <tr className={styles.tr}>
@@ -118,7 +111,6 @@ const DiaryDetail = () => {
 
         <div className={styles.btndiv}>
           <button
-            // className="btn btn-light border border-2 btn-sm p-2 float-start"
             className={styles.btn1}
             onClick={() => {
               router.push("/mypage/diary/diary-list");
@@ -128,7 +120,6 @@ const DiaryDetail = () => {
           </button>
           <div>
             <button
-              // className="btn btn-warning btn-sm p-2 float-end me-1"
               className={styles.btn2}
               onClick={() => {
                 router.push(`/mypage/diary/edit/${id}`);
@@ -137,7 +128,6 @@ const DiaryDetail = () => {
               수정
             </button>
             <button
-              // className="btn btn-dark btn-sm p-2 float-end"
               className={styles.btn3}
               onClick={() => {
                 handleAddClick();

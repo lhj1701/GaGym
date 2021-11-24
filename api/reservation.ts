@@ -34,19 +34,19 @@ const reservationApi = {
   get: (id: number) =>
     axios.get<ReservationItemResponse>(
       // `${process.env.NEXT_PUBLIC_API_BASE}/reservation/{id}`
-      `http://localhost:8080/reservation/${id}`
+      `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/reservation/${id}`
     ),
   // axios.get<응답데이터의타입>(요청URL);
   fetch: () =>
     axios.get<ReservationItemResponse[]>(
       // `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
-      `http://localhost:8080/reservation`
+      `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/reservation`
     ),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<ReservationPagingReponse>(
       // `${process.env.NEXT_PUBLIC_API_BASE}/reservation/paging?page=${page}&size=${size}`
-      `http://localhost:8080/reservation/paging?page=${page}&size=${size}`
+      `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/reservation/paging?page=${page}&size=${size}`
     ),
 
   // axios.post<응답타입>(요청URL, 요청객체(JSON바디));
@@ -54,7 +54,7 @@ const reservationApi = {
   add: (reservationItem: ReservationItemRequest) =>
     axios.post<ReservationItemResponse>(
       // `${process.env.NEXT_PUBLIC_API_BASE}/addreservation`,
-      `http://localhost:8080/reservation`,
+      `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/reservation`,
       reservationItem
     ),
   // axios.delete<응답타입>(요청URL);
@@ -62,7 +62,7 @@ const reservationApi = {
   remove: (id: number) =>
     axios.delete<boolean>(
       // `${process.env.NEXT_PUBLIC_API_BASE}/mypage/myreservation/detail/${id}`
-      `http://localhost:8080/reservation/${id}`
+      `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/reservation/${id}`
       ),
 
   // axios.PUT<응답타입>(요청URL, 요청객체(JSON바디));
@@ -70,7 +70,7 @@ const reservationApi = {
   modify: (id: number, reservationItem: ReservationItemRequest) =>
     axios.put<ReservationItemResponse>(
       // `${process.env.NEXT_PUBLIC_API_BASE}/mypage/myreservation/edit/${id}`,
-      `http://localhost:8080/reservation/${id}`,
+      `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/reservation/${id}`,
       reservationItem
     ),
 };

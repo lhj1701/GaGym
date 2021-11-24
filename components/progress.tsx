@@ -7,8 +7,6 @@ const Progress = () => {
 
   return (
     <>
-      {/* 너비값은 컨텐츠 너비, 높이값은 자식 높이 */}
-      {/* spinner, progress 이런 것들은 사용자의 입력 방지 */}
       {progress.status && (
         <div
           className="position-fixed"
