@@ -23,7 +23,7 @@ const Home = () => {
             type="button"
             className="btn btn-outline-dark"
             onClick={() => {
-              router.push(`/home/mvsnm`);
+              router.push(`/home/select`);
             }}
           >
             회원/비회원
