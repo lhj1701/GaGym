@@ -125,7 +125,7 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
               <div className={styles.imgtrainer}>
                 <img src={item.trainerPhotoUrl} className={styles.imgd} />
                 <div className={styles.divsp}>
-                  <span>{item.trainerName}</span>
+                  <span className={styles.divsptr}>{item.trainerName}</span>
                   <br />
                   <span>{item.trainerIntro}</span>
                   <br />

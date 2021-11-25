@@ -36,16 +36,6 @@ const DiaryList = () => {
     }
   }, [dispatch, diary.isFetched, diary.pageSize]);
 
-  const handlePageChanged = (page: number) => {
-    console.log("--page: " + page);
-    dispatch(
-      requestFetchPagingDiary({
-        page,
-        size: diary.pageSize,
-      })
-    );
-  };
-
   const handlePageSizeChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log(e.currentTarget.value);
     dispatch(
@@ -86,7 +76,7 @@ const DiaryList = () => {
 
               <div className="d-flex justify-content-end align-items-center">
                 <select
-                  className="form-select form-select-sm mx-1 p-1"
+                  className="form-select form-select-sm p-1 mb-3"
                   style={{ width: "55px", height: "30px" }}
                   onChange={(e) => {
                     handlePageSizeChanged(e);

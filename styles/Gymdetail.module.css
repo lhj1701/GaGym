@@ -112,16 +112,14 @@
 } */
 
 .imgd {
-  margin-right: 10px;
   background-repeat: no-repeat;
   border-radius: 50%;
   width: auto;
   height: 100px;
-  border-style: solid;
+  /* border-style: solid;
   border-color: #0100a4;
-  border-width: 5px;
+  border-width: 5px; */
   display: flex;
-  /* margin-left: 10px; */
 }
 
 .divprice {
@@ -231,29 +229,38 @@
   border-collapse: collapse;
   border-radius: 10px;
   border-style: hidden;
-  box-shadow: 0px 1px 5px 1px rgb(8, 8, 70);
+  /* box-shadow: 0px 1px 5px 1px rgb(8, 8, 70); */
+  box-shadow: 0px 1px 5px 1px;
 }
 
 .th1 {
   /* border-width: 1px; */
   width: 100px;
-  border-color: rgb(9, 9, 128);
+  /* background-color: rgb(18, 17, 100); */
+  background-color: #0100a4;
+  color: white;
+  text-align: center;
+
+  /* border-color: rgb(9, 9, 128); */
 }
 
 .td1c {
   border-width: 1px;
-  border-color: rgb(9, 9, 128);
   text-align: center;
+  font-weight: 800;
 }
 
 .td1 {
   border-width: 1px;
-  border-color: rgb(9, 9, 128);
+  /* border-color: rgb(9, 9, 128); */
 }
 
 .divsp {
   margin-top: 10px;
   text-align: center;
+}
+.divsptr {
+  font-weight: 600;
 }
 
 .divser1 {
@@ -271,15 +278,3 @@
 .divser111 {
   margin-top: 20px;
 }
-/*
-.btn hover:nth-child(2) {
-  background: #0100a4;
-  color: white;
-}
-
-.btn div:hover:nth-child(2) {
-  background: #0100a4;
-  color: white;
-}
-
-*/
