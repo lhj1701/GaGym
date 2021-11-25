@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Select.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeLogo from "../../components/homelogo";
@@ -11,6 +11,7 @@ const Select = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <HomeLogo />
+        <span className={styles.span}>헬스장 찾기</span>
         <div className={styles.select}>
           <select
             className="form-select mt-5"
