@@ -57,7 +57,7 @@ const GymList = ({ gymList }: gymListProp) => {
           </svg>
           <span className={styles.svg111}>
             <Link href="/home/select" passHref>
-              <a className={styles.svg1111}>서울특별시</a>
+              <a className={styles.svg1111}>서울시</a>
             </Link>
           </span>
         </div>

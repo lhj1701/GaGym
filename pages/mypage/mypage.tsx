@@ -9,6 +9,11 @@ import Footer from "../../components/footer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../provider";
 
+//1126추가
+import { requestFetchPagingDiary } from "../../middleware/modules/diary";
+import Layout from "../../components/layout";
+//1126추가끝
+
 import getTimeString from "../../provider/modules/getTimeString";
 import {
   requestFetchNextReservation,
@@ -24,11 +29,43 @@ const Mypage = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    if (!reservation.isFetched ||!diary.isFetched) {
-      dispatch(requestFetchReservation())
-      dispatch(requestFetchDiary())
+    if (!diary.isFetched) {
+      const diaryPageSize = localStorage.getItem("diary_page_size");
+
+      dispatch(
+        requestFetchPagingDiary({
+          page: 0,
+          size: diaryPageSize ? +diaryPageSize : diary.pageSize,
+        })
+      );
     }
-    [dispatch, reservation.isFetched,diary.isFetched ]});
+  }, [dispatch, diary.isFetched, diary.pageSize]);
+
+  const handlePageChanged = (page: number) => {
+    console.log("--page: " + page);
+    dispatch(
+      requestFetchPagingDiary({
+        page,
+        size: diary.pageSize,
+      })
+    );
+  };
+
+  const handlePageSizeChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(e.currentTarget.value);
+    dispatch(
+      requestFetchPagingDiary({
+        page: diary.page,
+        size: +e.currentTarget.value,
+      })
+    );
+  };
+  //1126추가끝
+  useEffect(() => {
+    if (!reservation.isFetched || !diary.isFetched) {
+      dispatch(requestFetchReservation());
+    }
+  }, [dispatch, reservation.isFetched]);
 
   return (
     <div>
@@ -89,23 +126,34 @@ const Mypage = () => {
 
           <table className="table">
             <thead>
-              <th>날짜</th>
-              <th>식단내용</th>
-              <th>운동내용</th>
-              <th>문의사항</th>
-              <th>담당강사</th>
-              <th style={{ color: "red" }}>강사피드백</th>
+              <tr>
+                <th>날짜</th>
+                <th>식단내용</th>
+                <th>운동내용</th>
+                <th>문의사항</th>
+                <th>담당강사</th>
+                <th style={{ color: "red" }}>강사피드백</th>
+              </tr>
             </thead>
-            <tbody>
+            <tbody className="tbody">
               {diary.data.map((item, index) => (
-                <tr key={`diary-item-${index}`}>
-                  <td className={styles.text}>
-                    {getTimeString(item.diaryCreateTime)}
+                <tr key={index}>
+                  <td
+                    style={{ cursor: "pointer", color: "rgb(3, 48, 129)" }}
+                    className={styles.textd}
+                    onClick={() => {
+                      router.push(`/mypage/diary/detail/${item.id}`);
+                    }}
+                    key={index}
+                  >
+                    <b>{getTimeString(item.diaryCreateTime)}</b>
+                    {/* <b>11/12</b> */}
                   </td>
                   <td className={styles.text}>{item.diaryMorning}</td>
                   <td className={styles.text}>{item.diaryRoutine}</td>
-                  <td className={styles.text}>{item.diaryRequest}</td>
                   <td className={styles.text}>{item.trainerName}</td>
+                  <td className={styles.text}>{item.diaryRequest}</td>
+
                   <td className={styles.text} style={{ color: "red" }}>
                     {item.trainerFeedback}
                   </td>

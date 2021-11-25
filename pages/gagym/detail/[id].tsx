@@ -63,7 +63,7 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
     <div className={styles.container}>
       <AppBar />
       <main className={styles.main} key={`${gymDetail.id}`}>
-        <div className={styles.div}>
+        <div className={styles.div1}>
           {/* 1. 헬스장 사진 + 내용 + 예약버튼 */}
           <div className="d-flex mt-5">
             <div style={{ cursor: "pointer" }} className={styles.src}>
@@ -79,7 +79,10 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
             </div>
 
             {/* 내용 */}
-            <div style={{ width: "auto", height: "300px" }} className="px-3">
+            <div
+              className={styles.div0}
+              // style={{ width: "auto", height: "300px" }} className="px-3"
+            >
               {/* 헬스장명 */}
               <h3 className={styles.h3}>{gymDetail.gymName}</h3>
               {/* 헬스장주소 */}
@@ -90,12 +93,12 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
               <p className={styles.p}>
                 <b>[운영시간]</b>
                 <br />
-                [평 일] 06:00 ~ 21:30
+                {/* [평 일] 06:00 ~ 21:30
                 <br />
                 [토요일] 08:00 ~ 18:00
                 <br />
-                [휴관일] 공휴일
-                {/* {gymDetail.gymTime} */}
+                [휴관일] 공휴일 */}
+                {gymDetail.gymTime}
               </p>
               {/* 예약버튼 */}
               <div className="d-flex justify-content-center">

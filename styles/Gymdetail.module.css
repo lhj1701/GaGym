@@ -16,7 +16,14 @@
   */
 }
 
-.div {
+.div0 {
+  width: 370px;
+  height: 300px;
+  padding-left: 30px;
+}
+/* style={{ width: "auto", height: "300px" }} className="px-3" */
+
+.div1 {
   margin: 50px 0 0 0px;
   flex: 3;
   display: flex;
