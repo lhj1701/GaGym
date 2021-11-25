@@ -19,11 +19,11 @@ const ReservationDetail = () => {
     state.reservation.data.find((item) => item.id === +id)
   );
 
-  // useEffect(() => {
-  //   if (!reservation.isFetched) {
-  //     dispatch(requestFetchReservation());
-  //   }
-  // }, [dispatch, reservation.isFetched]);
+  useEffect(() => {
+    if (!reservation.isFetched) {
+      dispatch(requestFetchReservation());
+    }
+  }, [dispatch, reservation.isFetched]);
 
   if (id) {
     // redux에 데이터가 없으면

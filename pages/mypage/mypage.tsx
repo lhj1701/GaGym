@@ -23,26 +23,12 @@ const Mypage = () => {
   const reservation = useSelector((state: RootState) => state.reservation);
   const dispatch = useDispatch<AppDispatch>();
 
-  // useEffect(() => {
-  //   if (!reservation.isFetched) {
-  //     dispatch(requestFetchReservation())
-  //   }
-  //   if (!diary.isFetched) {
-  //       dispatch(requestFetchReservation())
-  // } [dispatch, reservation.isFetched,diary.isFetched ]});
-
   useEffect(() => {
     if (!reservation.isFetched ||!diary.isFetched) {
       dispatch(requestFetchReservation())
       dispatch(requestFetchDiary())
     }
     [dispatch, reservation.isFetched,diary.isFetched ]});
-
-  // useEffect(() => {
-  //   if (!reservation.isFetched) {
-  //     dispatch(requestFetchReservation());
-  //   }
-  // }, [dispatch, reservation.isFetched,diary.isFetched ]);
 
   return (
     <div>

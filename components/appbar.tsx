@@ -29,11 +29,11 @@ const AppBar = () => {
                   <a className={styles.txt}>마이페이지</a>
                 </Link>
               </Nav.Item>
-              <Nav.Item className="mx-3">
+              {/* <Nav.Item className="mx-3">
                 <Link href="/mypage/diary/diary-list">
                   <a className={styles.txt}>PT일지</a>
                 </Link>
-              </Nav.Item>
+              </Nav.Item> */}
             </Nav>
           </div>
         </Container>
