@@ -8,7 +8,7 @@ import { requestAddReservation } from "../../../../middleware/modules/reservatio
 import Image from "next/image";
 import { GetServerSideProps } from "next";
 import axios from "axios";
-import styles from "../../../../styles/mypage.module.css";
+import styles from "../../../../styles/RsvCreate.module.css";
 
 import AppBar from "../../../../components/appbar";
 import Footer from "../../../../components/footer";
@@ -83,138 +83,147 @@ const ReservationCreate = ({ gymInfo, trainers }: IndexProp) => {
 
   return (
     <div>
-    <AppBar />
+      <AppBar />
 
-    {/* <Layout> */}
-    <div style={{ width: "60vw" }} className="mx-auto mt-5">
-      <div>
-        <div className="d-flex justify-content-center" key={gymInfo.id}>
-          <div style={{ width: "30vw" }}>
-            <Image
-              src={gymInfo.gymPhoto}
-              alt={gymInfo.gymName}
-              width={300}
-              height={300}
-            />
-          </div>
-          {/* 희망이용권+희망강사 선택 버튼 */}
-          <div
-            className="d-flex justify-content-center mt-5 ms-3"
-            style={{ width: "30vh", height: "300px" }}
-          >
-            <div className="ms-3">
-              <h4 className="d-flex justify-content-center mt-5 my-3">
-                PT 이용권
-              </h4>
-              <div className="d-flex justify-content-center my-1">
-              <select ref={service}>
+      {/* <Layout> */}
+      <div style={{ width: "60vw" }} className="mx-auto mt-5">
+        <div>
+          <div className="d-flex justify-content-center" key={gymInfo.id}>
+            <div style={{ width: "30vw" }}>
+              <Image
+                src={gymInfo.gymPhoto}
+                alt={gymInfo.gymName}
+                width={300}
+                height={300}
+              />
+            </div>
+            {/* 희망이용권+희망강사 선택 버튼 */}
+            <div
+              className="d-flex justify-content-center mt-5 ms-3"
+              style={{ width: "30vh", height: "300px" }}
+            >
+              <div className="ms-3">
+                <h4 className="d-flex justify-content-center mt-5 my-3">
+                  PT 이용권
+                </h4>
+                <div className="d-flex justify-content-center my-1">
+                  <select ref={service}>
                     <option defaultValue="PT 1회권"> PT 1회권</option>
                     <option defaultValue="PT 10회권"> PT 10회권</option>
                     <option defaultValue="PT 30회권"> PT 30회권</option>
                     <option defaultValue="요가 1회권"> 요가 1회권</option>
                     <option defaultValue="요가 10회권"> 요가 10회권</option>
                     <option defaultValue="요가 30회권"> 요가 30회권</option>
-                    <option defaultValue="필라테스 1회권"> 필라테스 1회권</option>
-                    <option defaultValue="필라테스 10회권"> 필라테스 10회권</option>
-                    <option defaultValue="필라테스 30회권"> 필라테스 30회권</option>
-                  </select>
-              </div>
-            </div>
-            <div className="ms-3">
-              <h4 className="d-flex justify-content-center mt-5 my-3">
-                강사
-              </h4>
-              <div className="d-flex justify-content-center my-1">
-                <select name="강사정보" ref={ptName}>
-                  {trainers.map((item, index) => (
-                    <option
-                      defaultValue={item.trainerName}
-                      key={`reservation-item-${index}`}
-                    >
-                      {item.trainerName}
+                    <option defaultValue="필라테스 1회권">
+                      {" "}
+                      필라테스 1회권
                     </option>
-                  ))}
-                </select>
+                    <option defaultValue="필라테스 10회권">
+                      {" "}
+                      필라테스 10회권
+                    </option>
+                    <option defaultValue="필라테스 30회권">
+                      {" "}
+                      필라테스 30회권
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div className="ms-3">
+                <h4 className="d-flex justify-content-center mt-5 my-3">
+                  강사
+                </h4>
+                <div className="d-flex justify-content-center my-1">
+                  <select name="강사정보" ref={ptName}>
+                    {trainers.map((item, index) => (
+                      <option
+                        defaultValue={item.trainerName}
+                        key={`reservation-item-${index}`}
+                      >
+                        {item.trainerName}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <div className="d-flex justify-content-center">
-            <div style={{ width: "30vw" }} className="ms-3">
-              <h4 className="mb-3">헬스장명</h4>
-              <h6 ref={gymName} className="mx-3">
-                {gymInfo.gymName}
-              </h6>
-              <h4 className="my-3">주소</h4>
-              <h6 className="mx-3">{gymInfo.gymAddress}</h6>
-              <h4 className="my-3">운영시간</h4>
-              <h6 className="mx-3">{gymInfo.gymTime}</h6>
-            </div>
-            <div className="ms-3 " style={{ width: "35vh" }}>
-              <h4 className="d-flex justify-content-center text-center mx-2 ">
-                예약자 정보 입력
-              </h4>
-              <table>
-                <tbody>
-                  <tr>
-                    <th className="me-5">이름</th>
-                    <td>
-                      <input
-                        className="form-control"
-                        type="text"
-                        placeholder="상담 예약자 이름"
-                        ref={name}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="me-5">연락처</th>
-                    <td>
-                      <input
-                        className="form-control"
-                        type="text"
-                        placeholder="ex) 010-1234-5678"
-                        ref={tel}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="me-5" style={{ width: "60px" }}>
-                      문의사항
-                    </th>
-                    <td>
-                      <textarea
-                        className="form-control"
-                        placeholder="상담 예약자 문의사항"
-                        ref={request}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th></th>
-                    <td className="float-end">
-                      <button
-                        className={styles.detailbtn}
-                        onClick={() => {
-                          handleSaveClick();
-                        }}
-                        type="button"
-                      >
-                        예약등록
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div>
+            <div className="d-flex justify-content-center">
+              <div style={{ width: "30vw" }} className="ms-3">
+                <h4 className="mb-3">헬스장명</h4>
+                <h6 ref={gymName} className="mx-3">
+                  {gymInfo.gymName}
+                </h6>
+                <h4 className="my-3">주소</h4>
+                <h6 className="mx-3">{gymInfo.gymAddress}</h6>
+                <h4 className="my-3">운영시간</h4>
+                <h6 className="mx-3">{gymInfo.gymTime}</h6>
+              </div>
+              <div className="ms-3 " style={{ width: "35vh" }}>
+                <h4 className="d-flex justify-content-center text-center mx-2 ">
+                  예약자 정보 입력
+                </h4>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th className="me-5">이름</th>
+                      <td>
+                        <input
+                          className="form-control"
+                          type="text"
+                          placeholder="상담 예약자 이름"
+                          ref={name}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="me-5">연락처</th>
+                      <td>
+                        <input
+                          className="form-control"
+                          type="text"
+                          placeholder="ex) 010-1234-5678"
+                          ref={tel}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="me-5" style={{ width: "60px" }}>
+                        문의사항
+                      </th>
+                      <td>
+                        <textarea
+                          className="form-control"
+                          placeholder="상담 예약자 문의사항"
+                          ref={request}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <td className="float-end">
+                        <button
+                          className={styles.btnrsv}
+                          onClick={() => {
+                            handleSaveClick();
+                          }}
+                          type="button"
+                        >
+                          예약등록
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      {/* </Layout> */}
+      <Footer />
     </div>
-    {/* </Layout> */}
-    <Footer />
-  </div>
   );
 };
 

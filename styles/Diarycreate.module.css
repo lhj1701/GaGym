@@ -22,22 +22,18 @@
 
 .h2 {
   text-align: center;
-  padding: 5px;
+  padding: 0 7px 0 7px;
   margin-bottom: 20px;
   font-weight: 700;
-  border-right: solid rgb(23, 23, 105) 3px;
-  border-left: solid rgb(23, 23, 105) 3px;
+  border-right: solid rgb(23, 23, 105) 4px;
+  border-left: solid rgb(23, 23, 105) 4px;
 }
-/* "text-center my-4 mb-5" */
 
-/* .div1 {
-  display: flex;
-} */
 .div2 {
   display: flex;
   margin: auto;
   margin-top: 30px;
-  width: 40vw;
+  width: 60vw;
   flex-direction: column;
   /* 임시추가 */
   /* border: double #0000a4 10px; */
@@ -54,7 +50,8 @@
 }
 .btndiv {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: space-around;
   margin-top: 20px;
 }
 .btn1 {
