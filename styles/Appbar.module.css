@@ -1,17 +1,6 @@
-/* original */
-
-/* width: calc((100% - 2rem) / 3);
-  margin-left: 100px;
-  width: calc((100% - 200px));
-  border-bottom: solid black;
-  font-size: 20px;
-  border-width: 0.3vh; */
-
 .appbar {
-  /* display: flex; */
   position: sticky;
   background-color: white;
-  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
@@ -25,8 +14,6 @@
 }
 
 .appbar1 {
-  /* margin-left: 100px; */
-  /* width: calc((100% - 200px)); */
   width: 100%;
   border-bottom: solid #0000a4;
   border-width: 5px;

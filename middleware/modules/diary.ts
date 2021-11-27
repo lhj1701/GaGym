@@ -16,7 +16,6 @@ import { AxiosResponse } from "axios";
 
 import { addAlert } from "../../provider/modules/alert";
 
-
 export interface PageRequest {
   page: number;
   size: number;
@@ -136,7 +135,6 @@ function* fetchPagingData(action: PayloadAction<PageRequest>) {
   const page = action.payload.page;
   const size = action.payload.size;
 
-  // 백엔드에서 데이터 받아오기
   const result: AxiosResponse<DiaryPagingResponse> = yield call(
     api.fetchPaging,
     page,

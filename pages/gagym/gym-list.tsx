@@ -4,7 +4,6 @@ import styles from "../../styles/Gymlist.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../components/appbar";
 import Footer from "../../components/footer";
-import Layout from "../../components/layout";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
@@ -70,11 +69,10 @@ const GymList = ({ gymList }: gymListProp) => {
           {gymList.map((item, index) => (
             <div
               key={`photo-item-${index}`}
-              // className="card"
               className={styles.div}
               style={{
                 boxShadow: "0 2px 5px 0",
-                width: "calc((100% - 10rem) / 5)", //3rem
+                width: "calc((100% - 10rem) / 5)",
               }}
             >
               <div

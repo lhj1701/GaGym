@@ -1,20 +1,14 @@
 import { MutableRefObject } from "react";
 import React from "react";
-
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "../../../components/appbar";
 import Footer from "../../../components/footer";
-
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../provider";
-
 import { useEffect, useRef } from "react";
 import { DiaryItem } from "../../../provider/modules/diary";
-
 import { requestAddDiary } from "../../../middleware/modules/diary";
-
-import getTimeString from "../../../provider/modules/getTimeString";
 import styles from "../../../styles/Diarycreate.module.css";
 
 const DiaryCreate = () => {
@@ -79,7 +73,7 @@ const DiaryCreate = () => {
                   <input
                     type="text"
                     className={styles.input}
-                    // placeholder="회원명을 작성 해 주세요"
+                    placeholder="회원명을 작성 해 주세요"
                     ref={memberName}
                   />
                 </td>
@@ -91,7 +85,7 @@ const DiaryCreate = () => {
                   <input
                     type="text"
                     className={styles.input}
-                    // placeholder="아침식단을 작성 해 주세요"
+                    placeholder="아침식단을 작성 해 주세요"
                     ref={diaryMorning}
                   />
                 </td>
@@ -103,7 +97,7 @@ const DiaryCreate = () => {
                   <input
                     type="text"
                     className={styles.input}
-                    // placeholder="점심식단을 작성 해 주세요"
+                    placeholder="점심식단을 작성 해 주세요"
                     ref={diaryLunch}
                   />
                 </td>
@@ -115,7 +109,7 @@ const DiaryCreate = () => {
                   <input
                     type="text"
                     className={styles.input}
-                    // placeholder="저녁식단을 작성 해 주세요"
+                    placeholder="저녁식단을 작성 해 주세요"
                     ref={diaryDinner}
                   />
                 </td>
@@ -127,7 +121,7 @@ const DiaryCreate = () => {
                   <input
                     type="text"
                     className={styles.input}
-                    // placeholder="운동내역을 작성 해 주세요"
+                    placeholder="운동내역을 작성 해 주세요"
                     ref={diaryRoutine}
                   />
                 </td>
@@ -139,7 +133,7 @@ const DiaryCreate = () => {
                   <input
                     type="text"
                     className={styles.input}
-                    // placeholder="문의사항을 작성 해 주세요"
+                    placeholder="문의사항을 작성 해 주세요"
                     ref={diaryRequest}
                   />
                 </td>
@@ -151,7 +145,7 @@ const DiaryCreate = () => {
                   <input
                     type="text"
                     className={styles.input}
-                    // placeholder="담당강사를 작성 해 주세요"
+                    placeholder="담당강사를 작성 해 주세요"
                     ref={trainerName}
                   />
                 </td>

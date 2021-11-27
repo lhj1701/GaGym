@@ -13,11 +13,25 @@
   margin-top: -150px;
   padding-bottom: 100px;
 }
+.sidebtn0 {
+  position: fixed;
+  margin: 200px 0 30px 5px;
+  width: 180px;
+  height: 50px;
+  background: #030366;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  border-width: 5px;
+  border-style: double;
+  border-color: white;
+  border-radius: 15%;
+}
 .sidebtn1 {
   position: fixed;
-  margin: 300px 0 30px 30px;
+  margin: 310px 0 30px 30px;
   width: 130px;
-  height: 50px;
+  height: 40px;
   background: white;
   color: #030366;
   font-size: 20px;
@@ -32,7 +46,7 @@
   position: fixed;
   margin: 370px 0 20px 30px;
   width: 130px;
-  height: 50px;
+  height: 40px;
   background: white;
   color: #030366;
   font-size: 20px;
@@ -44,7 +58,6 @@
 }
 .main {
   margin-top: 30px;
-  /* min-height: 100vh; */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -89,10 +102,9 @@
 .btn {
   width: 70px;
   height: 30px;
-  margin-top: 8px;
+  margin-top: 10px;
   margin-left: 20px;
   border-radius: 50px;
-  /* border-style: double; */
   border-width: 2px;
   background: #030394;
   color: white;
@@ -102,27 +114,8 @@
 }
 
 .btn:hover {
-  /* border-style: double; */
   border-width: 2px;
   background: white;
   color: #030366;
   border-color: #030366;
 }
-
-/*
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-*/

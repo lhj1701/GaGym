@@ -79,10 +79,7 @@ const GymDetail = ({ gymDetail, trainers }: GymDetailProp) => {
             </div>
 
             {/* 내용 */}
-            <div
-              className={styles.div0}
-              // style={{ width: "auto", height: "300px" }} className="px-3"
-            >
+            <div className={styles.div0}>
               {/* 헬스장명 */}
               <h3 className={styles.h3}>{gymDetail.gymName}</h3>
               {/* 헬스장주소 */}

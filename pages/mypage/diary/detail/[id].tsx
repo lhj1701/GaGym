@@ -9,12 +9,9 @@ import {
   requestFetchDiaryItem,
   requestRemoveDiary,
 } from "../../../../middleware/modules/diary";
-
 import AppBar from "../../../../components/appbar";
 import Footer from "../../../../components/footer";
-
 import getTimeString from "../../../../provider/modules/getTimeString";
-
 import styles from "../../../../styles/Diarydetail.module.css";
 
 const DiaryDetail = () => {

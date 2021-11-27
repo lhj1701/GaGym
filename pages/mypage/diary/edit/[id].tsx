@@ -1,20 +1,14 @@
 import { MutableRefObject } from "react";
-
 import React from "react";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../../../provider";
-
 import { requestModifyDiary } from "../../../../middleware/modules/diary";
-
 import AppBar from "../../../../components/appbar";
 import Footer from "../../../../components/footer";
-
 import getTimeString from "../../../../provider/modules/getTimeString";
-
 import styles from "../../../../styles/Diaryedit.module.css";
 
 const DiaryEdit = () => {

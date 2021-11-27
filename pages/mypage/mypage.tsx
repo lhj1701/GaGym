@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-
 import styles from "../../styles/mypage.module.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,19 +7,9 @@ import AppBar from "../../components/appbar";
 import Footer from "../../components/footer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../provider";
-
-//1126추가
 import { requestFetchPagingDiary } from "../../middleware/modules/diary";
-import Layout from "../../components/layout";
-//1126추가끝
-
 import getTimeString from "../../provider/modules/getTimeString";
-import {
-  requestFetchNextReservation,
-  requestFetchPagingReservation,
-  requestFetchReservation,
-} from "../../middleware/modules/reservation";
-import { requestFetchDiary } from "../../middleware/modules/diary";
+import { requestFetchReservation } from "../../middleware/modules/reservation";
 
 const Mypage = () => {
   const diary = useSelector((state: RootState) => state.diary);
@@ -41,26 +30,6 @@ const Mypage = () => {
     }
   }, [dispatch, diary.isFetched, diary.pageSize]);
 
-  const handlePageChanged = (page: number) => {
-    console.log("--page: " + page);
-    dispatch(
-      requestFetchPagingDiary({
-        page,
-        size: diary.pageSize,
-      })
-    );
-  };
-
-  const handlePageSizeChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.currentTarget.value);
-    dispatch(
-      requestFetchPagingDiary({
-        page: diary.page,
-        size: +e.currentTarget.value,
-      })
-    );
-  };
-  //1126추가끝
   useEffect(() => {
     if (!reservation.isFetched || !diary.isFetched) {
       dispatch(requestFetchReservation());
@@ -77,6 +46,7 @@ const Mypage = () => {
       </Head>
       <div className={styles.sidemain}>
         <div className={styles.sidemenu}>
+          <button className={styles.sidebtn0}>MYPAGE</button>
           <button
             className={styles.sidebtn1}
             onClick={() => {
@@ -157,18 +127,13 @@ const Mypage = () => {
               <tbody className={styles.tbody}>
                 {diary.data.map((item, index) => (
                   <tr key={index}>
-                    <td
-                      style={{ cursor: "pointer", color: "rgb(3, 48, 129)" }}
-                      className={styles.textd}
-                      onClick={() => {
-                        router.push(`/mypage/diary/detail/${item.id}`);
-                      }}
-                      key={index}
-                    >
+                    <td key={index}>
                       <b>{getTimeString(item.diaryCreateTime)}</b>
                       {/* <b>11/12</b> */}
                     </td>
-                    <td className={styles.text}>{item.diaryMorning}</td>
+                    <td className={styles.text}>
+                      {item.diaryMorning}, {item.diaryLunch}, {item.diaryDinner}
+                    </td>
                     <td className={styles.text}>{item.diaryRoutine}</td>
                     <td className={styles.text}>{item.diaryRequest}</td>
                     <td className={styles.text}>{item.trainerName}</td>

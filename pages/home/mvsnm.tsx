@@ -15,7 +15,6 @@ const Mvsnm = () => {
           <button
             type="button"
             className="btn btn-outline-dark"
-            // style={{ width: "130px" }}
             onClick={() => {
               router.push(`/home/m`);
             }}
