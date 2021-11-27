@@ -15,6 +15,8 @@ import Footer from "../../../../components/footer";
 
 import getTimeString from "../../../../provider/modules/getTimeString";
 
+import styles from "../../../../styles/Diaryedit.module.css";
+
 const DiaryEdit = () => {
   const router = useRouter();
 
@@ -65,20 +67,24 @@ const DiaryEdit = () => {
   };
 
   return (
-    <div>
+    <div className={styles.div1}>
       <AppBar />
-      <div style={{ width: "40vw" }} className="mx-auto">
-        <h2 className="text-center my-4 mb-5">일지 수정</h2>
+      <div className={styles.div2}>
+        <div className={styles.div3}>
+          <h2 className={styles.h2}>일지 수정</h2>
+        </div>
         <form className="mx-auto">
-          <table className="table table-borderless">
+          <table className={styles.table}>
             <tbody>
-              <tr>
-                <th>날짜</th>
-                <td>{getTimeString(DiaryItem?.diaryCreateTime)}</td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>날짜</th>
+                <td className={styles.td}>
+                  {getTimeString(DiaryItem?.diaryCreateTime)}
+                </td>
               </tr>
-              <tr>
-                <th>회원명</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>회원명</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
@@ -89,9 +95,9 @@ const DiaryEdit = () => {
                   />
                 </td>
               </tr>
-              <tr>
-                <th>아침식단</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>아침식단</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
@@ -102,9 +108,9 @@ const DiaryEdit = () => {
                   />
                 </td>
               </tr>
-              <tr>
-                <th>점심식단</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>점심식단</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
@@ -115,9 +121,9 @@ const DiaryEdit = () => {
                   />
                 </td>
               </tr>
-              <tr>
-                <th>저녁식단</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>저녁식단</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
@@ -128,9 +134,9 @@ const DiaryEdit = () => {
                   />
                 </td>
               </tr>
-              <tr>
-                <th>운동내역</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>운동내역</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
@@ -141,9 +147,9 @@ const DiaryEdit = () => {
                   />
                 </td>
               </tr>
-              <tr>
-                <th>문의사항</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>문의사항</th>
+                <td className={styles.td}>
                   {" "}
                   <input
                     type="text"
@@ -154,9 +160,9 @@ const DiaryEdit = () => {
                   />
                 </td>
               </tr>
-              <tr>
-                <th>담당 강사</th>
-                <td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>담당 강사</th>
+                <td className={styles.td}>
                   <input
                     type="text"
                     className="form-control"
@@ -166,31 +172,29 @@ const DiaryEdit = () => {
                   />
                 </td>
               </tr>
-              <tr>
-                <th>강사 피드백</th>
-                <td>{DiaryItem?.trainerFeedback}</td>
+              <tr className={styles.tr}>
+                <th className={styles.th}>강사 피드백</th>
+                <td className={styles.td}>{DiaryItem?.trainerFeedback}</td>
               </tr>
             </tbody>
           </table>
         </form>
 
-        <div className="mt-5">
+        <div className={styles.btndiv}>
           <button
-            className="btn btn-light border border-2 btn-sm p-2  float-start"
+            className={styles.btn1}
             onClick={() => {
               router.push("/mypage/diary/diary-list");
             }}
           >
-            <i className="bi bi-list me-1"></i>
             목록
           </button>
           <button
-            className="btn btn-dark btn-sm p-2  float-end"
+            className={styles.btn2}
             onClick={() => {
               handleSaveClick();
             }}
           >
-            <i className="bi bi-save me-1"></i>
             저장
           </button>
         </div>

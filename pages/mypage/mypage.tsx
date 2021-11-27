@@ -170,8 +170,8 @@ const Mypage = () => {
                     </td>
                     <td className={styles.text}>{item.diaryMorning}</td>
                     <td className={styles.text}>{item.diaryRoutine}</td>
-                    <td className={styles.text}>{item.trainerName}</td>
                     <td className={styles.text}>{item.diaryRequest}</td>
+                    <td className={styles.text}>{item.trainerName}</td>
 
                     <td className={styles.text} style={{ color: "red" }}>
                       {item.trainerFeedback}
