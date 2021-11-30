@@ -7,7 +7,7 @@ import { ReservationList } from "../../../../provider/modules/reservation";
 // import reservationApi, {ReservationItemResponse} from "../../../../api/reservation";
 
 import Layout from "../../../../components/layout";
-import styles from "../../../../styles/mypage.module.css";
+import styles from "../../../../styles/RsvCreate.module.css";
 
 const ReservationEdit = () => {
   const router = useRouter();
@@ -72,11 +72,11 @@ const ReservationEdit = () => {
     </div>
     <div className="d-flex justify-content-center">
     <div className="mx-1">
-      <button className={styles.detailbtn} onClick={() => {
+      <button className={styles.btnrsv} onClick={() => {
                   router.push(`/mypage/mypage`);
                 }} >목록</button></div>
                 <div className="mx-1"><button
-            className={styles.detailbtn}
+            className={styles.btnrsv}
             onClick={() => {handleSave();}}>
             <i className="bi bi-check" />
             저장

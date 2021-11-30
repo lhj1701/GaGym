@@ -89,18 +89,20 @@ const ReservationCreate = ({ gymInfo, trainers }: IndexProp) => {
       <div style={{ width: "60vw" }} className="mx-auto mt-5">
         <div>
           <div className="d-flex justify-content-center" key={gymInfo.id}>
-            <div style={{ width: "30vw" }}>
+            <div style={{ width: "20vw" }}>
               <Image
                 src={gymInfo.gymPhoto}
                 alt={gymInfo.gymName}
-                width={300}
-                height={300}
+                layout="responsive"
+                objectFit="cover" //써야됨 or none
+                width={150}
+                height={150}
               />
             </div>
             {/* 희망이용권+희망강사 선택 버튼 */}
             <div
               className="d-flex justify-content-center mt-5 ms-3"
-              style={{ width: "30vh", height: "300px" }}
+              style={{ width: "30vw", height: "150px" }}
             >
               <div className="ms-3">
                 <h4 className="d-flex justify-content-center mt-5 my-3">
@@ -129,7 +131,7 @@ const ReservationCreate = ({ gymInfo, trainers }: IndexProp) => {
                   </select>
                 </div>
               </div>
-              <div className="ms-3">
+              <div className="ms-3"> 
                 <h4 className="d-flex justify-content-center mt-5 my-3">
                   강사
                 </h4>
@@ -149,7 +151,7 @@ const ReservationCreate = ({ gymInfo, trainers }: IndexProp) => {
             </div>
           </div>
           <div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center mt-4 ps-3">
               <div style={{ width: "30vw" }} className="ms-3">
                 <h4 className="mb-3">헬스장명</h4>
                 <h6 ref={gymName} className="mx-3">
@@ -160,8 +162,8 @@ const ReservationCreate = ({ gymInfo, trainers }: IndexProp) => {
                 <h4 className="my-3">운영시간</h4>
                 <h6 className="mx-3">{gymInfo.gymTime}</h6>
               </div>
-              <div className="ms-3 " style={{ width: "35vh" }}>
-                <h4 className="d-flex justify-content-center text-center mx-2 ">
+              <div className="pe-5 me-5" >
+                <h4 className="text-center ">
                   예약자 정보 입력
                 </h4>
                 <table>
@@ -237,7 +239,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await axios.get<GymInfo[]>(
     `http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo`
   );
-  // (`http://ec2-52-79-254-140.ap-northeast-2.compute.amazonaws.com:8080/gyminfo/${id}`);
 
   // const gymInfo = gymInfos.find((item) => item.id === +id);
   const gymInfo = res.data.find((item) => item.id === +id);

@@ -8,7 +8,7 @@ import {
   requestRemoveReservation,
 } from "../../../../middleware/modules/reservation";
 import Layout from "../../../../components/layout";
-import styles from "../../../../styles/mypage.module.css";
+import styles from "../../../../styles/RsvCreate.module.css";
 const ReservationDetail = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
@@ -68,11 +68,11 @@ const ReservationDetail = () => {
     </table>
     </div>
     <div className="d-flex justify-content-center">
-      <div className="mx-1"><button className={styles.detailbtn}
+      <div className="mx-1"><button className={styles.btnrsv}
       onClick={() => {
         router.push(`/mypage/myreservation/edit/${id}`);
       }}>수정</button></div>
-      <div className="mx-1"><button className={styles.detailbtn} onClick={() => {
+      <div className="mx-1"><button className={styles.btnrsv} onClick={() => {
                 handDeleteClick();
               }} >예약취소</button></div>
               </div>
