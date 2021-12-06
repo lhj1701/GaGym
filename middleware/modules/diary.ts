@@ -103,7 +103,6 @@ function* addData(action: PayloadAction<DiaryItem>) {
   }
 }
 
-
 //----------------------fetchData---------------------//
 function* fetchData() {
   yield console.log("--fetchData--");
@@ -126,7 +125,6 @@ function* fetchData() {
 
   yield put(initialDiary(diary));
 }
-
 
 //----------------------fetchPagingData---------------------//
 function* fetchPagingData(action: PayloadAction<PageRequest>) {
@@ -169,7 +167,6 @@ function* fetchPagingData(action: PayloadAction<PageRequest>) {
 }
 
 //----------------------removeData---------------------//
-
 function* removeData(action: PayloadAction<number>) {
   yield console.log("--removeData--");
 
@@ -237,3 +234,7 @@ export default function* diarySaga() {
   yield takeEvery(requestRemoveDiary, removeData);
   yield takeEvery(requestModifyDiary, modifyData);
 }
+
+
+
+

@@ -12,9 +12,15 @@ import getTimeString from "../../../../provider/modules/getTimeString";
 import styles from "../../../../styles/Diaryedit.module.css";
 
 const DiaryEdit = () => {
-  const router = useRouter();
-
-  const id = router.query.id as string;
+  const memberName = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryMorning = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryLunch = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryDinner = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryRoutine = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryRequest = useRef() as MutableRefObject<HTMLInputElement>;
+  const trainerName = useRef() as MutableRefObject<HTMLInputElement>;
+  const trainerFeedback = useRef() as MutableRefObject<HTMLInputElement>;
+  const diaryCreateTime = useRef() as MutableRefObject<HTMLInputElement>;
 
   const DiaryItem = useSelector((state: RootState) =>
     state.diary.data.find((item) => item.id === +id)
@@ -25,16 +31,8 @@ const DiaryEdit = () => {
   );
 
   const dispatch = useDispatch<AppDispatch>();
-
-  const memberName = useRef() as MutableRefObject<HTMLInputElement>;
-  const diaryMorning = useRef() as MutableRefObject<HTMLInputElement>;
-  const diaryLunch = useRef() as MutableRefObject<HTMLInputElement>;
-  const diaryDinner = useRef() as MutableRefObject<HTMLInputElement>;
-  const diaryRoutine = useRef() as MutableRefObject<HTMLInputElement>;
-  const diaryRequest = useRef() as MutableRefObject<HTMLInputElement>;
-  const trainerName = useRef() as MutableRefObject<HTMLInputElement>;
-  const trainerFeedback = useRef() as MutableRefObject<HTMLInputElement>;
-  const diaryCreateTime = useRef() as MutableRefObject<HTMLInputElement>;
+  const router = useRouter();
+  const id = router.query.id as string;
 
   useEffect(() => {
     isModifyCompleted && router.push("/mypage/diary/diary-list");

@@ -27,7 +27,15 @@ const Home = () => {
           >
             회원/비회원
           </button>
-          <button type="button" className="btn btn-outline-dark me-1 mx-1">
+          <button
+            type="button"
+            className="btn btn-outline-dark me-1 mx-1"
+            onClick={() => {
+              router.push(
+                `http://ec2-13-125-255-75.ap-northeast-2.compute.amazonaws.com/`
+              );
+            }}
+          >
             강사
           </button>
         </div>
